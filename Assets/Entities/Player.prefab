@@ -14,9 +14,13 @@ GameObject:
   - component: {fileID: 272746210079199238}
   - component: {fileID: 441319161255465282}
 <<<<<<< HEAD
+<<<<<<< HEAD
   - component: {fileID: 4441100389557346689}
 =======
 >>>>>>> a197ca0 (Add dumb enemy)
+=======
+  - component: {fileID: 4441100389557346689}
+>>>>>>> 119dfeb (Implement basicAttack framework)
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
