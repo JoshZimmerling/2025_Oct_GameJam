@@ -9,19 +9,30 @@ public class Fishing : MonoBehaviour
 
     PolygonCollider2D playerCollider;
 
+    private float fishingChargesNeeded;
+    private float fishingStartTime = -1;
+
     private void Start()
     {
         myCollider = GetComponent<PolygonCollider2D>();
         playerCollider = player.GetComponent<PolygonCollider2D>();
-    }
 
-    void Update()
-    {
-        
+        fishingChargesNeeded = 5;
     }
     
-    void FixedUpdate()
+    void Update()
     {
-        
+        if (Mouse.current.rightButton.wasPressedThisFrame && playerCollider.IsTouching(myCollider))
+        {
+            //When pressed get the start time
+            fishingStartTime = Time.time;
+        }
+        if(fishingStartTime != -1 && (Mouse.current.rightButton.wasReleasedThisFrame || !playerCollider.IsTouching(myCollider)))
+        {
+            int totalFishingTime = (int)(Time.time - fishingStartTime);
+            fishingChargesNeeded -= totalFishingTime;
+            Debug.Log("Fishing Stopped, " + totalFishingTime + " seconds completed, you still need to fish for " + fishingChargesNeeded + " more seconds.");
+            fishingStartTime = -1;
+        }
     }
 }
