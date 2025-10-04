@@ -7,7 +7,7 @@ public class PlayerMovement : MonoBehaviour
     public float moveSpeed = 5f;           
     public Rigidbody2D rb;
 
-    private Vector2 moveValue;
+    private Vector2 direction;
     
     InputAction moveAction;
     InputAction jumpAction;
@@ -21,13 +21,13 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        moveValue = moveAction.ReadValue<Vector2>();
+        direction = moveAction.ReadValue<Vector2>();
         
-        moveValue = moveValue.normalized; // For da classic diagonal issue
+        direction = direction.normalized; // For da classic diagonal issue
     }
     
     void FixedUpdate()
     {
-        rb.MovePosition(rb.position + moveValue * moveSpeed * Time.fixedDeltaTime);
+        rb.MovePosition(rb.position + direction * moveSpeed * Time.fixedDeltaTime);
     }
 }
