@@ -6,10 +6,11 @@ public class Fishing : MonoBehaviour
 {
     [SerializeField] GameObject player;
     [SerializeField] PolygonCollider2D myCollider;
+    [SerializeField] GameObject chargesBar;
 
     PolygonCollider2D playerCollider;
-
-    private int fishingChargesNeeded;
+     
+    private int fishingChargesNeeded = 5;
     private float fishingStartTime = -1;
 
     private void Start()
@@ -17,7 +18,7 @@ public class Fishing : MonoBehaviour
         myCollider = GetComponent<PolygonCollider2D>();
         playerCollider = player.GetComponent<PolygonCollider2D>();
 
-        fishingChargesNeeded = 5;
+        emptyFishingProgress();
     }
     
     void Update()
@@ -39,7 +40,7 @@ public class Fishing : MonoBehaviour
             {
                 currentFishingTime += Time.time - fishingStartTime;
                 //Display UI with the currentFishingTime
-                if((int)currentFishingTime == 1)
+                if ((int)currentFishingTime == 1)
                 {
                     updateFishingProgress();
                     fishingStartTime += currentFishingTime;
@@ -49,12 +50,28 @@ public class Fishing : MonoBehaviour
         }
     }
 
+    private void emptyFishingProgress()
+    {
+        foreach (Transform progressBarSquare in chargesBar.transform)
+        {
+            progressBarSquare.gameObject.SetActive(false);
+        }
+        fishingChargesNeeded = 5;
+    }
+
     private void updateFishingProgress()
     {
-        Debug.Log("Fishing progress made, you still need to fish for " + fishingChargesNeeded + " more seconds.");
         fishingChargesNeeded -= 1;
-        if(fishingChargesNeeded == 0)
+        foreach (Transform progressBarSquare in chargesBar.transform)
         {
+            if (progressBarSquare.gameObject.activeSelf == false) {
+                progressBarSquare.gameObject.SetActive(true);
+                break;
+            }
+        }
+        if (fishingChargesNeeded == 0)
+        {
+            emptyFishingProgress();
             //Give Reward
         }
     }
