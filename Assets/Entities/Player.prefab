@@ -13,7 +13,10 @@ GameObject:
   - component: {fileID: 1659042617313652976}
   - component: {fileID: 272746210079199238}
   - component: {fileID: 441319161255465282}
+<<<<<<< HEAD
   - component: {fileID: 4441100389557346689}
+=======
+>>>>>>> a197ca0 (Add dumb enemy)
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
