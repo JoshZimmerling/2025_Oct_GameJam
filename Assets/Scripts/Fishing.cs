@@ -9,7 +9,7 @@ public class Fishing : MonoBehaviour
 
     PolygonCollider2D playerCollider;
 
-    private float fishingChargesNeeded;
+    private int fishingChargesNeeded;
     private float fishingStartTime = -1;
 
     private void Start()
@@ -27,12 +27,35 @@ public class Fishing : MonoBehaviour
             //When pressed get the start time
             fishingStartTime = Time.time;
         }
-        if(fishingStartTime != -1 && (Mouse.current.rightButton.wasReleasedThisFrame || !playerCollider.IsTouching(myCollider)))
+        if(fishingStartTime != -1)
         {
-            int totalFishingTime = (int)(Time.time - fishingStartTime);
-            fishingChargesNeeded -= totalFishingTime;
-            Debug.Log("Fishing Stopped, " + totalFishingTime + " seconds completed, you still need to fish for " + fishingChargesNeeded + " more seconds.");
-            fishingStartTime = -1;
+            float currentFishingTime = 0f;
+            if (Mouse.current.rightButton.wasReleasedThisFrame || !playerCollider.IsTouching(myCollider))
+            {
+                //Finished Fishing
+                fishingStartTime = -1;
+            }
+            else if (playerCollider.IsTouching(myCollider))
+            {
+                currentFishingTime += Time.time - fishingStartTime;
+                //Display UI with the currentFishingTime
+                if((int)currentFishingTime == 1)
+                {
+                    updateFishingProgress();
+                    fishingStartTime += currentFishingTime;
+                    currentFishingTime -= 1f;
+                }
+            }
+        }
+    }
+
+    private void updateFishingProgress()
+    {
+        Debug.Log("Fishing progress made, you still need to fish for " + fishingChargesNeeded + " more seconds.");
+        fishingChargesNeeded -= 1;
+        if(fishingChargesNeeded == 0)
+        {
+            //Give Reward
         }
     }
 }
