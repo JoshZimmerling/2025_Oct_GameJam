@@ -11,11 +11,7 @@ public class PlayerMovement : MonoBehaviour
     
     InputAction moveAction;
     InputAction jumpAction;
-
-    private void Start()
-    {
-        rb = GetComponent<Rigidbody2D>();
-    }
+    
     private void OnEnable()
     {
         moveAction = InputSystem.actions.FindAction("Move");

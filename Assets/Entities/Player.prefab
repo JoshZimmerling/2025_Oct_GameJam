@@ -50,7 +50,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
   moveSpeed: 5
-  rb: {fileID: 0}
+  rb: {fileID: 1659042617313652976}
 --- !u!114 &441319161255465282
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63,6 +63,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d4ad24d8d70e184cafc0dd851bce004, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
+  inventory: {fileID: 0}
 --- !u!50 &1659042617313652976
 Rigidbody2D:
   serializedVersion: 5
@@ -249,7 +250,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4155464024243365071
 Transform:
   m_ObjectHideFlags: 0

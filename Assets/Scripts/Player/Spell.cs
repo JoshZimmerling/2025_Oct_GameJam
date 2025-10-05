@@ -5,9 +5,26 @@ public class Spell : MonoBehaviour
 {
     public SpellEffect effect;
 
-    public void castSpell()
+    public float duration = 10.3f;
+
+    public void CastSpell(Transform transform)
     {
-        Instantiate(effect, gameObject.transform.position, gameObject.transform.rotation);
+        GameObject spell = Instantiate(effect, transform.position, transform.rotation).gameObject;
+
+        Destroy(spell, duration);
+    }
+
+    public void CastSpell(Transform transform, Vector2 target)
+    {
+        //Quaternion _lookRotation = Quaternion.LookRotation((target - transform.position).normalized);
+        
+        //Debug.Log(_lookRotation);
+        Vector2 direction = target - (Vector2) transform.position;
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0f, 0f, angle);
+        
+        GameObject spell = Instantiate(effect, transform).gameObject;
+
+        Destroy(spell, duration);
     }
 }
-

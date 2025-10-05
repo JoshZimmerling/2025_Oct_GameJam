@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -15,6 +16,8 @@ public class Wand : MonoBehaviour
         basicAttack.performed += OnAttack;
     }
 
+
+
     private void OnDisable()
     {
         basicAttack.performed -= OnAttack;
@@ -23,8 +26,15 @@ public class Wand : MonoBehaviour
 
     private void OnAttack(InputAction.CallbackContext context)
     {
-        Debug.Log("Attack triggered");
-        currentSpell.castSpell();
+        // screen-space mouse/touch position (pixels)
+        Vector2 screenPos = Pointer.current?.position.ReadValue() ?? Vector2.zero;
+
+        // to world (2D example):
+        var cam = Camera.main;
+        Vector3 world = cam.ScreenToWorldPoint(new Vector3(screenPos.x, screenPos.y, cam.nearClipPlane));
+        Vector2 world2D = new Vector2(world.x, world.y);
+        currentSpell.CastSpell(gameObject.transform, world2D);
+        Debug.Log((world2D));
         Fishing.CancelCurrentFishing();
     }
 }
