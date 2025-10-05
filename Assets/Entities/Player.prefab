@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 441319161255465282}
   - component: {fileID: 1659042617313652976}
   - component: {fileID: 272746210079199238}
+  - component: {fileID: 5242960174048780008}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -63,7 +64,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d4ad24d8d70e184cafc0dd851bce004, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
-  inventory: {fileID: 0}
+  inventory: {fileID: 5242960174048780008}
 --- !u!50 &1659042617313652976
 Rigidbody2D:
   serializedVersion: 5
@@ -144,6 +145,18 @@ PolygonCollider2D:
       - {x: 0.4716233, y: -0.75093436}
       - {x: 0.5096357, y: 0.7272058}
   m_UseDelaunayMesh: 0
+--- !u!114 &5242960174048780008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2196912456265420497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 907f0eacf1e693e488740aeea2de0910, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerInventory
 --- !u!1 &3866134633762162894
 GameObject:
   m_ObjectHideFlags: 0
