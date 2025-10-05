@@ -9,8 +9,4 @@ public class Player : MonoBehaviour
         inventory = gameObject.GetComponent<PlayerInventory>();
     }
 
-    void Update()
-    {
-        
-    }
 }

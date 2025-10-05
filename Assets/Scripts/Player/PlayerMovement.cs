@@ -11,14 +11,20 @@ public class PlayerMovement : MonoBehaviour
     
     InputAction moveAction;
     InputAction jumpAction;
-
-    private void Start()
+    
+    private void OnEnable()
     {
         moveAction = InputSystem.actions.FindAction("Move");
+        moveAction.Enable();
         moveAction.performed += OnMovePerformed;
         moveAction.canceled += OnMoveCancelled;
-
-        rb = GetComponent<Rigidbody2D>();
+    }
+    
+    private void OnDisable()
+    {
+        moveAction.performed -= OnMovePerformed;
+        moveAction.canceled -= OnMoveCancelled;
+        moveAction.Disable();
     }
     
     private void OnMovePerformed(InputAction.CallbackContext context)
