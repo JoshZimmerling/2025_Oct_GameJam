@@ -1,4 +1,5 @@
 using System;
+using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Random = UnityEngine.Random;
@@ -6,30 +7,35 @@ using Random = UnityEngine.Random;
 public class Fishing : MonoBehaviour
 {
     [SerializeField] GameObject player;
-    [SerializeField] PolygonCollider2D myCollider;
     [SerializeField] GameObject chargesBar;
 
     static GameObject fishingBar;
     GameObject fishingBarGreenArea;
     GameObject fishingBarSlider;
     GameObject fishingBarBackground;
+    GameObject fishingQTEIndicator;
     private bool hasInputForQTE;
-
-    PolygonCollider2D playerCollider;
-     
-    private int fishingChargesNeeded = 5;
     private static float fishingStartTime = -1f;
     private float currentFishingTime = 0f;
 
+    PolygonCollider2D playerCollider;
+    PolygonCollider2D myCollider;
+
+    //VARIABLES WE CAN CHANGE AS NEEDED
+    private int fishingChargesNeeded = 5;
+    private float timeToFish = 1.5f;
+    private float widthOfGreenZone = 0.15f;
+
     private void Start()
     {
-        myCollider = GetComponent<PolygonCollider2D>();
+        myCollider = gameObject.GetComponent<PolygonCollider2D>();
         playerCollider = player.GetComponent<PolygonCollider2D>();
 
         fishingBar = GameObject.Find("Fishing Bar");
         fishingBarGreenArea = fishingBar.transform.Find("Green Area").gameObject;
         fishingBarSlider = fishingBar.transform.Find("Slider").gameObject;
         fishingBarBackground = fishingBar.transform.Find("Black Background").gameObject;
+        fishingQTEIndicator = fishingBar.transform.Find("QTE Available Indicator").GetChild(0).gameObject;
         fishingBar.SetActive(false);
 
         EmptyFishingChargesProgress();
@@ -52,7 +58,7 @@ public class Fishing : MonoBehaviour
                 currentFishingTime = Time.time - fishingStartTime;
                 UpdateFishingBar(currentFishingTime);
 
-                if ((int)currentFishingTime == 1)
+                if (currentFishingTime >= timeToFish)
                 {
                     UpdateFishingChargesProgress();
                     ResetFishing();
@@ -61,6 +67,7 @@ public class Fishing : MonoBehaviour
                 if (Keyboard.current.spaceKey.wasPressedThisFrame && hasInputForQTE)
                 {
                     hasInputForQTE = false;
+                    fishingQTEIndicator.SetActive(false);
                     if (CheckForGreenBox() == true)
                     {
                         UpdateFishingChargesProgress();
@@ -84,6 +91,7 @@ public class Fishing : MonoBehaviour
     {
         fishingStartTime = Time.time;
         hasInputForQTE = true;
+        fishingQTEIndicator.SetActive(true);
 
         fishingBar.SetActive(true);
         fishingBarSlider.transform.localPosition = new Vector3(-.5f, 0, -.2f);
@@ -94,9 +102,9 @@ public class Fishing : MonoBehaviour
 
     private void UpdateFishingBar(float currentTime)
     {
-        fishingBarSlider.transform.localPosition = new Vector3(-.5f + currentTime, 0, -.2f);
-        fishingBarBackground.transform.localScale = new Vector3(currentTime, 1, 1);
-        fishingBarBackground.transform.localPosition = new Vector3(-.5f +( currentTime/2f), 0, -.2f);
+        fishingBarSlider.transform.localPosition = new Vector3(((-timeToFish / 2) + currentTime) / timeToFish, 0, -.2f);
+        fishingBarBackground.transform.localScale = new Vector3(currentTime / timeToFish, 1, 1);
+        fishingBarBackground.transform.localPosition = new Vector3(((-timeToFish / 2) + (currentTime/2f)) / timeToFish, 0, -.2f);
     }
 
     private void ResetFishing()
@@ -104,12 +112,14 @@ public class Fishing : MonoBehaviour
         fishingStartTime += currentFishingTime;
         currentFishingTime = 0f;
         hasInputForQTE = true;
+        fishingQTEIndicator.SetActive(true);
         SetGreenBox();
     }
 
     private void SetGreenBox()
     {
         fishingBarGreenArea.transform.localPosition = new Vector3(Random.Range(0.1f, 0.3f), 0, -.1f);
+        fishingBarGreenArea.transform.localScale = new Vector3(widthOfGreenZone, 1, 1);
     }
 
     private bool CheckForGreenBox()
@@ -118,7 +128,6 @@ public class Fishing : MonoBehaviour
         float greenAreaPostion = fishingBarGreenArea.transform.position.x;
         float greenAreaScale = fishingBarGreenArea.transform.localScale.x;
 
-        Debug.Log(greenAreaPostion - (greenAreaScale / 2f) + " | " + sliderPosition + " | " + greenAreaPostion + (greenAreaScale / 2f));
         if (sliderPosition < greenAreaPostion + (greenAreaScale / 2f) && sliderPosition > greenAreaPostion - (greenAreaScale / 2f))
             return true;
         return false;
