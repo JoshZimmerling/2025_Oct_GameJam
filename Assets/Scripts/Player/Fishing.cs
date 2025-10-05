@@ -15,6 +15,7 @@ public class Fishing : MonoBehaviour
     GameObject fishingBarSlider;
     GameObject fishingBarBackground;
     GameObject fishingQTEIndicator;
+    GameObject fishingRewardImage;
     private bool hasInputForQTE;
     private bool canStartFishing = true;
     private static float fishingStartTime = -1f;
@@ -52,6 +53,8 @@ public class Fishing : MonoBehaviour
         fishingBarSlider = fishingBar.transform.Find("Slider").gameObject;
         fishingBarBackground = fishingBar.transform.Find("Black Background").gameObject;
         fishingQTEIndicator = fishingBar.transform.Find("QTE Available Indicator").GetChild(0).gameObject;
+        fishingRewardImage = GameObject.Find("Fishing Reward Image");
+        fishingRewardImage.SetActive(false);
         fishingBar.SetActive(false);
 
         EmptyFishingChargesProgress();
@@ -156,6 +159,7 @@ public class Fishing : MonoBehaviour
             progressBarSquare.gameObject.SetActive(false);
         }
         fishingChargesNeeded = 5;
+        fishingRewardImage.SetActive(false);
     }
 
     private void UpdateFishingChargesProgress()
@@ -188,6 +192,7 @@ public class Fishing : MonoBehaviour
     private void GiveFishingReward()
     {
         int randomNumber = Random.Range(1, 100);
+        fishingRewardImage.SetActive(true);
 
         switch (fishingDepth)
         {
