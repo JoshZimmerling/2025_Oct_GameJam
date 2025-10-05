@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -15,6 +16,7 @@ public class Fishing : MonoBehaviour
     GameObject fishingBarBackground;
     GameObject fishingQTEIndicator;
     private bool hasInputForQTE;
+    private bool canStartFishing = true;
     private static float fishingStartTime = -1f;
     private float currentFishingTime = 0f;
 
@@ -43,7 +45,7 @@ public class Fishing : MonoBehaviour
     
     void Update()
     {
-        if (Mouse.current.rightButton.wasPressedThisFrame && playerCollider.IsTouching(myCollider))
+        if (Mouse.current.rightButton.wasPressedThisFrame && playerCollider.IsTouching(myCollider) && canStartFishing)
         {
             StartFishing();
         }
@@ -155,8 +157,16 @@ public class Fishing : MonoBehaviour
         }
         if (fishingChargesNeeded == 0)
         {
-            EmptyFishingChargesProgress();
-            //Give Reward
+            StartCoroutine(FishingChargesCompleted());
         }
+    }
+
+    private IEnumerator FishingChargesCompleted()
+    {
+        CancelCurrentFishing();
+        canStartFishing = false;
+        yield return new WaitForSeconds(1f);
+        canStartFishing = true;
+        EmptyFishingChargesProgress();
     }
 }
