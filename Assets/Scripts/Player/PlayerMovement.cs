@@ -38,7 +38,7 @@ public class PlayerMovement : MonoBehaviour
 
         if(direction != Vector2.zero)
         {
-            Fishing.cancelCurrentFishing();
+            Fishing.CancelCurrentFishing();
         }
     }
 }
