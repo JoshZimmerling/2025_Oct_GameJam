@@ -4,13 +4,9 @@ using UnityEngine.InputSystem;
 public class Wand : MonoBehaviour
 {
     private InputAction basicAttack;
+
+    public Spell currentSpell;
     
-    
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
     private void OnEnable()
     {
         basicAttack = InputSystem.actions.FindAction("Attack");
@@ -28,7 +24,7 @@ public class Wand : MonoBehaviour
     private void OnAttack(InputAction.CallbackContext context)
     {
         Debug.Log("Attack triggered");
+        currentSpell.castSpell();
         Fishing.CancelCurrentFishing();
     }
-
 }
