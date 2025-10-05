@@ -5,21 +5,7 @@ using UnityEngine;
 
 public class PlayerInventory : MonoBehaviour
 {
-    public enum FishType
-    {
-        WOOD_FISH,
-        STONE_FISH,
-        BRONZE_FISH,
-        IRON_FISH,
-        SILVER_FISH,
-        GOLD_FISH,
-        DIAMOND_FISH,
-        SAPPHIRE_FISH,
-        EMERALD_FISH,
-        RUBY_FISH
-    }
-
-    private Dictionary<FishType, int> countOfFish;
+    private Dictionary<Constants.FishType, int> countOfFish;
 
     private void Start()
     {
@@ -28,11 +14,11 @@ public class PlayerInventory : MonoBehaviour
 
     public void SetupEmptyInventory()
     {
-        countOfFish = Enum.GetValues(typeof(FishType)).Cast<FishType>().ToDictionary(fish => fish, fish => 0);
+        countOfFish = Enum.GetValues(typeof(Constants.FishType)).Cast<Constants.FishType>().ToDictionary(fish => fish, fish => 0);
         PrintInventory();
     }
 
-    public void AddFish(FishType fish, int countToAdd)
+    public void AddFish(Constants.FishType fish, int countToAdd)
     {
         countOfFish[fish] += countToAdd;
         PrintInventory();

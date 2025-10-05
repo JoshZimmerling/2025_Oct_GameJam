@@ -1,6 +1,7 @@
+using NUnit.Framework;
 using System;
 using System.Collections;
-using UnityEditor.ShaderGraph.Internal;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Random = UnityEngine.Random;
@@ -9,6 +10,7 @@ public class Fishing : MonoBehaviour
 {
     [SerializeField] GameObject player;
     [SerializeField] GameObject chargesBar;
+    [SerializeField] List<Sprite> fishSpriteList;
 
     static GameObject fishingBar;
     GameObject fishingBarGreenArea;
@@ -62,16 +64,20 @@ public class Fishing : MonoBehaviour
     
     void Update()
     {
+        // When right click is first pressed, start fishing
         if (Mouse.current.rightButton.wasPressedThisFrame && playerCollider.IsTouching(myCollider) && canStartFishing)
         {
             StartFishing();
         }
+        // FishingStartTime will be -1 when we are not fishing, so this check is to check if we are currently fishing
         if(fishingStartTime != -1f)
         {
+            // If right click is released cancel the current fishing
             if (Mouse.current.rightButton.wasReleasedThisFrame)
             {
                 CancelCurrentFishing();
             }
+            // If right click is still held, update the counter for how long we have been fishing, and check if we have compeleted one full fishing charge
             else
             {
                 currentFishingTime = Time.time - fishingStartTime;
@@ -83,6 +89,7 @@ public class Fishing : MonoBehaviour
                     ResetFishing();
                 }
 
+                // Detecting the space bar input for QTE, then checking if it is in the correct area for success
                 if (Keyboard.current.spaceKey.wasPressedThisFrame && hasInputForQTE)
                 {
                     hasInputForQTE = false;
@@ -192,38 +199,77 @@ public class Fishing : MonoBehaviour
     private void GiveFishingReward()
     {
         int randomNumber = Random.Range(1, 100);
-        fishingRewardImage.SetActive(true);
+        Constants.FishType fishCaught = Constants.FishType.WOOD_FISH; //Could not be left blank so needed a default, it should never use this
 
         switch (fishingDepth)
         {
             case FishingDepth.D_10_METERS:
                 if(randomNumber <= 40)
                 {
-                    playerInventoryScript.AddFish(PlayerInventory.FishType.WOOD_FISH, 1);
+                    fishCaught = Constants.FishType.WOOD_FISH;
                 }
                 else if (randomNumber <= 70)
                 {
-                    playerInventoryScript.AddFish(PlayerInventory.FishType.STONE_FISH, 1);
+                    fishCaught = Constants.FishType.STONE_FISH;
                 }
                 else if (randomNumber <= 85)
                 {
-                    playerInventoryScript.AddFish(PlayerInventory.FishType.BRONZE_FISH, 1);
+                    fishCaught = Constants.FishType.BRONZE_FISH;
                 }
                 else if (randomNumber <= 95)
                 {
-                    playerInventoryScript.AddFish(PlayerInventory.FishType.IRON_FISH, 1);
+                    fishCaught = Constants.FishType.IRON_FISH;
                 }
                 else
                 {
-                    playerInventoryScript.AddFish(PlayerInventory.FishType.SAPPHIRE_FISH, 1);
+                    fishCaught = Constants.FishType.SAPPHIRE_FISH;
                 }
-                    break;
+                break;
             case FishingDepth.D_20_METERS:
+                if (randomNumber <= 40)
+                {
+                    fishCaught = Constants.FishType.BRONZE_FISH;
+                }
+                else if (randomNumber <= 70)
+                {
+                    fishCaught = Constants.FishType.IRON_FISH;
+                }
+                else if (randomNumber <= 85)
+                {
+                    fishCaught = Constants.FishType.SILVER_FISH;
+                }
+                else if (randomNumber <= 95)
+                {
+                    fishCaught = Constants.FishType.GOLD_FISH;
+                }
+                else
+                {
+                    fishCaught = Constants.FishType.EMERALD_FISH;
+                }
                 break;
             case FishingDepth.D_30_METERS:
+                if (randomNumber <= 50)
+                {
+                    fishCaught = Constants.FishType.SILVER_FISH;
+                }
+                else if (randomNumber <= 85)
+                {
+                    fishCaught = Constants.FishType.GOLD_FISH;
+                }
+                else if (randomNumber <= 95)
+                {
+                    fishCaught = Constants.FishType.DIAMOND_FISH;
+                }
+                else
+                {
+                    fishCaught = Constants.FishType.RUBY_FISH;
+                }
                 break;
             case FishingDepth.D_40_METERS:
                 break;
         }
+        playerInventoryScript.AddFish(fishCaught, 1);
+        fishingRewardImage.SetActive(true);
+        fishingRewardImage.GetComponent<SpriteRenderer>().sprite = fishSpriteList[(int)fishCaught];
     }
 }
