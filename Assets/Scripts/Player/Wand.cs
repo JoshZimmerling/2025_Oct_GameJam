@@ -28,6 +28,7 @@ public class Wand : MonoBehaviour
     private void OnAttack(InputAction.CallbackContext context)
     {
         Debug.Log("Attack triggered");
+        Fishing.cancelCurrentFishing();
     }
-    
+
 }
