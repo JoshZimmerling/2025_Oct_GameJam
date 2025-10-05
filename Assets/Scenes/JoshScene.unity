@@ -402,6 +402,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31911f3bdb99efd42969a1bd827b0855, type: 3}
+--- !u!1 &1627412802 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5228932637584986943, guid: 5d4917f430229de4590aaf2169c10807, type: 3}
+  m_PrefabInstance: {fileID: 3535193172981462056}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3535193172981462056
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -418,6 +423,14 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 903812212}
+    - target: {fileID: 4261714411381696623, guid: 5d4917f430229de4590aaf2169c10807, type: 3}
+      propertyPath: chargesBar
+      value: 
+      objectReference: {fileID: 1627412802}
+    - target: {fileID: 7169141132794918965, guid: 5d4917f430229de4590aaf2169c10807, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8957933351511380026, guid: 5d4917f430229de4590aaf2169c10807, type: 3}
       propertyPath: m_LocalPosition.x
       value: 6.8933

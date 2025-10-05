@@ -6,18 +6,19 @@ public class Fishing : MonoBehaviour
 {
     [SerializeField] GameObject player;
     [SerializeField] PolygonCollider2D myCollider;
+    [SerializeField] GameObject chargesBar;
 
     PolygonCollider2D playerCollider;
-
-    private float fishingChargesNeeded;
-    private float fishingStartTime = -1;
+     
+    private int fishingChargesNeeded = 5;
+    private static float fishingStartTime = -1;
 
     private void Start()
     {
         myCollider = GetComponent<PolygonCollider2D>();
         playerCollider = player.GetComponent<PolygonCollider2D>();
 
-        fishingChargesNeeded = 5;
+        emptyFishingProgress();
     }
     
     void Update()
@@ -27,12 +28,55 @@ public class Fishing : MonoBehaviour
             //When pressed get the start time
             fishingStartTime = Time.time;
         }
-        if(fishingStartTime != -1 && (Mouse.current.rightButton.wasReleasedThisFrame || !playerCollider.IsTouching(myCollider)))
+        if(fishingStartTime != -1)
         {
-            int totalFishingTime = (int)(Time.time - fishingStartTime);
-            fishingChargesNeeded -= totalFishingTime;
-            Debug.Log("Fishing Stopped, " + totalFishingTime + " seconds completed, you still need to fish for " + fishingChargesNeeded + " more seconds.");
-            fishingStartTime = -1;
+            float currentFishingTime = 0f;
+            if (Mouse.current.rightButton.wasReleasedThisFrame)
+            {
+                cancelCurrentFishing();
+            }
+            else
+            {
+                currentFishingTime += Time.time - fishingStartTime;
+                //Display UI with the currentFishingTime
+                if ((int)currentFishingTime == 1)
+                {
+                    updateFishingProgress();
+                    fishingStartTime += currentFishingTime;
+                    currentFishingTime -= 1f;
+                }
+            }
+        }
+    }
+
+    public static void cancelCurrentFishing()
+    {
+        fishingStartTime = -1;
+    }
+
+    private void emptyFishingProgress()
+    {
+        foreach (Transform progressBarSquare in chargesBar.transform)
+        {
+            progressBarSquare.gameObject.SetActive(false);
+        }
+        fishingChargesNeeded = 5;
+    }
+
+    private void updateFishingProgress()
+    {
+        fishingChargesNeeded -= 1;
+        foreach (Transform progressBarSquare in chargesBar.transform)
+        {
+            if (progressBarSquare.gameObject.activeSelf == false) {
+                progressBarSquare.gameObject.SetActive(true);
+                break;
+            }
+        }
+        if (fishingChargesNeeded == 0)
+        {
+            emptyFishingProgress();
+            //Give Reward
         }
     }
 }

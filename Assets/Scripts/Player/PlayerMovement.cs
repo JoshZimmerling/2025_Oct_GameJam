@@ -15,19 +15,30 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         moveAction = InputSystem.actions.FindAction("Move");
-        
+        moveAction.performed += OnMovePerformed;
+        moveAction.canceled += OnMoveCancelled;
+
         rb = GetComponent<Rigidbody2D>();
     }
-
-    void Update()
-    {
-        direction = moveAction.ReadValue<Vector2>();
-        
-        direction = direction.normalized; // For da classic diagonal issue
-    }
     
-    void FixedUpdate()
+    private void OnMovePerformed(InputAction.CallbackContext context)
+    {
+        Vector2 movementInput = context.ReadValue<Vector2>();
+        direction = movementInput.normalized;
+    }
+
+    private void OnMoveCancelled(InputAction.CallbackContext context)
+    {
+        direction = Vector2.zero;
+    }
+
+    private void FixedUpdate()
     {
         rb.MovePosition(rb.position + direction * moveSpeed * Time.fixedDeltaTime);
+
+        if(direction != Vector2.zero)
+        {
+            Fishing.cancelCurrentFishing();
+        }
     }
 }
