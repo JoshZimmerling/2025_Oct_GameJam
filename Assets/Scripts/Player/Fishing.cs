@@ -2,6 +2,7 @@ using NUnit.Framework;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Random = UnityEngine.Random;
@@ -17,7 +18,9 @@ public class Fishing : MonoBehaviour
     GameObject fishingBarSlider;
     GameObject fishingBarBackground;
     GameObject fishingQTEIndicator;
+    GameObject fishingReward;
     GameObject fishingRewardImage;
+    GameObject fishingRewardText;
     private bool hasInputForQTE;
     private bool canStartFishing = true;
     private static float fishingStartTime = -1f;
@@ -33,15 +36,7 @@ public class Fishing : MonoBehaviour
     private int fishingChargesNeeded = 5;
     private float timeToFish = 1.5f;
     private float widthOfGreenZone = 0.1f;
-    public FishingDepth fishingDepth = FishingDepth.D_10_METERS;
-
-    public enum FishingDepth
-    {
-        D_10_METERS,
-        D_20_METERS,
-        D_30_METERS,
-        D_40_METERS
-    }
+    public Constants.FishingDepth fishingDepth = Constants.FishingDepth.D_10_METERS;
 
     private void Start()
     {
@@ -55,8 +50,10 @@ public class Fishing : MonoBehaviour
         fishingBarSlider = fishingBar.transform.Find("Slider").gameObject;
         fishingBarBackground = fishingBar.transform.Find("Black Background").gameObject;
         fishingQTEIndicator = fishingBar.transform.Find("QTE Available Indicator").GetChild(0).gameObject;
-        fishingRewardImage = GameObject.Find("Fishing Reward Image");
-        fishingRewardImage.SetActive(false);
+        fishingReward = GameObject.Find("Fishing Reward");
+        fishingRewardImage = fishingReward.transform.Find("Fishing Reward Image").gameObject;
+        fishingRewardText = fishingReward.transform.Find("Fishing Reward Text").gameObject;
+        fishingReward.SetActive(false);
         fishingBar.SetActive(false);
 
         EmptyFishingChargesProgress();
@@ -166,7 +163,7 @@ public class Fishing : MonoBehaviour
             progressBarSquare.gameObject.SetActive(false);
         }
         fishingChargesNeeded = 5;
-        fishingRewardImage.SetActive(false);
+        fishingReward.SetActive(false);
     }
 
     private void UpdateFishingChargesProgress()
@@ -200,10 +197,11 @@ public class Fishing : MonoBehaviour
     {
         int randomNumber = Random.Range(1, 100);
         Constants.FishType fishCaught = Constants.FishType.WOOD_FISH; //Could not be left blank so needed a default, it should never use this
+        int numFishCaught = 1; //Set this later
 
         switch (fishingDepth)
         {
-            case FishingDepth.D_10_METERS:
+            case Constants.FishingDepth.D_10_METERS:
                 if(randomNumber <= 40)
                 {
                     fishCaught = Constants.FishType.WOOD_FISH;
@@ -225,7 +223,7 @@ public class Fishing : MonoBehaviour
                     fishCaught = Constants.FishType.SAPPHIRE_FISH;
                 }
                 break;
-            case FishingDepth.D_20_METERS:
+            case Constants.FishingDepth.D_20_METERS:
                 if (randomNumber <= 40)
                 {
                     fishCaught = Constants.FishType.BRONZE_FISH;
@@ -247,7 +245,7 @@ public class Fishing : MonoBehaviour
                     fishCaught = Constants.FishType.EMERALD_FISH;
                 }
                 break;
-            case FishingDepth.D_30_METERS:
+            case Constants.FishingDepth.D_30_METERS:
                 if (randomNumber <= 50)
                 {
                     fishCaught = Constants.FishType.SILVER_FISH;
@@ -265,11 +263,12 @@ public class Fishing : MonoBehaviour
                     fishCaught = Constants.FishType.RUBY_FISH;
                 }
                 break;
-            case FishingDepth.D_40_METERS:
+            case Constants.FishingDepth.D_40_METERS:
                 break;
         }
-        playerInventoryScript.AddFish(fishCaught, 1);
-        fishingRewardImage.SetActive(true);
+        playerInventoryScript.AddFish(fishCaught, numFishCaught);
+        fishingReward.SetActive(true);
         fishingRewardImage.GetComponent<SpriteRenderer>().sprite = fishSpriteList[(int)fishCaught];
+        fishingRewardText.GetComponent<TextMeshPro>().text = "+" + numFishCaught;
     }
 }

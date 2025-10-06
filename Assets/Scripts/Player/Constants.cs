@@ -18,12 +18,20 @@ public class Constants
         RUBY_FISH
     }
 
+    public enum FishingDepth
+    {
+        D_10_METERS,
+        D_20_METERS,
+        D_30_METERS,
+        D_40_METERS
+    }
+
     public enum ItemType
     {
-        FISHING_ROD_HANDLE,
-        FISHING_ROD_BAIT,
-        FISHING_ROD_SHAFT,
-        FISHING_ROD_LINE,
+        FISHING_ROD_HANDLE, // QTE easier, QTE earlier, Fishing Faster
+        FISHING_ROD_SHAFT, // Multiplier for certain catch type, or a random chance for all catches
+        FISHING_ROD_BAIT, // What you catch more of
+        FISHING_ROD_LINE, // Fishing Depth
         WAND,
         ACTIVE_SPELL,
         PASSIVE_SPELL,
