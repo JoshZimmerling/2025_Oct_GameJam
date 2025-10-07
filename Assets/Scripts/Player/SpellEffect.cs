@@ -8,8 +8,8 @@ public class SpellEffect : MonoBehaviour
         Enemy enemy = other.gameObject.GetComponent<Enemy>();
         if (enemy != null)
         {
-            enemy.Damage(3);
-            Debug.Log("Hit an enemy!");
+            enemy.Damage(0);
+            enemy.HitKnockback(3, transform.position);
         }
     }
 }

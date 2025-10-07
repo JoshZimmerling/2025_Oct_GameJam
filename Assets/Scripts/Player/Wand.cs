@@ -15,9 +15,7 @@ public class Wand : MonoBehaviour
         basicAttack.Enable();
         basicAttack.performed += OnAttack;
     }
-
-
-
+    
     private void OnDisable()
     {
         basicAttack.performed -= OnAttack;
@@ -32,7 +30,6 @@ public class Wand : MonoBehaviour
         Vector3 world = cam.ScreenToWorldPoint(new Vector3(screenPos.x, screenPos.y, cam.nearClipPlane));
         Vector2 world2D = new Vector2(world.x, world.y);
         currentSpell.CastSpell(gameObject.transform, world2D);
-        Debug.Log((world2D));
         Fishing.CancelCurrentFishing();
     }
 }
