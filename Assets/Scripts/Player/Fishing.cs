@@ -82,8 +82,8 @@ public class Fishing : MonoBehaviour
 
                 if (currentFishingTime >= timeToFish)
                 {
+                    ResetFishing(); 
                     UpdateFishingChargesProgress();
-                    ResetFishing();
                 }
 
                 // Detecting the space bar input for QTE, then checking if it is in the correct area for success
@@ -93,8 +93,8 @@ public class Fishing : MonoBehaviour
                     fishingQTEIndicator.SetActive(false);
                     if (CheckForGreenBox() == true)
                     {
-                        UpdateFishingChargesProgress();
                         ResetFishing();
+                        UpdateFishingChargesProgress();
                     }
                 }
             }
@@ -161,6 +161,10 @@ public class Fishing : MonoBehaviour
         foreach (Transform progressBarSquare in chargesBar.transform)
         {
             progressBarSquare.gameObject.SetActive(false);
+        }
+        if (fishingStartTime != -1f)
+        {
+            fishingBar.SetActive(true);
         }
         fishingChargesNeeded = 5;
         fishingReward.SetActive(false);
