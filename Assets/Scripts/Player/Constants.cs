@@ -39,8 +39,9 @@ public class Constants
         BOOTS
     }
 
-    public static List<CraftableItem> AllCraftableItems = new List<CraftableItem> { 
-        new CraftableItem("Test Fishing Rod Handle", new Dictionary<FishType, int> { { FishType.WOOD_FISH, 5 }, { FishType.STONE_FISH, 3 } },ItemType.FISHING_ROD_HANDLE),
+    public static List<UICraftableItem> AllCraftableItems = new List<UICraftableItem> { 
+        new UICraftableItem("Test Fishing Rod Handle", "desc", new Dictionary<FishType, int> { { FishType.WOOD_FISH, 5 }, { FishType.STONE_FISH, 3 } },ItemType.FISHING_ROD_HANDLE, null),
+        new UICraftableItem("Test Fishing Rod Handle 2", "desc", new Dictionary<FishType, int> { { FishType.WOOD_FISH, 5 }, { FishType.STONE_FISH, 3 } },ItemType.FISHING_ROD_HANDLE, null),
     };
 
     public static List<UICraftingCategory> AllCraftingCategories = new List<UICraftingCategory> {
@@ -68,6 +69,24 @@ public class Constants
             categoryDescription = desc;
             categoryImage = image;
             correspondingItemType = itemType;
+        }
+    }
+
+    public class UICraftableItem
+    {
+        public string itemName;
+        public string itemDescription;
+        public Dictionary<FishType, int> craftingCosts;
+        public ItemType itemType;
+        public Sprite itemImage;
+
+        public UICraftableItem(string name, string desc, Dictionary<FishType, int> costs, ItemType type, Sprite image)
+        {
+            itemName = name;
+            itemDescription = desc;
+            craftingCosts = costs;
+            itemType = type;
+            itemImage = image;
         }
     }
 }

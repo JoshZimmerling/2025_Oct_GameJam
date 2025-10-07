@@ -1,13 +1,13 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class CraftingCategory : MonoBehaviour
+public class CraftingCategoryUI : MonoBehaviour
 {
     private Button myButton;
     private TextMeshProUGUI myText;
     private Image myImage;
+    private Image backgroundColor;
     Constants.UICraftingCategory category;
     private CraftablesUIHandler uiScript;
 
@@ -17,7 +17,9 @@ public class CraftingCategory : MonoBehaviour
         myButton.onClick.AddListener(OnTextClicked);
 
         myText = GetComponentInChildren<TextMeshProUGUI>();
-        myImage = GetComponentInChildren<Image>();
+        myImage = gameObject.transform.Find("Category Image").GetComponent<Image>();
+        backgroundColor = gameObject.transform.Find("Background Color").GetComponent<Image>();
+        backgroundColor.enabled = false;
     }
 
     public void SetupCraftingCategory(Constants.UICraftingCategory cat, CraftablesUIHandler UIScript)
@@ -28,9 +30,15 @@ public class CraftingCategory : MonoBehaviour
         uiScript = UIScript;
     }
 
-    public void OnTextClicked()
+    public void TurnOffBackgroundColor()
     {
+        backgroundColor.enabled = false;
+    }
+
+    private void OnTextClicked()
+    {
+        uiScript.ShowCategoryDetailsInPanel(category);
         uiScript.SetupCraftablesForCategory(category.correspondingItemType);
-        Debug.Log("Clicked on " + myText.text);
+        backgroundColor.enabled = true;
     }
 }
