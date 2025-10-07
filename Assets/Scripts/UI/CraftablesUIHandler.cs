@@ -109,7 +109,7 @@ public class CraftablesUIHandler : MonoBehaviour
             createdPrefab.transform.localPosition = new Vector3(0, yPos, 0);
             createdPrefab.transform.Find("Resource Image").GetComponent<Image>().sprite = Resources.Load<Sprite>(craftingResource.Key.ToString());
             createdPrefab.transform.Find("Resource Count").GetComponent<TextMeshProUGUI>().text = playerScript.inventory.GetFish(craftingResource.Key) + "/" + craftingResource.Value;
-            yPos -= 75;
+            yPos -= 50;
         }
     }
 
