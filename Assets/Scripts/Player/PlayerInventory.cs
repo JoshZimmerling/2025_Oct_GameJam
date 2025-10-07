@@ -24,6 +24,11 @@ public class PlayerInventory : MonoBehaviour
         PrintInventory();
     }
 
+    public int GetFish(Constants.FishType fish)
+    {
+        return countOfFish[fish];
+    }
+
     private void PrintInventory()
     {
         String printStatement = "| ";

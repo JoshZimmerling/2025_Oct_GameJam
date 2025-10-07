@@ -1,15 +1,25 @@
 using System;
+using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using static Constants;
 
 public class CraftablesUIHandler : MonoBehaviour
 {
+    [SerializeField] Player playerScript;
+
     [SerializeField] Button closeMenuButton;
     [SerializeField] GameObject craftingCategoryPrefab;
     [SerializeField] GameObject craftableItemPrefab;
     [SerializeField] Transform categoriesListUI;
     [SerializeField] Transform craftablesListUI;
+
+    [SerializeField] GameObject categoryInfoPanel;
+    [SerializeField] GameObject itemInfoPanel;
+    [SerializeField] GameObject craftingResourcePrefab;
+    [SerializeField] Transform craftingResourceListUI;
+    [SerializeField] Button craftButton;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -38,8 +48,12 @@ public class CraftablesUIHandler : MonoBehaviour
             Destroy(child.gameObject);
         }
     }
+
     private void SetupCraftingCategories()
     {
+        categoryInfoPanel.SetActive(false);
+        itemInfoPanel.SetActive(false);
+
         int yPos = 350;
         foreach (Constants.UICraftingCategory category in Constants.AllCraftingCategories)
         {
@@ -69,11 +83,34 @@ public class CraftablesUIHandler : MonoBehaviour
     public void ShowCategoryDetailsInPanel(UICraftingCategory category)
     {
         TurnOffAllCategoryBackgrounds();
+        categoryInfoPanel.SetActive(true);
+        itemInfoPanel.SetActive(false);
+        categoryInfoPanel.transform.Find("Category Name").GetComponent<TextMeshProUGUI>().text = category.categoryName;
+        categoryInfoPanel.transform.Find("Category Description").GetComponent<TextMeshProUGUI>().text = category.categoryDescription;
     }
 
     public void ShowItemDetailsInPanel(UICraftableItem item)
     {
         TurnOffAllItemBackgrounds();
+        foreach (Transform child in craftingResourceListUI)
+        {
+            Destroy(child.gameObject);
+        }
+        itemInfoPanel.SetActive(true);
+        categoryInfoPanel.SetActive(false);
+        itemInfoPanel.transform.Find("Item Name").GetComponent<TextMeshProUGUI>().text = item.itemName;
+        itemInfoPanel.transform.Find("Item Image").GetComponent<Image>().sprite = item.itemImage;
+        itemInfoPanel.transform.Find("Item Description").GetComponent<TextMeshProUGUI>().text = item.itemDescription;
+
+        int yPos = 75;
+        foreach (KeyValuePair<Constants.FishType, int> craftingResource in item.craftingCosts)
+        {
+            GameObject createdPrefab = Instantiate(craftingResourcePrefab, craftingResourceListUI);
+            createdPrefab.transform.localPosition = new Vector3(0, yPos, 0);
+            createdPrefab.transform.Find("Resource Image").GetComponent<Image>().sprite = Resources.Load<Sprite>(craftingResource.Key.ToString());
+            createdPrefab.transform.Find("Resource Count").GetComponent<TextMeshProUGUI>().text = playerScript.inventory.GetFish(craftingResource.Key) + "/" + craftingResource.Value;
+            yPos -= 75;
+        }
     }
 
     private void TurnOffAllCategoryBackgrounds()
