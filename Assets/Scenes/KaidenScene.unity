@@ -264,10 +264,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4977477763617601819, guid: 1887d4cfab84b324eb907600ec1c4010, type: 3}
-      propertyPath: m_GravityScale
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8260281579197994696, guid: 1887d4cfab84b324eb907600ec1c4010, type: 3}
       propertyPath: m_LocalPosition.x
       value: -8.54315
@@ -468,6 +464,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1603832629}
   - component: {fileID: 1603832628}
+  - component: {fileID: 1603832630}
   m_Layer: 0
   m_Name: SpawnZone
   m_TagString: Untagged
@@ -505,7 +502,7 @@ PolygonCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -542,6 +539,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1603832630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1603832627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 703ae89a714230e4882e702254392693, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Spawnzone
+  enemy: {fileID: 8731523128728504031, guid: 1887d4cfab84b324eb907600ec1c4010, type: 3}
+  spawnTimer: 0
+  defaultSpawnTimer: 5
 --- !u!1 &1665658457
 GameObject:
   m_ObjectHideFlags: 0
