@@ -25,13 +25,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4179862217208639792}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8260281579197994696}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1779280223070560888
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -79,7 +79,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 3625043607559282579, guid: 19fb86013d8c24d6cb8410c0aadf30fa, type: 3}
+  m_Sprite: {fileID: 279560676147014230, guid: b6f8c533ae687b54798233b167ba87b5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -120,7 +120,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 7.39, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 9172324517342617461}
@@ -154,7 +154,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -212,11 +212,16 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.008968085, y: 0.4798503}
-      - {x: -0.27844924, y: -0.0048665702}
-      - {x: 0.004109204, y: -0.51306975}
-      - {x: 0.13938051, y: -0.2619629}
-      - {x: 0.260513, y: 0.0041016936}
+    - - {x: 0.8244095, y: 0.818429}
+      - {x: -0.3170798, y: 1.4728127}
+      - {x: -0.7675201, y: 0.5286653}
+      - {x: -1.1213369, y: -0.12191844}
+      - {x: -1.0188379, y: -0.7712383}
+      - {x: -0.6411066, y: -1.2964916}
+      - {x: 0.048570454, y: -1.4319302}
+      - {x: 1.0730615, y: -1.1660032}
+      - {x: 1.482471, y: -0.6415262}
+      - {x: 1.4609597, y: 0.1671254}
   m_UseDelaunayMesh: 0
 --- !u!114 &8769338045319181258
 MonoBehaviour:
@@ -234,3 +239,5 @@ MonoBehaviour:
   damageColor: {r: 1, g: 0, b: 0, a: 1}
   damageLength: 0.1
   health: 10
+  canMove: 1
+  rb: {fileID: 0}

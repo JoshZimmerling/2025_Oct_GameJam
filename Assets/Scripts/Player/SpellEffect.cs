@@ -9,7 +9,7 @@ public class SpellEffect : MonoBehaviour
         if (enemy != null)
         {
             enemy.Damage(3);
-            Debug.Log("Hit an enemy!");
+            enemy.HitKnockback(3, transform.position);
         }
     }
 }
