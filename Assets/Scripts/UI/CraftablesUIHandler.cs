@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using static Constants;
+using static UnityEditor.Progress;
 
 public class CraftablesUIHandler : MonoBehaviour
 {
@@ -21,18 +22,22 @@ public class CraftablesUIHandler : MonoBehaviour
     [SerializeField] Transform craftingResourceListUI;
     [SerializeField] Button craftButton;
 
+    private CraftableItem currentlySelectedItem = null;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         closeMenuButton.onClick.AddListener(CloseCraftingMenu);
+        craftButton.onClick.AddListener(AttemptToCraft);
 
         SetupCraftingCategories();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OpenCraftingMenu()
     {
-        
+        gameObject.SetActive(true);
+        itemInfoPanel.SetActive(false);
+        TurnOffAllCategoryBackgrounds();
     }
 
     private void CloseCraftingMenu()
@@ -92,16 +97,32 @@ public class CraftablesUIHandler : MonoBehaviour
     public void ShowItemDetailsInPanel(CraftableItem item)
     {
         TurnOffAllItemBackgrounds();
-        foreach (Transform child in craftingResourceListUI)
-        {
-            Destroy(child.gameObject);
-        }
+        
         itemInfoPanel.SetActive(true);
         categoryInfoPanel.SetActive(false);
+        currentlySelectedItem = item;
         itemInfoPanel.transform.Find("Item Name").GetComponent<TextMeshProUGUI>().text = item.itemName;
         itemInfoPanel.transform.Find("Item Image").GetComponent<Image>().sprite = item.itemImage;
         itemInfoPanel.transform.Find("Item Description").GetComponent<TextMeshProUGUI>().text = item.itemDescription;
 
+        if (playerScript.inventory.PlayerOwnsItem(item))
+        {
+            itemInfoPanel.transform.Find("Sold Out Label").gameObject.SetActive(true);
+        }
+        else
+        {
+            itemInfoPanel.transform.Find("Sold Out Label").gameObject.SetActive(false);
+        }
+
+        UpdateCraftingCostCounts(item);
+    }
+
+    private void UpdateCraftingCostCounts(CraftableItem item)
+    {
+        foreach (Transform child in craftingResourceListUI)
+        {
+            Destroy(child.gameObject);
+        }
         int yPos = 75;
         foreach (KeyValuePair<Constants.FishType, int> craftingResource in item.craftingCosts)
         {
@@ -126,6 +147,18 @@ public class CraftablesUIHandler : MonoBehaviour
         foreach (Transform item in craftablesListUI)
         {
             item.gameObject.GetComponent<CraftableItemUI>().TurnOffBackgroundColor();
+        }
+    }
+
+    private void AttemptToCraft()
+    {
+        PlayerInventory inventory = playerScript.inventory;
+
+        if(inventory.SpendFish(currentlySelectedItem.craftingCosts) == true)
+        {
+            UpdateCraftingCostCounts(currentlySelectedItem);
+            itemInfoPanel.transform.Find("Sold Out Label").gameObject.SetActive(true);
+            inventory.AddCraftedItem(currentlySelectedItem);
         }
     }
 }

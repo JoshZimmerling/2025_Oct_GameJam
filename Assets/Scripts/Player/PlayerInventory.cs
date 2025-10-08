@@ -6,23 +6,29 @@ using static Constants;
 
 public class PlayerInventory : MonoBehaviour
 {
-    private Dictionary<Constants.FishType, int> countOfFish;
-    private List<Constants.CraftableItem> craftedItems;
-    private List<Constants.CraftableItem> equippedItems;
+    private Dictionary<FishType, int> countOfFish;
+    private List<CraftableItem> craftedItems;
+    private List<CraftableItem> equippedItems;
 
     private void Start()
     {
-        SetupEmptyInventory();
+        SetupStartingInventory();
     }
 
-    public void SetupEmptyInventory()
+    public void SetupStartingInventory()
     {
-        countOfFish = Enum.GetValues(typeof(Constants.FishType)).Cast<Constants.FishType>().ToDictionary(fish => fish, fish => 0);
-        craftedItems = new List<Constants.CraftableItem>();
-        equippedItems = new List<Constants.CraftableItem>();
+        countOfFish = Enum.GetValues(typeof(FishType)).Cast<FishType>().ToDictionary(fish => fish, fish => 0);
+        craftedItems = new List<CraftableItem>();
+        equippedItems = new List<CraftableItem>
+        {
+            //new FishingRodHandle("Starting Handle", "Your every day handle; nothing special..\n\nFishing Time: 1.5s\nQTE Size: 10%\nQTE Range: 60%-80%", new Dictionary<FishType, int>(), ItemType.FISHING_ROD_HANDLE, null, 1.5f, .1f, .6f, .8f),
+            new FishingRodHandle("OP Test Handle", "You should not have found this...\n\nFishing Time: 0.2s\nQTE Size: 100%\nQTE Range: 0%-100%", new Dictionary<FishType, int>(), ItemType.FISHING_ROD_HANDLE, null, .2f, 1f, .5f, .5f),
+            new CraftableItem("Starting Shaft", "Your every day shaft; nothing special..\n\nFish Type: ALL\nChance to Multiply: 0%\nMutiplier Amount: N/A", new Dictionary<FishType, int>(), ItemType.FISHING_ROD_HANDLE, null),
+            new CraftableItem("10m Fishing Line", "Your every day fishing line; nothing special.\n\nFishing Depth: 10m", new Dictionary<FishType, int> (), ItemType.FISHING_ROD_LINE, null),
+        };
     }
 
-    public void AddFish(Constants.FishType fish, int countToAdd)
+    public void AddFish(FishType fish, int countToAdd)
     {
         countOfFish[fish] += countToAdd;
         PrintInventory();
@@ -31,40 +37,40 @@ public class PlayerInventory : MonoBehaviour
     public bool SpendFish(Dictionary<FishType, int> fishSpent)
     {
         //Check if we have each available resource, if not return false
-        foreach (KeyValuePair<Constants.FishType, int> fish in fishSpent)
+        foreach (KeyValuePair<FishType, int> fish in fishSpent)
         {
-            if (countOfFish[fish.Key] <= fish.Value)
+            if (countOfFish[fish.Key] < fish.Value)
             {
                 return false;
             }
         }
         //If we have enough of each type of fish, now we can subtract those
-        foreach (KeyValuePair<Constants.FishType, int> fish in fishSpent)
+        foreach (KeyValuePair<FishType, int> fish in fishSpent)
         {
             countOfFish[fish.Key] -= fish.Value;
         }
         return true;
     }
 
-    public int GetFish(Constants.FishType fish)
+    public int GetFish(FishType fish)
     {
         return countOfFish[fish];
     }
 
-    public void AddCraftedItem(Constants.CraftableItem item)
+    public void AddCraftedItem(CraftableItem item)
     {
         craftedItems.Add(item);
         PrintInventory();
     }
 
-    public List<Constants.CraftableItem> GetAllCraftedItems()
+    public List<CraftableItem> GetAllCraftedItems()
     {
         return craftedItems;
     }
 
-    public void EquipItem(Constants.CraftableItem item)
+    public void EquipItem(CraftableItem item)
     {
-        foreach (Constants.CraftableItem equippedItem in equippedItems)
+        foreach (CraftableItem equippedItem in equippedItems)
         {
             if(equippedItem.itemType == item.itemType)
             {
@@ -78,15 +84,36 @@ public class PlayerInventory : MonoBehaviour
         craftedItems.Remove(item);
     }
 
-    public void UnequipItem(Constants.CraftableItem item)
+    public void UnequipItem(CraftableItem item)
     {
         equippedItems.Remove(item);
         craftedItems.Add(item);
     }
 
-    public List<Constants.CraftableItem> GetAllEquippedItems()
+    public List<CraftableItem> GetAllEquippedItems()
     {
         return equippedItems;
+    }
+
+    public CraftableItem GetEquippedItemByItemType(ItemType itemType)
+    {
+        foreach (CraftableItem item in equippedItems)
+        {
+            if(item.itemType == itemType)
+            {
+                return item;
+            }
+        }
+        return null;
+    }
+
+    public bool PlayerOwnsItem(CraftableItem item)
+    {
+        if(craftedItems.Contains(item) || equippedItems.Contains(item))
+        {
+            return true;
+        }
+        return false;
     }
 
     private void PrintInventory()

@@ -14,7 +14,8 @@ public class Constants
         DIAMOND_FISH,
         SAPPHIRE_FISH,
         EMERALD_FISH,
-        RUBY_FISH
+        RUBY_FISH,
+        STRING_FISH
     }
 
     public enum FishingDepth
@@ -40,34 +41,38 @@ public class Constants
 
     public static List<CraftableItem> AllCraftableItems = new List<CraftableItem> { 
         //FISHING ROD HANDLES
-        new CraftableItem("Simple Speedy Handle", "A simple, speedy rod.\n\nFishing Time: 1.25s\nQTE Size: 10%\nQTE Range: 60%-80%", new Dictionary<FishType, int> { { FishType.WOOD_FISH, 5 }, { FishType.BRONZE_FISH, 3 } },ItemType.FISHING_ROD_HANDLE, null),
-        new CraftableItem("Simple Steady Handle", "A simple rod to steady any shaky hands.\n\nFishing Time: 1.5s\nQTE Size: 15%\nQTE Range: 60%-80%", new Dictionary<FishType, int> { { FishType.BRONZE_FISH, 4 }, { FishType.IRON_FISH, 1 } },ItemType.FISHING_ROD_HANDLE, null),
-        new CraftableItem("Simple Risky Handle", "A simple risky rod for those looking for any edge they can.\n\nFishing Time: 1.75s\nQTE Size: 10%\nQTE Range: 50%-75%", new Dictionary<FishType, int> { { FishType.STONE_FISH, 4 }, { FishType.IRON_FISH, 2 } },ItemType.FISHING_ROD_HANDLE, null),
-        new CraftableItem("Intermediate Speedy Handle", "A more advanced speed rod.\n\nFishing Time: 1s\nQTE Size: 15%\nQTE Range: 65%-85%", new Dictionary<FishType, int> { { FishType.SILVER_FISH, 10 } },ItemType.FISHING_ROD_HANDLE, null),
-        new CraftableItem("Intermediate Steady Handle", "A dynamically supported rod for more ease of use.\n\nFishing Time: 1.3s\nQTE Size: 20%\nQTE Range: 60%-80%", new Dictionary<FishType, int> { { FishType.BRONZE_FISH, 12 }, { FishType.GOLD_FISH, 3 } },ItemType.FISHING_ROD_HANDLE, null),
-        new CraftableItem("Intermediate Risky Handle", "When a little bit of risk doesn't cut it.\n\nFishing Time: 1.6s\nQTE Size: 15%\nQTE Range: 30%-60%", new Dictionary<FishType, int> { { FishType.WOOD_FISH, 20 }, { FishType.IRON_FISH, 10 }, { FishType.GOLD_FISH, 1 } },ItemType.FISHING_ROD_HANDLE, null),
-        new CraftableItem("Gamblers Handle", "LETS GO GAMBLING.\n\nFishing Time: 4.0s\nQTE Size: 5%\nQTE Range: 5%-50%", new Dictionary<FishType, int> { { FishType.IRON_FISH, 7 }, { FishType.SILVER_FISH, 7 }, { FishType.GOLD_FISH, 7 } },ItemType.FISHING_ROD_HANDLE, null),
-        new CraftableItem("Complex Speedy Handle", "For the fastest fishers alive.\n\nFishing Time: 0.75s\nQTE Size: 10%\nQTE Range: 55%-75%", new Dictionary<FishType, int> { { FishType.IRON_FISH, 15 }, { FishType.GOLD_FISH, 10 }, { FishType.DIAMOND_FISH, 4 } },ItemType.FISHING_ROD_HANDLE, null),
-        new CraftableItem("Complex Steady Handle", "You can't miss this one right?\n\nFishing Time: 1.1s\nQTE Size: 25%\nQTE Range: 65%-80%", new Dictionary<FishType, int> { { FishType.WOOD_FISH, 30 }, { FishType.BRONZE_FISH, 20 }, { FishType.SILVER_FISH, 5 }, { FishType.GOLD_FISH, 5 } },ItemType.FISHING_ROD_HANDLE, null),
-        new CraftableItem("Complex Risky Handle", "Only for the most talented fishers.\n\nFishing Time: 1.5s\nQTE Size: 10%\nQTE Range: 10%-60%", new Dictionary<FishType, int> { { FishType.GOLD_FISH, 15 }, { FishType.DIAMOND_FISH, 5 } },ItemType.FISHING_ROD_HANDLE, null),
-        new CraftableItem("Masters Handle", "Basically just grabbing the fish right out of the water at this point.\n\nFishing Time: 0.5s\nQTE Size: 0%\nQTE Range: 0%", new Dictionary<FishType, int> { { FishType.SAPPHIRE_FISH, 2 }, { FishType.EMERALD_FISH, 2 }, { FishType.RUBY_FISH, 2 } },ItemType.FISHING_ROD_HANDLE, null),
+        new FishingRodHandle("Simple Speedy Handle", "A simple, speedy rod.\n\nFishing Time: 1.25s\nQTE Size: 10%\nQTE Range: 60%-80%", new Dictionary<FishType, int> { { FishType.WOOD_FISH, 5 }, { FishType.BRONZE_FISH, 3 } }, ItemType.FISHING_ROD_HANDLE, null, 1.25f, .1f, .6f, .8f),
+        new FishingRodHandle("Simple Steady Handle", "A simple rod to steady any shaky hands.\n\nFishing Time: 1.5s\nQTE Size: 15%\nQTE Range: 60%-80%", new Dictionary<FishType, int> { { FishType.BRONZE_FISH, 4 }, { FishType.IRON_FISH, 1 } }, ItemType.FISHING_ROD_HANDLE, null, 1.5f, .15f, .6f, .8f),
+        new FishingRodHandle("Simple Risky Handle", "A simple risky rod for those looking for any edge they can.\n\nFishing Time: 1.75s\nQTE Size: 10%\nQTE Range: 50%-75%", new Dictionary<FishType, int> { { FishType.STONE_FISH, 4 }, { FishType.IRON_FISH, 2 } }, ItemType.FISHING_ROD_HANDLE, null, 1.75f, .1f, .5f, .75f),
+        new FishingRodHandle("Intermediate Speedy Handle", "A more advanced speed rod.\n\nFishing Time: 1s\nQTE Size: 15%\nQTE Range: 65%-85%", new Dictionary<FishType, int> { { FishType.SILVER_FISH, 10 } }, ItemType.FISHING_ROD_HANDLE, null, 1f, .15f, .65f, .85f),
+        new FishingRodHandle("Intermediate Steady Handle", "A dynamically supported rod for more ease of use.\n\nFishing Time: 1.3s\nQTE Size: 20%\nQTE Range: 60%-80%", new Dictionary<FishType, int> { { FishType.BRONZE_FISH, 12 }, { FishType.GOLD_FISH, 3 } }, ItemType.FISHING_ROD_HANDLE, null, 1.3f, .2f, .6f, .8f),
+        new FishingRodHandle("Intermediate Risky Handle", "When a little bit of risk doesn't cut it.\n\nFishing Time: 1.6s\nQTE Size: 15%\nQTE Range: 30%-60%", new Dictionary<FishType, int> { { FishType.WOOD_FISH, 20 }, { FishType.IRON_FISH, 10 }, { FishType.GOLD_FISH, 1 } }, ItemType.FISHING_ROD_HANDLE, null, 1.6f, .15f, .3f, .6f),
+        new FishingRodHandle("Gamblers Handle", "LETS GO GAMBLING.\n\nFishing Time: 4.0s\nQTE Size: 5%\nQTE Range: 5%-50%", new Dictionary<FishType, int> { { FishType.IRON_FISH, 7 }, { FishType.SILVER_FISH, 7 }, { FishType.GOLD_FISH, 7 } }, ItemType.FISHING_ROD_HANDLE, null, 4f, .05f, .05f, .5f),
+        new FishingRodHandle("Complex Speedy Handle", "For the fastest fishers alive.\n\nFishing Time: 0.75s\nQTE Size: 10%\nQTE Range: 55%-75%", new Dictionary<FishType, int> { { FishType.IRON_FISH, 15 }, { FishType.GOLD_FISH, 10 }, { FishType.DIAMOND_FISH, 4 } }, ItemType.FISHING_ROD_HANDLE, null, .75f, .1f, .55f, .75f),
+        new FishingRodHandle("Complex Steady Handle", "You can't miss this one right?\n\nFishing Time: 1.1s\nQTE Size: 25%\nQTE Range: 65%-80%", new Dictionary<FishType, int> { { FishType.WOOD_FISH, 30 }, { FishType.BRONZE_FISH, 20 }, { FishType.SILVER_FISH, 5 }, { FishType.GOLD_FISH, 5 } }, ItemType.FISHING_ROD_HANDLE, null, 1.1f, .25f, .65f, .8f),
+        new FishingRodHandle("Complex Risky Handle", "Only for the most talented fishers.\n\nFishing Time: 1.5s\nQTE Size: 10%\nQTE Range: 10%-60%", new Dictionary<FishType, int> { { FishType.GOLD_FISH, 15 }, { FishType.DIAMOND_FISH, 5 } }, ItemType.FISHING_ROD_HANDLE, null, 1.5f, .1f, .1f, .6f),
+        new FishingRodHandle("Masters Handle", "Basically just grabbing the fish right out of the water at this point.\n\nFishing Time: 0.5s\nQTE Size: 0%\nQTE Range: 0%", new Dictionary<FishType, int> { { FishType.SAPPHIRE_FISH, 2 }, { FishType.EMERALD_FISH, 2 }, { FishType.RUBY_FISH, 2 } }, ItemType.FISHING_ROD_HANDLE, null, .5f, 0f, 0f, 0f),
         //FISHING ROD SHAFTS
-        new CraftableItem("Simple Shaft", "A basic piece of hardware to get you going.\n\nFish Type: ALL\nChance to Multiply: 10%\nMutiplier Amount: 2x", new Dictionary<FishType, int> { { FishType.WOOD_FISH, 3 }, { FishType.STONE_FISH, 3 }, { FishType.IRON_FISH, 3 } },ItemType.FISHING_ROD_SHAFT, null),
-        new CraftableItem("Advanced Shaft", "The good stuff.\n\nFish Type: ALL\nChance to Multiply: 20%\nMutiplier Amount: 2x", new Dictionary<FishType, int> { { FishType.BRONZE_FISH, 3 }, { FishType.IRON_FISH, 3 }, { FishType.GOLD_FISH, 3 } },ItemType.FISHING_ROD_SHAFT, null),
-        new CraftableItem("Complex Shaft", "Big brain fish gain.\n\nFish Type: ALL\nChance to Multiply: 30%\nMutiplier Amount: 2x", new Dictionary<FishType, int> { { FishType.SILVER_FISH, 3 }, { FishType.GOLD_FISH, 3 }, { FishType.DIAMOND_FISH, 3 } },ItemType.FISHING_ROD_SHAFT, null),
-        new CraftableItem("Gambler's Shaft", "Greed is good.\n\nFish Type: ALL\nChance to Multiply: 10%\nMutiplier Amount: 3x", new Dictionary<FishType, int> { { FishType.WOOD_FISH, 5 }, { FishType.GOLD_FISH, 5 } },ItemType.FISHING_ROD_SHAFT, null),
-        new CraftableItem("Wood Shaft", "High performance for those woody fellas.\n\nFish Type: WOOD\nChance to Multiply: 50%\nMutiplier Amount: 2x", new Dictionary<FishType, int> { { FishType.WOOD_FISH, 8 }, { FishType.IRON_FISH, 2 } },ItemType.FISHING_ROD_SHAFT, null),
-        new CraftableItem("Hard Shaft", "Rock solid.\n\nFish Type: STONE\nChance to Multiply: 50%\nMutiplier Amount: 2x", new Dictionary<FishType, int> { { FishType.STONE_FISH, 8 }, { FishType.BRONZE_FISH, 2 } },ItemType.FISHING_ROD_SHAFT, null),
-        new CraftableItem("Metal Shaft", "Make Carnegie proud.\n\nFish Type: BRONZE + IRON\nChance to Multiply: 50%\nMutiplier Amount: 2x", new Dictionary<FishType, int> { { FishType.STONE_FISH, 5 }, { FishType.BRONZE_FISH, 5 }, { FishType.IRON_FISH, 5 } },ItemType.FISHING_ROD_SHAFT, null),
-        new CraftableItem("Precious Metal Shaft", "More clang for your buck.\n\nFish Type: SILVER + GOLD\nChance to Multiply: 50%\nMutiplier Amount: 2x", new Dictionary<FishType, int> { { FishType.IRON_FISH, 5 }, { FishType.SILVER_FISH, 5 }, { FishType.GOLD_FISH, 5 } },ItemType.FISHING_ROD_SHAFT, null),
-        new CraftableItem("Treasure Shaft", "Bling that thing.\n\nFish Type: SAPPHIRE + EMERALD + RUBY\nChance to Multiply: 50%\nMutiplier Amount: 2x", new Dictionary<FishType, int> { { FishType.SAPPHIRE_FISH, 2 }, { FishType.EMERALD_FISH, 2 }, { FishType.RUBY_FISH, 2 } },ItemType.FISHING_ROD_SHAFT, null),
+        new CraftableItem("Simple Shaft", "A basic piece of hardware to get you going.\n\nFish Type: ALL\nChance to Multiply: 10%\nMutiplier Amount: 2x", new Dictionary<FishType, int> { { FishType.WOOD_FISH, 3 }, { FishType.STONE_FISH, 3 }, { FishType.IRON_FISH, 3 } }, ItemType.FISHING_ROD_SHAFT, null),
+        new CraftableItem("Advanced Shaft", "The good stuff.\n\nFish Type: ALL\nChance to Multiply: 20%\nMutiplier Amount: 2x", new Dictionary<FishType, int> { { FishType.BRONZE_FISH, 3 }, { FishType.IRON_FISH, 3 }, { FishType.GOLD_FISH, 3 } }, ItemType.FISHING_ROD_SHAFT, null),
+        new CraftableItem("Complex Shaft", "Big brain fish gain.\n\nFish Type: ALL\nChance to Multiply: 30%\nMutiplier Amount: 2x", new Dictionary<FishType, int> { { FishType.SILVER_FISH, 3 }, { FishType.GOLD_FISH, 3 }, { FishType.DIAMOND_FISH, 3 } }, ItemType.FISHING_ROD_SHAFT, null),
+        new CraftableItem("Gambler's Shaft", "Greed is good.\n\nFish Type: ALL\nChance to Multiply: 10%\nMutiplier Amount: 3x", new Dictionary<FishType, int> { { FishType.WOOD_FISH, 5 }, { FishType.GOLD_FISH, 5 } }, ItemType.FISHING_ROD_SHAFT, null),
+        new CraftableItem("Wood Shaft", "High performance for those woody fellas.\n\nFish Type: WOOD\nChance to Multiply: 50%\nMutiplier Amount: 2x", new Dictionary<FishType, int> { { FishType.WOOD_FISH, 8 }, { FishType.IRON_FISH, 2 } }, ItemType.FISHING_ROD_SHAFT, null),
+        new CraftableItem("Hard Shaft", "Rock solid.\n\nFish Type: STONE\nChance to Multiply: 50%\nMutiplier Amount: 2x", new Dictionary<FishType, int> { { FishType.STONE_FISH, 8 }, { FishType.BRONZE_FISH, 2 } }, ItemType.FISHING_ROD_SHAFT, null),
+        new CraftableItem("Metal Shaft", "Make Carnegie proud.\n\nFish Type: BRONZE + IRON\nChance to Multiply: 50%\nMutiplier Amount: 2x", new Dictionary<FishType, int> { { FishType.STONE_FISH, 5 }, { FishType.BRONZE_FISH, 5 }, { FishType.IRON_FISH, 5 } }, ItemType.FISHING_ROD_SHAFT, null),
+        new CraftableItem("Precious Metal Shaft", "More clang for your buck.\n\nFish Type: SILVER + GOLD\nChance to Multiply: 50%\nMutiplier Amount: 2x", new Dictionary<FishType, int> { { FishType.IRON_FISH, 5 }, { FishType.SILVER_FISH, 5 }, { FishType.GOLD_FISH, 5 } }, ItemType.FISHING_ROD_SHAFT, null),
+        new CraftableItem("Treasure Shaft", "Bling that thing.\n\nFish Type: SAPPHIRE + EMERALD + RUBY\nChance to Multiply: 50%\nMutiplier Amount: 2x", new Dictionary<FishType, int> { { FishType.SAPPHIRE_FISH, 2 }, { FishType.EMERALD_FISH, 2 }, { FishType.RUBY_FISH, 2 } }, ItemType.FISHING_ROD_SHAFT, null),
+        //FISHING ROD LINE
+        new CraftableItem("20m Fishing Line", "Some more fishing line to explore what lies below.\n\nFishing Depth: 20m", new Dictionary<FishType, int> { { FishType.WOOD_FISH, 15 }, { FishType.STONE_FISH, 10 }, { FishType.IRON_FISH, 3 }, { FishType.STRING_FISH, 1 } }, ItemType.FISHING_ROD_LINE, null),
+        new CraftableItem("30m Fishing Line", "Metal reinforced fishing line to trek even deeper.\n\nFishing Depth: 30m", new Dictionary<FishType, int> { { FishType.BRONZE_FISH, 25 }, { FishType.SILVER_FISH, 10 }, { FishType.GOLD_FISH, 3 }, { FishType.STRING_FISH, 1 } }, ItemType.FISHING_ROD_LINE, null),
+        new CraftableItem("40m Fishing Line", "To reach the depths.\n\nFishing Depth: 40m", new Dictionary<FishType, int> { { FishType.GOLD_FISH, 30 }, { FishType.DIAMOND_FISH, 10 }, { FishType.STRING_FISH, 1 } }, ItemType.FISHING_ROD_LINE, null),
     };
 
     public static List<CraftingCategory> AllCraftingCategories = new List<CraftingCategory> {
         new CraftingCategory("Fishing Rod Handles", "Upgrades that will help with handling while fishing. This can be faster overall fishing, or upgrades to the Quick Time Event.", ItemType.FISHING_ROD_HANDLE, null),
         new CraftingCategory("Fishing Rod Shafts", "Shafts can improve your yield when making a successful catch. Some will generally help with catching more fish per cast while others specialize in certain species.", ItemType.FISHING_ROD_SHAFT, null),
         new CraftingCategory("Fishing Rod Baits", "desc", ItemType.FISHING_ROD_BAIT, null),
-        new CraftingCategory("Fishing Rod Lines", "desc", ItemType.FISHING_ROD_LINE, null),
+        new CraftingCategory("Fishing Rod Lines", "Unlock further depths to find brand new types of fish.", ItemType.FISHING_ROD_LINE, null),
         new CraftingCategory("Wands", "desc", ItemType.WAND, null),
         new CraftingCategory("Active Spells", "desc", ItemType.ACTIVE_SPELL, null),
         new CraftingCategory("Passive Spells", "desc", ItemType.PASSIVE_SPELL, null),
@@ -106,6 +111,22 @@ public class Constants
             craftingCosts = costs;
             itemType = type;
             itemImage = image;
+        }
+    }
+
+    public class FishingRodHandle : CraftableItem
+    {
+        public float fishingTime;
+        public float QTESize;
+        public float QTELowerBound;
+        public float QTEUpperBound;
+
+        public FishingRodHandle(string name, string desc, Dictionary<FishType, int> costs, ItemType type, Sprite image, float time, float size, float qteLB, float qteUB) : base (name, desc, costs, type, image)
+        {
+            fishingTime = time;
+            QTESize = size;
+            QTELowerBound = qteLB;
+            QTEUpperBound = qteUB;
         }
     }
 }

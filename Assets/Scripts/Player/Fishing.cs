@@ -1,10 +1,10 @@
-using NUnit.Framework;
-using System;
+
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static Constants;
 using Random = UnityEngine.Random;
 
 public class Fishing : MonoBehaviour
@@ -32,11 +32,15 @@ public class Fishing : MonoBehaviour
     Player playerScript;
     PlayerInventory playerInventoryScript;
 
-    //VARIABLES WE CAN CHANGE AS NEEDED
     private int fishingChargesNeeded = 5;
+
+    private FishingRodHandle equippedHandle;
+    //DEFAULT STATS IN CASE STATS DO NOT LOAD
     private float timeToFish = 1.5f;
     private float widthOfGreenZone = 0.1f;
-    public Constants.FishingDepth fishingDepth = Constants.FishingDepth.D_10_METERS;
+    private float greenZoneLB = 0.6f;
+    private float greenZoneUB = 0.8f;
+    public FishingDepth fishingDepth = FishingDepth.D_10_METERS;
 
     private void Start()
     {
@@ -64,6 +68,7 @@ public class Fishing : MonoBehaviour
         // When right click is first pressed, start fishing
         if (Mouse.current.rightButton.wasPressedThisFrame && playerCollider.IsTouching(myCollider) && canStartFishing)
         {
+            UpdateFishingStats();
             StartFishing();
         }
         // FishingStartTime will be -1 when we are not fishing, so this check is to check if we are currently fishing
@@ -110,6 +115,15 @@ public class Fishing : MonoBehaviour
         }
     }
 
+    private void UpdateFishingStats()
+    {
+        equippedHandle = (FishingRodHandle) playerInventoryScript.GetEquippedItemByItemType(ItemType.FISHING_ROD_HANDLE);
+        timeToFish = equippedHandle.fishingTime;
+        widthOfGreenZone = equippedHandle.QTESize;
+        greenZoneLB = equippedHandle.QTELowerBound;
+        greenZoneUB = equippedHandle.QTEUpperBound;
+}
+
     private void StartFishing()
     {
         fishingStartTime = Time.time;
@@ -141,7 +155,7 @@ public class Fishing : MonoBehaviour
 
     private void SetGreenBox()
     {
-        fishingBarGreenArea.transform.localPosition = new Vector3(Random.Range(0.1f, 0.3f), 0, -.1f);
+        fishingBarGreenArea.transform.localPosition = new Vector3(Random.Range(greenZoneLB - 0.5f, greenZoneUB - 0.5f), 0, -.1f);
         fishingBarGreenArea.transform.localScale = new Vector3(widthOfGreenZone, 1, 1);
     }
 
@@ -200,74 +214,74 @@ public class Fishing : MonoBehaviour
     private void GiveFishingReward()
     {
         int randomNumber = Random.Range(1, 100);
-        Constants.FishType fishCaught = Constants.FishType.WOOD_FISH; //Could not be left blank so needed a default, it should never use this
+        FishType fishCaught = FishType.WOOD_FISH; //Could not be left blank so needed a default, it should never use this
         int numFishCaught = 1; //Set this later
 
         switch (fishingDepth)
         {
-            case Constants.FishingDepth.D_10_METERS:
+            case FishingDepth.D_10_METERS:
                 if(randomNumber <= 40)
                 {
-                    fishCaught = Constants.FishType.WOOD_FISH;
+                    fishCaught = FishType.WOOD_FISH;
                 }
                 else if (randomNumber <= 70)
                 {
-                    fishCaught = Constants.FishType.STONE_FISH;
+                    fishCaught = FishType.STONE_FISH;
                 }
                 else if (randomNumber <= 85)
                 {
-                    fishCaught = Constants.FishType.BRONZE_FISH;
+                    fishCaught = FishType.BRONZE_FISH;
                 }
                 else if (randomNumber <= 95)
                 {
-                    fishCaught = Constants.FishType.IRON_FISH;
+                    fishCaught = FishType.IRON_FISH;
                 }
                 else
                 {
-                    fishCaught = Constants.FishType.SAPPHIRE_FISH;
+                    fishCaught = FishType.SAPPHIRE_FISH;
                 }
                 break;
-            case Constants.FishingDepth.D_20_METERS:
+            case FishingDepth.D_20_METERS:
                 if (randomNumber <= 40)
                 {
-                    fishCaught = Constants.FishType.BRONZE_FISH;
+                    fishCaught = FishType.BRONZE_FISH;
                 }
                 else if (randomNumber <= 70)
                 {
-                    fishCaught = Constants.FishType.IRON_FISH;
+                    fishCaught = FishType.IRON_FISH;
                 }
                 else if (randomNumber <= 85)
                 {
-                    fishCaught = Constants.FishType.SILVER_FISH;
+                    fishCaught = FishType.SILVER_FISH;
                 }
                 else if (randomNumber <= 95)
                 {
-                    fishCaught = Constants.FishType.GOLD_FISH;
+                    fishCaught = FishType.GOLD_FISH;
                 }
                 else
                 {
-                    fishCaught = Constants.FishType.EMERALD_FISH;
+                    fishCaught = FishType.EMERALD_FISH;
                 }
                 break;
-            case Constants.FishingDepth.D_30_METERS:
+            case FishingDepth.D_30_METERS:
                 if (randomNumber <= 50)
                 {
-                    fishCaught = Constants.FishType.SILVER_FISH;
+                    fishCaught = FishType.SILVER_FISH;
                 }
                 else if (randomNumber <= 85)
                 {
-                    fishCaught = Constants.FishType.GOLD_FISH;
+                    fishCaught = FishType.GOLD_FISH;
                 }
                 else if (randomNumber <= 95)
                 {
-                    fishCaught = Constants.FishType.DIAMOND_FISH;
+                    fishCaught = FishType.DIAMOND_FISH;
                 }
                 else
                 {
-                    fishCaught = Constants.FishType.RUBY_FISH;
+                    fishCaught = FishType.RUBY_FISH;
                 }
                 break;
-            case Constants.FishingDepth.D_40_METERS:
+            case FishingDepth.D_40_METERS:
                 break;
         }
         playerInventoryScript.AddFish(fishCaught, numFishCaught);
