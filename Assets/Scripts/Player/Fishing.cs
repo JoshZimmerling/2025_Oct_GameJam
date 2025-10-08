@@ -35,6 +35,7 @@ public class Fishing : MonoBehaviour
     private int fishingChargesNeeded = 5;
 
     private FishingRodHandle equippedHandle;
+    private FishingRodShaft equippedShaft;
     //DEFAULT STATS IN CASE STATS DO NOT LOAD
     private float timeToFish = 1.5f;
     private float widthOfGreenZone = 0.1f;
@@ -118,6 +119,7 @@ public class Fishing : MonoBehaviour
     private void UpdateFishingStats()
     {
         equippedHandle = (FishingRodHandle) playerInventoryScript.GetEquippedItemByItemType(ItemType.FISHING_ROD_HANDLE);
+        equippedShaft = (FishingRodShaft)playerInventoryScript.GetEquippedItemByItemType(ItemType.FISHING_ROD_SHAFT);
         timeToFish = equippedHandle.fishingTime;
         widthOfGreenZone = equippedHandle.QTESize;
         greenZoneLB = equippedHandle.QTELowerBound;
@@ -283,6 +285,10 @@ public class Fishing : MonoBehaviour
                 break;
             case FishingDepth.D_40_METERS:
                 break;
+        }
+        if (equippedShaft.fishTypesToMultiply.Contains(fishCaught) && Random.Range(1,100) < equippedShaft.chanceToMultiply)
+        {
+            numFishCaught = equippedShaft.multiplierAmount;
         }
         playerInventoryScript.AddFish(fishCaught, numFishCaught);
         fishingReward.SetActive(true);

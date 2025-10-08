@@ -23,7 +23,8 @@ public class PlayerInventory : MonoBehaviour
         {
             //new FishingRodHandle("Starting Handle", "Your every day handle; nothing special..\n\nFishing Time: 1.5s\nQTE Size: 10%\nQTE Range: 60%-80%", new Dictionary<FishType, int>(), ItemType.FISHING_ROD_HANDLE, null, 1.5f, .1f, .6f, .8f),
             new FishingRodHandle("OP Test Handle", "You should not have found this...\n\nFishing Time: 0.2s\nQTE Size: 100%\nQTE Range: 0%-100%", new Dictionary<FishType, int>(), ItemType.FISHING_ROD_HANDLE, null, .2f, 1f, .5f, .5f),
-            new CraftableItem("Starting Shaft", "Your every day shaft; nothing special..\n\nFish Type: ALL\nChance to Multiply: 0%\nMutiplier Amount: N/A", new Dictionary<FishType, int>(), ItemType.FISHING_ROD_HANDLE, null),
+            //new FishingRodShaft("Starting Shaft", "Your every day shaft; nothing special..\n\nFish Type: ALL\nChance to Multiply: 0%\nMutiplier Amount: N/A", new Dictionary<FishType, int>(), ItemType.FISHING_ROD_SHAFT, null, new List<FishType>(), 0, 1),
+            new FishingRodShaft("OP Test Shaft", "You should not have found this...\n\nFish Type: ALL\nChance to Multiply: 50%\nMutiplier Amount: 5x", new Dictionary<FishType, int>(), ItemType.FISHING_ROD_SHAFT, null, new List<FishType> { FishType.WOOD_FISH, FishType.STONE_FISH, FishType.BRONZE_FISH, FishType.IRON_FISH, FishType.SILVER_FISH, FishType.GOLD_FISH, FishType.DIAMOND_FISH, FishType.SAPPHIRE_FISH, FishType.EMERALD_FISH, FishType.RUBY_FISH, FishType.STRING_FISH}, 50, 5),
             new CraftableItem("10m Fishing Line", "Your every day fishing line; nothing special.\n\nFishing Depth: 10m", new Dictionary<FishType, int> (), ItemType.FISHING_ROD_LINE, null),
         };
     }
