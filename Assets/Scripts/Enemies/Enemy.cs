@@ -10,11 +10,15 @@ public class Enemy : MonoBehaviour
     public float damageLength = 0.1f;
 
     public int health = 10;
+    public bool canMove = true;
+
+    public Rigidbody2D rb; 
 
     void Start()
     {
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         originalColor = spriteRenderer.color;
+        rb = GetComponent<Rigidbody2D>();
     }
 
     public void Damage(int damage)
@@ -28,10 +32,24 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    public void HitKnockback(int value, Vector2 source)
+    {
+        Debug.Log("in knockback");
+        Vector2 direction = ((Vector2)transform.position - (Vector2)source).normalized;
+        Debug.Log(direction);
+        rb.AddForce(direction * value, ForceMode2D.Impulse);
+    }
+
     IEnumerator Flash()
     {
+        canMove = false;
         spriteRenderer.color = damageColor;
         yield return new WaitForSeconds(damageLength);
         spriteRenderer.color = originalColor;
+        canMove = true;
+        rb.linearVelocity = Vector2.zero;
+        
     }
+    
+    
 }
