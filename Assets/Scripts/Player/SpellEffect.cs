@@ -8,7 +8,7 @@ public class SpellEffect : MonoBehaviour
         Enemy enemy = other.gameObject.GetComponent<Enemy>();
         if (enemy != null)
         {
-            enemy.Damage(0);
+            enemy.Damage(3);
             enemy.HitKnockback(3, transform.position);
         }
     }
