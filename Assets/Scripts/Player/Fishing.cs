@@ -37,12 +37,14 @@ public class Fishing : MonoBehaviour
     private FishingRodHandle equippedHandle;
     private FishingRodShaft equippedShaft;
     private FishingRodLine equippedLine;
+    private FishingRodBait equippedBait;
     //DEFAULT STATS IN CASE STATS DO NOT LOAD
     private float timeToFish = 1.5f;
     private float widthOfGreenZone = 0.1f;
     private float greenZoneLB = 0.6f;
     private float greenZoneUB = 0.8f;
-    public FishingDepth fishingDepth = FishingDepth.D_10_METERS;
+    private FishingDepth fishingDepth = FishingDepth.D_10_METERS;
+    private Dictionary<FishType, int> CurrentFishingOdds = new Dictionary<FishType, int>();
 
     private void Start()
     {
@@ -122,6 +124,7 @@ public class Fishing : MonoBehaviour
         equippedHandle = (FishingRodHandle) playerInventoryScript.GetEquippedItemByItemType(ItemType.FISHING_ROD_HANDLE);
         equippedShaft = (FishingRodShaft)playerInventoryScript.GetEquippedItemByItemType(ItemType.FISHING_ROD_SHAFT);
         equippedLine = (FishingRodLine)playerInventoryScript.GetEquippedItemByItemType(ItemType.FISHING_ROD_LINE);
+        equippedBait = (FishingRodBait)playerInventoryScript.GetEquippedItemByItemType(ItemType.FISHING_ROD_BAIT);
 
         timeToFish = equippedHandle.fishingTime;
         widthOfGreenZone = equippedHandle.QTESize;
@@ -217,79 +220,64 @@ public class Fishing : MonoBehaviour
         canStartFishing = true;
     }
 
-    private void GiveFishingReward()
+    private int DetermineFishingRewardsOdds()
     {
-        int randomNumber = Random.Range(1, 100);
-        FishType fishCaught = FishType.WOOD_FISH; //Could not be left blank so needed a default, it should never use this
-        int numFishCaught = 1; //Set this later
-
+        CurrentFishingOdds.Clear();
+        int oddsIncreaseCounter = 0;
         switch (fishingDepth)
         {
             case FishingDepth.D_10_METERS:
-                if(randomNumber <= 40)
-                {
-                    fishCaught = FishType.WOOD_FISH;
-                }
-                else if (randomNumber <= 70)
-                {
-                    fishCaught = FishType.STONE_FISH;
-                }
-                else if (randomNumber <= 85)
-                {
-                    fishCaught = FishType.BRONZE_FISH;
-                }
-                else if (randomNumber <= 95)
-                {
-                    fishCaught = FishType.IRON_FISH;
-                }
-                else
-                {
-                    fishCaught = FishType.SAPPHIRE_FISH;
-                }
+                CurrentFishingOdds.Add(FishType.WOOD_FISH, 40);
+                CurrentFishingOdds.Add(FishType.STONE_FISH, 30);
+                CurrentFishingOdds.Add(FishType.BRONZE_FISH, 15);
+                CurrentFishingOdds.Add(FishType.IRON_FISH, 10);
+                CurrentFishingOdds.Add(FishType.SAPPHIRE_FISH, 5);
                 break;
             case FishingDepth.D_20_METERS:
-                if (randomNumber <= 40)
-                {
-                    fishCaught = FishType.BRONZE_FISH;
-                }
-                else if (randomNumber <= 70)
-                {
-                    fishCaught = FishType.IRON_FISH;
-                }
-                else if (randomNumber <= 85)
-                {
-                    fishCaught = FishType.SILVER_FISH;
-                }
-                else if (randomNumber <= 95)
-                {
-                    fishCaught = FishType.GOLD_FISH;
-                }
-                else
-                {
-                    fishCaught = FishType.EMERALD_FISH;
-                }
+                CurrentFishingOdds.Add(FishType.BRONZE_FISH, 40);
+                CurrentFishingOdds.Add(FishType.IRON_FISH, 30);
+                CurrentFishingOdds.Add(FishType.SILVER_FISH, 15);
+                CurrentFishingOdds.Add(FishType.GOLD_FISH, 10);
+                CurrentFishingOdds.Add(FishType.EMERALD_FISH, 5);
                 break;
             case FishingDepth.D_30_METERS:
-                if (randomNumber <= 50)
-                {
-                    fishCaught = FishType.SILVER_FISH;
-                }
-                else if (randomNumber <= 85)
-                {
-                    fishCaught = FishType.GOLD_FISH;
-                }
-                else if (randomNumber <= 95)
-                {
-                    fishCaught = FishType.DIAMOND_FISH;
-                }
-                else
-                {
-                    fishCaught = FishType.RUBY_FISH;
-                }
-                break;
-            case FishingDepth.D_40_METERS:
+                CurrentFishingOdds.Add(FishType.SILVER_FISH, 50);
+                CurrentFishingOdds.Add(FishType.GOLD_FISH, 35);
+                CurrentFishingOdds.Add(FishType.DIAMOND_FISH, 10);
+                CurrentFishingOdds.Add(FishType.RUBY_FISH, 5);
                 break;
         }
+
+        foreach(FishType fish in equippedBait.fishTypesToBait)
+        {
+            if (CurrentFishingOdds.ContainsKey(fish))
+            {
+                int increaseAmount = (int) (CurrentFishingOdds[fish] * equippedBait.baitMultiplier);
+                CurrentFishingOdds[fish] += increaseAmount;
+                oddsIncreaseCounter += increaseAmount;
+            }
+        }
+
+        return oddsIncreaseCounter;
+    }
+
+    private void GiveFishingReward()
+    {
+        int randomRangeIncrease = DetermineFishingRewardsOdds();
+        int randomNumber = Random.Range(1, 100 + randomRangeIncrease);
+        FishType fishCaught = FishType.WOOD_FISH; //Could not be left blank so needed a default, it should never use this
+        int numFishCaught = 1;
+
+        foreach(KeyValuePair<FishType, int> fishOdds in CurrentFishingOdds)
+        {
+            if (randomNumber <= fishOdds.Value)
+            {
+                fishCaught = fishOdds.Key;
+                break;
+            }
+            randomNumber -= fishOdds.Value;
+        }
+
         if (equippedShaft.fishTypesToMultiply.Contains(fishCaught) && Random.Range(1,100) < equippedShaft.chanceToMultiply)
         {
             numFishCaught = equippedShaft.multiplierAmount;
