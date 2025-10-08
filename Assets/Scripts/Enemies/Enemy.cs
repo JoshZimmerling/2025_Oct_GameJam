@@ -34,9 +34,7 @@ public class Enemy : MonoBehaviour
 
     public void HitKnockback(int value, Vector2 source)
     {
-        Debug.Log("in knockback");
         Vector2 direction = ((Vector2)transform.position - (Vector2)source).normalized;
-        Debug.Log(direction);
         rb.AddForce(direction * value, ForceMode2D.Impulse);
     }
 
