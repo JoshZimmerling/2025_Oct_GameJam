@@ -36,6 +36,7 @@ public class Fishing : MonoBehaviour
 
     private FishingRodHandle equippedHandle;
     private FishingRodShaft equippedShaft;
+    private FishingRodLine equippedLine;
     //DEFAULT STATS IN CASE STATS DO NOT LOAD
     private float timeToFish = 1.5f;
     private float widthOfGreenZone = 0.1f;
@@ -120,10 +121,13 @@ public class Fishing : MonoBehaviour
     {
         equippedHandle = (FishingRodHandle) playerInventoryScript.GetEquippedItemByItemType(ItemType.FISHING_ROD_HANDLE);
         equippedShaft = (FishingRodShaft)playerInventoryScript.GetEquippedItemByItemType(ItemType.FISHING_ROD_SHAFT);
+        equippedLine = (FishingRodLine)playerInventoryScript.GetEquippedItemByItemType(ItemType.FISHING_ROD_LINE);
+
         timeToFish = equippedHandle.fishingTime;
         widthOfGreenZone = equippedHandle.QTESize;
         greenZoneLB = equippedHandle.QTELowerBound;
         greenZoneUB = equippedHandle.QTEUpperBound;
+        fishingDepth = equippedLine.fishingDepth;
 }
 
     private void StartFishing()

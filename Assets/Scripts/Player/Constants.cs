@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using static Constants;
 
 public class Constants
 {
@@ -63,9 +64,9 @@ public class Constants
         new FishingRodShaft("Precious Metal Shaft", "More clang for your buck.\n\nFish Type: SILVER + GOLD\nChance to Multiply: 50%\nMutiplier Amount: 2x", new Dictionary<FishType, int> { { FishType.IRON_FISH, 5 }, { FishType.SILVER_FISH, 5 }, { FishType.GOLD_FISH, 5 } }, ItemType.FISHING_ROD_SHAFT, null, new List<FishType> { FishType.SILVER_FISH, FishType.GOLD_FISH }, 50, 2),
         new FishingRodShaft("Treasure Shaft", "Bling that thing.\n\nFish Type: SAPPHIRE + EMERALD + RUBY\nChance to Multiply: 50%\nMutiplier Amount: 2x", new Dictionary<FishType, int> { { FishType.SAPPHIRE_FISH, 2 }, { FishType.EMERALD_FISH, 2 }, { FishType.RUBY_FISH, 2 } }, ItemType.FISHING_ROD_SHAFT, null, new List<FishType> { FishType.SAPPHIRE_FISH, FishType.EMERALD_FISH, FishType.RUBY_FISH }, 50, 2),
         //FISHING ROD LINE
-        new CraftableItem("20m Fishing Line", "Some more fishing line to explore what lies below.\n\nFishing Depth: 20m", new Dictionary<FishType, int> { { FishType.WOOD_FISH, 15 }, { FishType.STONE_FISH, 10 }, { FishType.IRON_FISH, 3 }, { FishType.STRING_FISH, 1 } }, ItemType.FISHING_ROD_LINE, null),
-        new CraftableItem("30m Fishing Line", "Metal reinforced fishing line to trek even deeper.\n\nFishing Depth: 30m", new Dictionary<FishType, int> { { FishType.BRONZE_FISH, 25 }, { FishType.SILVER_FISH, 10 }, { FishType.GOLD_FISH, 3 }, { FishType.STRING_FISH, 1 } }, ItemType.FISHING_ROD_LINE, null),
-        new CraftableItem("40m Fishing Line", "To reach the depths.\n\nFishing Depth: 40m", new Dictionary<FishType, int> { { FishType.GOLD_FISH, 30 }, { FishType.DIAMOND_FISH, 10 }, { FishType.STRING_FISH, 1 } }, ItemType.FISHING_ROD_LINE, null),
+        new FishingRodLine("20m Fishing Line", "Some more fishing line to explore what lies below.\n\nFishing Depth: 20m", new Dictionary<FishType, int> { { FishType.WOOD_FISH, 15 }, { FishType.STONE_FISH, 10 }, { FishType.IRON_FISH, 3 }, { FishType.STRING_FISH, 1 } }, ItemType.FISHING_ROD_LINE, null, FishingDepth.D_20_METERS),
+        new FishingRodLine("30m Fishing Line", "Metal reinforced fishing line to trek even deeper.\n\nFishing Depth: 30m", new Dictionary<FishType, int> { { FishType.BRONZE_FISH, 25 }, { FishType.SILVER_FISH, 10 }, { FishType.GOLD_FISH, 3 }, { FishType.STRING_FISH, 1 } }, ItemType.FISHING_ROD_LINE, null, FishingDepth.D_30_METERS),
+        new FishingRodLine("40m Fishing Line", "To reach the depths.\n\nFishing Depth: 40m", new Dictionary<FishType, int> { { FishType.GOLD_FISH, 30 }, { FishType.DIAMOND_FISH, 10 }, { FishType.STRING_FISH, 1 } }, ItemType.FISHING_ROD_LINE, null, FishingDepth.D_40_METERS),
     };
 
     public static List<CraftingCategory> AllCraftingCategories = new List<CraftingCategory> {
@@ -141,6 +142,16 @@ public class Constants
             fishTypesToMultiply = types;
             chanceToMultiply = chance;
             multiplierAmount = multi;
+        }
+    }
+
+    public class FishingRodLine : CraftableItem
+    {
+        public FishingDepth fishingDepth;
+
+        public FishingRodLine(string name, string desc, Dictionary<FishType, int> costs, ItemType type, string image, FishingDepth depth) : base(name, desc, costs, type, image)
+        {
+            fishingDepth = depth;
         }
     }
 }
