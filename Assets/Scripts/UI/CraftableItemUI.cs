@@ -8,7 +8,7 @@ public class CraftableItemUI : MonoBehaviour
     private TextMeshProUGUI myText;
     private Image myImage;
     private Image backgroundColor;
-    Constants.UICraftableItem itemInfo;
+    Constants.CraftableItem itemInfo;
     private CraftablesUIHandler uiScript;
 
     private void Awake()
@@ -22,7 +22,7 @@ public class CraftableItemUI : MonoBehaviour
         backgroundColor.enabled = false;
     }
 
-    public void SetupCraftableItem(Constants.UICraftableItem item, CraftablesUIHandler UIScript)
+    public void SetupCraftableItem(Constants.CraftableItem item, CraftablesUIHandler UIScript)
     {
         itemInfo = item;
         myText.text = item.itemName;

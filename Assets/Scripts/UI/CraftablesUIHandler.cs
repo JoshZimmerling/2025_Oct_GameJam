@@ -55,7 +55,7 @@ public class CraftablesUIHandler : MonoBehaviour
         itemInfoPanel.SetActive(false);
 
         int yPos = 350;
-        foreach (Constants.UICraftingCategory category in Constants.AllCraftingCategories)
+        foreach (Constants.CraftingCategory category in Constants.AllCraftingCategories)
         {
             GameObject createdPrefab = Instantiate(craftingCategoryPrefab, categoriesListUI);
             createdPrefab.transform.localPosition = new Vector3(300, yPos, 0);
@@ -68,7 +68,7 @@ public class CraftablesUIHandler : MonoBehaviour
     {
         EmptyCraftablesList();
         int yPos = 350;
-        foreach (UICraftableItem item in Constants.AllCraftableItems)
+        foreach (CraftableItem item in Constants.AllCraftableItems)
         {
             if(item.itemType == category)
             {
@@ -80,7 +80,7 @@ public class CraftablesUIHandler : MonoBehaviour
         }
     }
 
-    public void ShowCategoryDetailsInPanel(UICraftingCategory category)
+    public void ShowCategoryDetailsInPanel(CraftingCategory category)
     {
         TurnOffAllCategoryBackgrounds();
         categoryInfoPanel.SetActive(true);
@@ -89,7 +89,7 @@ public class CraftablesUIHandler : MonoBehaviour
         categoryInfoPanel.transform.Find("Category Description").GetComponent<TextMeshProUGUI>().text = category.categoryDescription;
     }
 
-    public void ShowItemDetailsInPanel(UICraftableItem item)
+    public void ShowItemDetailsInPanel(CraftableItem item)
     {
         TurnOffAllItemBackgrounds();
         foreach (Transform child in craftingResourceListUI)

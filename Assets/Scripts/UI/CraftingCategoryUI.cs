@@ -8,7 +8,7 @@ public class CraftingCategoryUI : MonoBehaviour
     private TextMeshProUGUI myText;
     private Image myImage;
     private Image backgroundColor;
-    Constants.UICraftingCategory category;
+    Constants.CraftingCategory category;
     private CraftablesUIHandler uiScript;
 
     private void Awake()
@@ -22,7 +22,7 @@ public class CraftingCategoryUI : MonoBehaviour
         backgroundColor.enabled = false;
     }
 
-    public void SetupCraftingCategory(Constants.UICraftingCategory cat, CraftablesUIHandler UIScript)
+    public void SetupCraftingCategory(Constants.CraftingCategory cat, CraftablesUIHandler UIScript)
     {
         category = cat;
         myText.text = cat.categoryName;
