@@ -102,7 +102,7 @@ public class CraftablesUIHandler : MonoBehaviour
         categoryInfoPanel.SetActive(false);
         currentlySelectedItem = item;
         itemInfoPanel.transform.Find("Item Name").GetComponent<TextMeshProUGUI>().text = item.itemName;
-        itemInfoPanel.transform.Find("Item Image").GetComponent<Image>().sprite = item.itemImage;
+        itemInfoPanel.transform.Find("Item Image").GetComponent<Image>().sprite = Resources.Load<Sprite>(item.itemImageName);
         itemInfoPanel.transform.Find("Item Description").GetComponent<TextMeshProUGUI>().text = item.itemDescription;
 
         if (playerScript.inventory.PlayerOwnsItem(item))
@@ -130,6 +130,15 @@ public class CraftablesUIHandler : MonoBehaviour
             createdPrefab.transform.localPosition = new Vector3(0, yPos, 0);
             createdPrefab.transform.Find("Resource Image").GetComponent<Image>().sprite = Resources.Load<Sprite>(craftingResource.Key.ToString());
             createdPrefab.transform.Find("Resource Count").GetComponent<TextMeshProUGUI>().text = playerScript.inventory.GetFish(craftingResource.Key) + "/" + craftingResource.Value;
+            //Setting the text color
+            if(playerScript.inventory.GetFish(craftingResource.Key) < craftingResource.Value)
+            {
+                createdPrefab.transform.Find("Resource Count").GetComponent<TextMeshProUGUI>().color = Color.red;
+            }
+            else
+            {
+                createdPrefab.transform.Find("Resource Count").GetComponent<TextMeshProUGUI>().color = Color.green;
+            }
             yPos -= 50;
         }
     }

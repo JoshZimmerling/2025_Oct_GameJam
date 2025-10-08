@@ -85,13 +85,13 @@ public class Constants
         public string categoryName;
         public string categoryDescription;
         public ItemType correspondingItemType;
-        public Sprite categoryImage;
+        public string categoryImageName;
 
-        public CraftingCategory(string name, string desc, ItemType itemType, Sprite image)
+        public CraftingCategory(string name, string desc, ItemType itemType, string image)
         {
             categoryName = name;
             categoryDescription = desc;
-            categoryImage = image;
+            categoryImageName = image;
             correspondingItemType = itemType;
         }
     }
@@ -102,15 +102,15 @@ public class Constants
         public string itemDescription;
         public Dictionary<FishType, int> craftingCosts;
         public ItemType itemType;
-        public Sprite itemImage;
+        public string itemImageName;
 
-        public CraftableItem(string name, string desc, Dictionary<FishType, int> costs, ItemType type, Sprite image)
+        public CraftableItem(string name, string desc, Dictionary<FishType, int> costs, ItemType type, string image)
         {
             itemName = name;
             itemDescription = desc;
             craftingCosts = costs;
             itemType = type;
-            itemImage = image;
+            itemImageName = image;
         }
     }
 
@@ -121,7 +121,7 @@ public class Constants
         public float QTELowerBound;
         public float QTEUpperBound;
 
-        public FishingRodHandle(string name, string desc, Dictionary<FishType, int> costs, ItemType type, Sprite image, float time, float size, float qteLB, float qteUB) : base (name, desc, costs, type, image)
+        public FishingRodHandle(string name, string desc, Dictionary<FishType, int> costs, ItemType type, string image, float time, float size, float qteLB, float qteUB) : base (name, desc, costs, type, image)
         {
             fishingTime = time;
             QTESize = size;

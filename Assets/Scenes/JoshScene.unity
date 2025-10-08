@@ -661,10 +661,6 @@ PrefabInstance:
       propertyPath: playerScript
       value: 
       objectReference: {fileID: 903812216}
-    - target: {fileID: 8842593185120212922, guid: d2cb3f5bc0074e64ba4c8032c62434a5, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

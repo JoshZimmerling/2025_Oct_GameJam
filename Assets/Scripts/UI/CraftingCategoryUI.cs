@@ -26,7 +26,7 @@ public class CraftingCategoryUI : MonoBehaviour
     {
         category = cat;
         myText.text = cat.categoryName;
-        myImage.sprite = cat.categoryImage;
+        myImage.sprite = Resources.Load<Sprite>(cat.categoryImageName);
         uiScript = UIScript;
     }
 
