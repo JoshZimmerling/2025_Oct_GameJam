@@ -248,13 +248,16 @@ public class Fishing : MonoBehaviour
                 break;
         }
 
-        foreach(FishType fish in equippedBait.fishTypesToBait)
+        if(equippedBait != null)
         {
-            if (CurrentFishingOdds.ContainsKey(fish))
+            foreach (FishType fish in equippedBait.fishTypesToBait)
             {
-                int increaseAmount = (int) (CurrentFishingOdds[fish] * equippedBait.baitMultiplier);
-                CurrentFishingOdds[fish] += increaseAmount;
-                oddsIncreaseCounter += increaseAmount;
+                if (CurrentFishingOdds.ContainsKey(fish))
+                {
+                    int increaseAmount = (int)(CurrentFishingOdds[fish] * equippedBait.baitMultiplier);
+                    CurrentFishingOdds[fish] += increaseAmount;
+                    oddsIncreaseCounter += increaseAmount;
+                }
             }
         }
 
@@ -278,7 +281,7 @@ public class Fishing : MonoBehaviour
             randomNumber -= fishOdds.Value;
         }
 
-        if (equippedShaft.fishTypesToMultiply.Contains(fishCaught) && Random.Range(1,100) < equippedShaft.chanceToMultiply)
+        if (equippedShaft != null && equippedShaft.fishTypesToMultiply.Contains(fishCaught) && Random.Range(1,100) < equippedShaft.chanceToMultiply)
         {
             numFishCaught = equippedShaft.multiplierAmount;
         }
