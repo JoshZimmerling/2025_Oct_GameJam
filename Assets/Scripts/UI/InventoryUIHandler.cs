@@ -7,7 +7,6 @@ using static Constants;
 public class InventoryUIHandler : MonoBehaviour
 {
     [SerializeField] Player playerScript;
-    private PlayerInventory inventory;
 
     [SerializeField] Button closeMenuButton;
     [SerializeField] GameObject equippedItemPrefab;
@@ -23,8 +22,6 @@ public class InventoryUIHandler : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        inventory = playerScript.GetComponent<PlayerInventory>();
-
         closeMenuButton.onClick.AddListener(CloseInventoryMenu);
         equipButton.onClick.AddListener(EquipItem);
 
@@ -36,7 +33,6 @@ public class InventoryUIHandler : MonoBehaviour
     {
         itemInfoPanel.SetActive(false);
         PopulateInventoryItemsList();
-        TurnOffAllItemBackgrounds();
         gameObject.SetActive(true);
     }
 
@@ -44,6 +40,8 @@ public class InventoryUIHandler : MonoBehaviour
     {
         itemInfoPanel.SetActive(false);
         gameObject.SetActive(false);
+        TurnOffEquippedItemBackgrounds();
+        TurnOffInventoryItemBackgrounds();
     }
 
     private void EmptyInventoryItemsList()
@@ -65,6 +63,7 @@ public class InventoryUIHandler : MonoBehaviour
     private void PopulateInventoryItemsList()
     {
         EmptyInventoryItemsList();
+        PlayerInventory inventory = playerScript.GetComponent<PlayerInventory>();
         int xPos = -260;
         int yPos = 300;
         int counter = 0;
@@ -87,6 +86,7 @@ public class InventoryUIHandler : MonoBehaviour
     private void PopulateEquippedItemsList()
     {
         EmptyEquippedItemsList();
+        PlayerInventory inventory = playerScript.GetComponent<PlayerInventory>();
         int xPos = -125;
         int yPos = 300;
         int counter = 0;
@@ -109,8 +109,10 @@ public class InventoryUIHandler : MonoBehaviour
 
     public void ShowItemDetailsInPanel(CraftableItem item)
     {
-        TurnOffAllItemBackgrounds();
+        TurnOffInventoryItemBackgrounds();
+        TurnOffEquippedItemBackgrounds();
 
+        PlayerInventory inventory = playerScript.GetComponent<PlayerInventory>();
         currentlySelectedItem = item;
         itemInfoPanel.SetActive(true);
         itemInfoPanel.transform.Find("Item Name").GetComponent<TextMeshProUGUI>().text = item.itemName;
@@ -128,12 +130,16 @@ public class InventoryUIHandler : MonoBehaviour
         }
     }
 
-    private void TurnOffAllItemBackgrounds()
+    private void TurnOffInventoryItemBackgrounds()
     {
         foreach (Transform item in inventoryListUI)
         {
             item.gameObject.GetComponent<InventoryItemUI>().TurnOffBackgroundColor();
         }
+    }
+
+    private void TurnOffEquippedItemBackgrounds()
+    {
         foreach (Transform item in equippedListUI)
         {
             item.gameObject.GetComponent<EquippedItemUI>().TurnOffBackgroundColor();
@@ -142,7 +148,7 @@ public class InventoryUIHandler : MonoBehaviour
 
     private void EquipItem()
     {
-        inventory.EquipItem(currentlySelectedItem);
+        playerScript.GetComponent<PlayerInventory>().EquipItem(currentlySelectedItem);
         itemInfoPanel.transform.Find("Equipped Label").gameObject.SetActive(true);
         PopulateEquippedItemsList();
         PopulateInventoryItemsList();

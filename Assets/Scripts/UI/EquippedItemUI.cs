@@ -9,7 +9,7 @@ public class EquippedItemUI : MonoBehaviour
     Constants.CraftableItem itemInfo;
     private InventoryUIHandler uiScript;
 
-    void Awake()
+    public void SetupEquippedItem(Constants.CraftableItem item, InventoryUIHandler UIScript)
     {
         myButton = GetComponent<Button>();
         myButton.onClick.AddListener(OnClicked);
@@ -17,10 +17,7 @@ public class EquippedItemUI : MonoBehaviour
         myImage = gameObject.transform.Find("Item Image").GetComponent<Image>();
         backgroundColor = gameObject.transform.Find("Background Color").GetComponent<Image>();
         backgroundColor.enabled = false;
-    }
 
-    public void SetupEquippedItem(Constants.CraftableItem item, InventoryUIHandler UIScript)
-    {
         itemInfo = item;
         uiScript = UIScript;
         if (item == null)
