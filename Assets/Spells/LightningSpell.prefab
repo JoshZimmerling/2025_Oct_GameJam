@@ -45,3 +45,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Spell
   effect: {fileID: 4435798679671713748, guid: fffcd8090fa37744f9f42ba8ff98ee70, type: 3}
+  duration: 0.3

@@ -1,10 +1,8 @@
-using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using static Constants;
-using static UnityEditor.Progress;
 
 public class CraftablesUIHandler : MonoBehaviour
 {
@@ -35,14 +33,17 @@ public class CraftablesUIHandler : MonoBehaviour
 
     public void OpenCraftingMenu()
     {
-        gameObject.SetActive(true);
         itemInfoPanel.SetActive(false);
+        EmptyCraftablesList();
         TurnOffAllCategoryBackgrounds();
+        gameObject.SetActive(true);
     }
 
-    private void CloseCraftingMenu()
+    public void CloseCraftingMenu()
     {
+        itemInfoPanel.SetActive(false);
         EmptyCraftablesList();
+        TurnOffAllCategoryBackgrounds();
         gameObject.SetActive(false);
     }
 

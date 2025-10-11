@@ -79,14 +79,14 @@ public class Constants
     };
 
     public static List<CraftingCategory> AllCraftingCategories = new List<CraftingCategory> {
-        new CraftingCategory("Fishing Rod Handles", "Upgrades that will help with handling while fishing. This can be faster overall fishing, or upgrades to the Quick Time Event.", ItemType.FISHING_ROD_HANDLE, null),
-        new CraftingCategory("Fishing Rod Shafts", "Shafts can improve your yield when making a successful catch. Some will generally help with catching more fish per cast while others specialize in certain species.", ItemType.FISHING_ROD_SHAFT, null),
-        new CraftingCategory("Fishing Rod Baits", "Choosing the right bait can help make sure you find the type of fish you’re looking for.", ItemType.FISHING_ROD_BAIT, null),
-        new CraftingCategory("Fishing Rod Lines", "Unlock further depths to find brand new types of fish.", ItemType.FISHING_ROD_LINE, null),
-        new CraftingCategory("Wands", "desc", ItemType.WAND, null),
-        new CraftingCategory("Active Spells", "desc", ItemType.ACTIVE_SPELL, null),
-        new CraftingCategory("Passive Spells", "desc", ItemType.PASSIVE_SPELL, null),
-        new CraftingCategory("Charms", "desc", ItemType.CHARM, null),
+        new CraftingCategory("Fishing Rod Handle", "Upgrades that will help with handling while fishing. This can be faster overall fishing, or upgrades to the Quick Time Event.", ItemType.FISHING_ROD_HANDLE, null),
+        new CraftingCategory("Fishing Rod Shaft", "Shafts can improve your yield when making a successful catch. Some will generally help with catching more fish per cast while others specialize in certain species.", ItemType.FISHING_ROD_SHAFT, null),
+        new CraftingCategory("Fishing Rod Bait", "Choosing the right bait can help make sure you find the type of fish you’re looking for.", ItemType.FISHING_ROD_BAIT, null),
+        new CraftingCategory("Fishing Rod Line", "Unlock further depths to find brand new types of fish.", ItemType.FISHING_ROD_LINE, null),
+        new CraftingCategory("Wand", "desc", ItemType.WAND, null),
+        new CraftingCategory("Active Spell", "desc", ItemType.ACTIVE_SPELL, null),
+        new CraftingCategory("Passive Spell", "desc", ItemType.PASSIVE_SPELL, null),
+        new CraftingCategory("Charm", "desc", ItemType.CHARM, null),
         new CraftingCategory("Boots", "desc", ItemType.BOOTS, null)
     };
 

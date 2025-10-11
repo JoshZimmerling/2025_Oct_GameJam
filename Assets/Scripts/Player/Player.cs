@@ -13,9 +13,16 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        if (Keyboard.current.cKey.wasPressedThisFrame && !craftingScreen.activeSelf)
+        if (Keyboard.current.cKey.wasPressedThisFrame)
         {
-            craftingScreen.GetComponent<CraftablesUIHandler>().OpenCraftingMenu();
+            if (!craftingScreen.activeSelf)
+            {
+                craftingScreen.GetComponent<CraftablesUIHandler>().OpenCraftingMenu();
+            }
+            else
+            {
+                craftingScreen.GetComponent<CraftablesUIHandler>().CloseCraftingMenu();
+            }
         }
     }
 

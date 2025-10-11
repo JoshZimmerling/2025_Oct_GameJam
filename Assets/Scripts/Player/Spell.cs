@@ -5,7 +5,7 @@ public class Spell : MonoBehaviour
 {
     public SpellEffect effect;
 
-    public float duration = 10.3f;
+    public float duration = 0.3f;
 
     public void CastSpell(Transform transform)
     {

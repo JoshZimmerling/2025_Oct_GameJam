@@ -25,7 +25,7 @@ public class CraftingCategoryUI : MonoBehaviour
     public void SetupCraftingCategory(Constants.CraftingCategory cat, CraftablesUIHandler UIScript)
     {
         category = cat;
-        myText.text = cat.categoryName;
+        myText.text = cat.categoryName + "s";
         myImage.sprite = Resources.Load<Sprite>(cat.categoryImageName);
         uiScript = UIScript;
     }
