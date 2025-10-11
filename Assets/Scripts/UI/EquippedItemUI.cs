@@ -1,0 +1,43 @@
+using UnityEngine;
+using UnityEngine.UI;
+
+public class EquippedItemUI : MonoBehaviour
+{
+    private Button myButton;
+    private Image myImage;
+    private Image backgroundColor;
+    Constants.CraftableItem itemInfo;
+    private InventoryUIHandler uiScript;
+
+    void Awake()
+    {
+        myButton = GetComponent<Button>();
+        myButton.onClick.AddListener(OnClicked);
+
+        myImage = gameObject.transform.Find("Item Image").GetComponent<Image>();
+        backgroundColor = gameObject.transform.Find("Background Color").GetComponent<Image>();
+        backgroundColor.enabled = false;
+    }
+
+    public void SetupEquippedItem(Constants.CraftableItem item, InventoryUIHandler UIScript)
+    {
+        itemInfo = item;
+        uiScript = UIScript;
+        if (item == null)
+            return;
+        myImage.sprite = Resources.Load<Sprite>(item.itemImageName);
+    }
+
+    public void TurnOffBackgroundColor()
+    {
+        backgroundColor.enabled = false;
+    }
+
+    public void OnClicked()
+    {
+        if (itemInfo == null)
+            return;
+        uiScript.ShowItemDetailsInPanel(itemInfo);
+        backgroundColor.enabled = true;
+    }
+}

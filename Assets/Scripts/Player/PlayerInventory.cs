@@ -10,7 +10,7 @@ public class PlayerInventory : MonoBehaviour
     private List<CraftableItem> craftedItems;
     private List<CraftableItem> equippedItems;
 
-    private void Start()
+    private void Awake()
     {
         SetupStartingInventory();
     }
@@ -109,6 +109,15 @@ public class PlayerInventory : MonoBehaviour
     public bool PlayerOwnsItem(CraftableItem item)
     {
         if(craftedItems.Contains(item) || equippedItems.Contains(item))
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public bool PlayerHasItemEquipped(CraftableItem item)
+    {
+        if (equippedItems.Contains(item))
         {
             return true;
         }

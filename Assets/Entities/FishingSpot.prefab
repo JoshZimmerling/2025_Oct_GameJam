@@ -260,17 +260,16 @@ MonoBehaviour:
   player: {fileID: 0}
   chargesBar: {fileID: 5228932637584986943}
   fishSpriteList:
-  - {fileID: -6706186308525103507, guid: 0e64c51310fe1174ba6c98b86b9b80ff, type: 3}
-  - {fileID: -3887962317897441413, guid: 1897bf727adf2074b93a10028029fa05, type: 3}
-  - {fileID: -4033058670015687524, guid: de827fe5e244fe4409e9f4f19b754515, type: 3}
-  - {fileID: 1207421151250249201, guid: ed6cba72801225d45944da5647c3dca5, type: 3}
-  - {fileID: 4717769467760068441, guid: 4b0cdbfeb137c834b83c20dd068bfdbb, type: 3}
-  - {fileID: -4732462668122622448, guid: 1037aa5addc0c6d409045326f21f7f7c, type: 3}
-  - {fileID: -1565105592263801814, guid: d013004f37df7b048805713a8a58de33, type: 3}
-  - {fileID: -2263093565936768373, guid: 776504a8b40159746a957fa1ec2f5dde, type: 3}
-  - {fileID: -4591201330253763021, guid: 3d1595e420446514b88304d2698ee180, type: 3}
-  - {fileID: -1565105592263801814, guid: d013004f37df7b048805713a8a58de33, type: 3}
-  fishingDepth: 0
+  - {fileID: -6706186308525103507, guid: ff08652941c0d174fbe1aca47a586d9a, type: 3}
+  - {fileID: -3887962317897441413, guid: ed2541ee84ac6fe4c8829d1d41338756, type: 3}
+  - {fileID: -4033058670015687524, guid: c30187a864554eb45aa243e91d777562, type: 3}
+  - {fileID: 1207421151250249201, guid: 0f1c87240439e284993fb5ba52564713, type: 3}
+  - {fileID: 4717769467760068441, guid: 29a57bb2e7ed74845a532109449e01fa, type: 3}
+  - {fileID: -4732462668122622448, guid: 9f42f7f40f24fa348813d68b7b0eb218, type: 3}
+  - {fileID: -1679433129515517859, guid: a77c607ecc42cff4589d4430be646a41, type: 3}
+  - {fileID: -2263093565936768373, guid: 95a3bc6deab507c48baeecae6eb3a65b, type: 3}
+  - {fileID: -4591201330253763021, guid: 4ccfb1685beebf94dab1a8e055e1415e, type: 3}
+  - {fileID: -7516821786350052935, guid: 794e1ff6123f73c46b59fbe8850ccc47, type: 3}
 --- !u!1 &917972179774561613
 GameObject:
   m_ObjectHideFlags: 0
@@ -1420,7 +1419,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.2, y: 0, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 1}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4236280512377682982}
@@ -1480,7 +1479,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &9031674503013776995
