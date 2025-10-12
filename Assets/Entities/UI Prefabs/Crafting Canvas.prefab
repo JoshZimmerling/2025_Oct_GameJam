@@ -1329,6 +1329,7 @@ RectTransform:
   m_Children:
   - {fileID: 4848616602391436940}
   - {fileID: 6355028365197844847}
+  - {fileID: 1618165654539866892}
   - {fileID: 236864187787768948}
   - {fileID: 8992709104403611367}
   m_Father: {fileID: 5586536724437744487}
@@ -1338,6 +1339,41 @@ RectTransform:
   m_AnchoredPosition: {x: -900, y: 0}
   m_SizeDelta: {x: 1100, y: 900}
   m_Pivot: {x: 0, y: 0.5}
+--- !u!1 &4789866496042417541
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1618165654539866892}
+  m_Layer: 5
+  m_Name: Resources Count
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1618165654539866892
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4789866496042417541}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4733578368193907933}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 292, y: 415}
+  m_SizeDelta: {x: 500, y: 60}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &5283718733727857773
 GameObject:
   m_ObjectHideFlags: 0
@@ -2096,8 +2132,10 @@ MonoBehaviour:
   closeMenuButton: {fileID: 2753572264082657395}
   craftingCategoryPrefab: {fileID: 8537574508405344329, guid: 590d3b9a595ff7d42b15072ae388c4c4, type: 3}
   craftableItemPrefab: {fileID: 133118192602847647, guid: b987e2a1f6795b043a000d27384967f0, type: 3}
+  resourceCountPrefab: {fileID: 2520359883349043106, guid: b045e6ebaf0856a4696aed1194d7365f, type: 3}
   categoriesListUI: {fileID: 6355028365197844847}
   craftablesListUI: {fileID: 8992709104403611367}
+  resourceListUI: {fileID: 1618165654539866892}
   categoryInfoPanel: {fileID: 643918491849619704}
   itemInfoPanel: {fileID: 8842593185120212922}
   craftingResourcePrefab: {fileID: 1368373310599326298, guid: a349c8b4637a40540a8b27978a8bca58, type: 3}

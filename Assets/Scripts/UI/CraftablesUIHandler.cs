@@ -11,8 +11,10 @@ public class CraftablesUIHandler : MonoBehaviour
     [SerializeField] Button closeMenuButton;
     [SerializeField] GameObject craftingCategoryPrefab;
     [SerializeField] GameObject craftableItemPrefab;
+    [SerializeField] GameObject resourceCountPrefab;
     [SerializeField] Transform categoriesListUI;
     [SerializeField] Transform craftablesListUI;
+    [SerializeField] Transform resourceListUI;
 
     [SerializeField] GameObject categoryInfoPanel;
     [SerializeField] GameObject itemInfoPanel;
@@ -34,6 +36,7 @@ public class CraftablesUIHandler : MonoBehaviour
     public void OpenCraftingMenu()
     {
         itemInfoPanel.SetActive(false);
+        UpdateResourceCount();
         EmptyCraftablesList();
         TurnOffAllCategoryBackgrounds();
         gameObject.SetActive(true);
@@ -144,6 +147,32 @@ public class CraftablesUIHandler : MonoBehaviour
         }
     }
 
+    private void UpdateResourceCount()
+    {
+        foreach (Transform child in resourceListUI)
+        {
+            Destroy(child.gameObject);
+        }
+        int xPos = -210;
+        int yPos = 15;
+        int counter = 0;
+        foreach (KeyValuePair<FishType, int> fish in playerScript.inventory.GetAllFishTypes())
+        {
+            GameObject createdPrefab = Instantiate(resourceCountPrefab, resourceListUI);
+            createdPrefab.transform.localPosition = new Vector3(xPos, yPos, 0);
+            createdPrefab.GetComponentInChildren<Image>().sprite = Resources.Load<Sprite>("Fish Sprites/" + fish.Key.ToString());
+            createdPrefab.GetComponentInChildren<TextMeshProUGUI>().text = "- " + fish.Value;
+            counter++;
+            if (counter % 6 == 0)
+            {
+                yPos -= 30;
+                xPos -= 400;
+            }
+            else
+                xPos += 80;
+        }
+    }
+
     private void TurnOffAllCategoryBackgrounds()
     {
         foreach (Transform category in categoriesListUI)
@@ -167,6 +196,7 @@ public class CraftablesUIHandler : MonoBehaviour
         if(inventory.SpendFish(currentlySelectedItem.craftingCosts) == true)
         {
             UpdateCraftingCostCounts(currentlySelectedItem);
+            UpdateResourceCount();
             itemInfoPanel.transform.Find("Sold Out Label").gameObject.SetActive(true);
             inventory.AddCraftedItem(currentlySelectedItem);
         }

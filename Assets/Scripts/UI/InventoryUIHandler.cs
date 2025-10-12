@@ -11,8 +11,10 @@ public class InventoryUIHandler : MonoBehaviour
     [SerializeField] Button closeMenuButton;
     [SerializeField] GameObject equippedItemPrefab;
     [SerializeField] GameObject inventoryItemPrefab;
+    [SerializeField] GameObject resourceCountPrefab;
     [SerializeField] Transform equippedListUI;
     [SerializeField] Transform inventoryListUI;
+    [SerializeField] Transform resourceListUI;
 
     [SerializeField] GameObject itemInfoPanel;
     [SerializeField] Button equipButton;
@@ -32,6 +34,7 @@ public class InventoryUIHandler : MonoBehaviour
     public void OpenInventoryMenu()
     {
         itemInfoPanel.SetActive(false);
+        UpdateResourceCount();
         PopulateInventoryItemsList();
         gameObject.SetActive(true);
     }
@@ -104,6 +107,32 @@ public class InventoryUIHandler : MonoBehaviour
             }
             else
                 xPos += 250;
+        }
+    }
+
+    private void UpdateResourceCount()
+    {
+        foreach (Transform child in resourceListUI)
+        {
+            Destroy(child.gameObject);
+        }
+        int xPos = -210;
+        int yPos = 15;
+        int counter = 0;
+        foreach (KeyValuePair<FishType, int> fish in playerScript.inventory.GetAllFishTypes())
+        {
+            GameObject createdPrefab = Instantiate(resourceCountPrefab, resourceListUI);
+            createdPrefab.transform.localPosition = new Vector3(xPos, yPos, 0);
+            createdPrefab.GetComponentInChildren<Image>().sprite = Resources.Load<Sprite>("Fish Sprites/" + fish.Key.ToString());
+            createdPrefab.GetComponentInChildren<TextMeshProUGUI>().text = "- " + fish.Value;
+            counter++;
+            if (counter % 6 == 0)
+            {
+                yPos -= 30;
+                xPos -= 400;
+            }
+            else
+                xPos += 80;
         }
     }
 

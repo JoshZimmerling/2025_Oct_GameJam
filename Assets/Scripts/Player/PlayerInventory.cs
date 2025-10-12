@@ -35,7 +35,6 @@ public class PlayerInventory : MonoBehaviour
     public void AddFish(FishType fish, int countToAdd)
     {
         countOfFish[fish] += countToAdd;
-        PrintInventory();
     }
 
     public bool SpendFish(Dictionary<FishType, int> fishSpent)
@@ -61,10 +60,14 @@ public class PlayerInventory : MonoBehaviour
         return countOfFish[fish];
     }
 
+    public Dictionary<FishType, int> GetAllFishTypes()
+    {
+        return countOfFish;
+    }
+
     public void AddCraftedItem(CraftableItem item)
     {
         craftedItems.Add(item);
-        PrintInventory();
     }
 
     public List<CraftableItem> GetAllCraftedItems()
