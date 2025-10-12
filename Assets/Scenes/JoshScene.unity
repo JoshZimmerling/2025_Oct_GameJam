@@ -687,10 +687,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inventory Canvas
       objectReference: {fileID: 0}
-    - target: {fileID: 682669077594602051, guid: 5280802357deba447aaefd107f323053, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 694720832219132944, guid: 5280802357deba447aaefd107f323053, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -776,8 +772,7 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 903812216}
     m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 2955920105062209697, guid: 5280802357deba447aaefd107f323053, type: 3}
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5280802357deba447aaefd107f323053, type: 3}

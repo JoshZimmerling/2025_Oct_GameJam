@@ -103,7 +103,7 @@ public class CraftablesUIHandler : MonoBehaviour
         categoryInfoPanel.SetActive(false);
         currentlySelectedItem = item;
         itemInfoPanel.transform.Find("Item Name").GetComponent<TextMeshProUGUI>().text = item.itemName;
-        itemInfoPanel.transform.Find("Item Image").GetComponent<Image>().sprite = Resources.Load<Sprite>(item.itemImageName);
+        itemInfoPanel.transform.Find("Item Image").GetComponent<Image>().sprite = Resources.Load<Sprite>("Item Sprites/" + item.itemImageName);
         itemInfoPanel.transform.Find("Item Description").GetComponent<TextMeshProUGUI>().text = item.itemDescription;
 
         if (playerScript.inventory.PlayerOwnsItem(item))

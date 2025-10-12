@@ -22,7 +22,7 @@ public class EquippedItemUI : MonoBehaviour
         uiScript = UIScript;
         if (item == null)
             return;
-        myImage.sprite = Resources.Load<Sprite>(item.itemImageName);
+        myImage.sprite = Resources.Load<Sprite>("Item Sprites/" + item.itemImageName);
     }
 
     public void TurnOffBackgroundColor()

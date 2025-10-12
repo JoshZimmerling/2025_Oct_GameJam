@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEditor.Progress;
 
 public class CraftingCategoryUI : MonoBehaviour
 {
@@ -26,7 +27,7 @@ public class CraftingCategoryUI : MonoBehaviour
     {
         category = cat;
         myText.text = cat.categoryName + "s";
-        myImage.sprite = Resources.Load<Sprite>(cat.categoryImageName);
+        myImage.sprite = Resources.Load<Sprite>("Item Sprites/" + cat.categoryImageName);
         uiScript = UIScript;
     }
 

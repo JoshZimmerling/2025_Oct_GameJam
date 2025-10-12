@@ -117,7 +117,7 @@ public class InventoryUIHandler : MonoBehaviour
         itemInfoPanel.SetActive(true);
         itemInfoPanel.transform.Find("Item Name").GetComponent<TextMeshProUGUI>().text = item.itemName;
         itemInfoPanel.transform.Find("Item Category").GetComponent<TextMeshProUGUI>().text = "Category: " + GetCategoryNameByType(item.itemType);
-        itemInfoPanel.transform.Find("Item Image").GetComponent<Image>().sprite = Resources.Load<Sprite>(item.itemImageName);
+        itemInfoPanel.transform.Find("Item Image").GetComponent<Image>().sprite = Resources.Load<Sprite>("Item Sprites/" + item.itemImageName);
         itemInfoPanel.transform.Find("Item Description").GetComponent<TextMeshProUGUI>().text = item.itemDescription;
 
         if (inventory.PlayerHasItemEquipped(item))

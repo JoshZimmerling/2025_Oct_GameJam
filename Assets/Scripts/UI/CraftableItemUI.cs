@@ -26,7 +26,7 @@ public class CraftableItemUI : MonoBehaviour
     {
         itemInfo = item;
         myText.text = item.itemName;
-        myImage.sprite = Resources.Load<Sprite>(item.itemImageName);
+        myImage.sprite = Resources.Load<Sprite>("Item Sprites/" + item.itemImageName);
         uiScript = UIScript;
     }
 

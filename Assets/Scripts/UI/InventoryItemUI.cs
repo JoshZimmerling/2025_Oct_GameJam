@@ -20,7 +20,7 @@ public class InventoryItemUI : MonoBehaviour
 
         itemInfo = item;
         uiScript = UIScript;
-        myImage.sprite = Resources.Load<Sprite>(item.itemImageName);
+        myImage.sprite = Resources.Load<Sprite>("Item Sprites/" + item.itemImageName);
     }
 
     public void TurnOffBackgroundColor()
