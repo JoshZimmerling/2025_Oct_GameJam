@@ -16,14 +16,19 @@ public class Spell : MonoBehaviour
 
     public void CastSpell(Transform transform, Vector2 target)
     {
-        //Quaternion _lookRotation = Quaternion.LookRotation((target - transform.position).normalized);
-        
-        //Debug.Log(_lookRotation);
         Vector2 direction = target - (Vector2) transform.position;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0f, 0f, angle);
         
-        GameObject spell = Instantiate(effect, transform).gameObject;
+        GameObject spell = Instantiate(effect, transform.position, transform.rotation).gameObject;
+        
+        ProjectileSpellEffect pse = spell.GetComponentInChildren<ProjectileSpellEffect>();
+
+        if (pse != null)
+        {
+            pse.SetDirection(direction.normalized);
+        }
+
 
         Destroy(spell, duration);
     }
