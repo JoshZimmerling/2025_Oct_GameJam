@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 2122f51cfe0d1934cb95a0615753d816
+guid: 7f4af4e381b3db141935359f325e2b43
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8513757180039423752
-    second: fish_string_0
+      213: 5362089346801433929
+    second: Diamond Ring_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: fish_string_0
+      name: Diamond Ring_0
       rect:
         serializedVersion: 2
-        x: 1
+        x: 6
         y: 2
-        width: 30
-        height: 29
+        width: 20
+        height: 28
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8076e242c01f62670800000000000000
-      internalID: 8513757180039423752
+      spriteID: 94d7102f9d7f96a40800000000000000
+      internalID: 5362089346801433929
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      fish_string_0: 8513757180039423752
+      Diamond Ring_0: 5362089346801433929
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

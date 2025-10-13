@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 2122f51cfe0d1934cb95a0615753d816
+guid: e686ca360c6ab4543bce5febbaa2c02d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8513757180039423752
-    second: fish_string_0
+      213: 4030823573890156385
+    second: Mistletoe_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: fish_string_0
+      name: Mistletoe_0
       rect:
         serializedVersion: 2
-        x: 1
-        y: 2
-        width: 30
-        height: 29
+        x: 0
+        y: 1
+        width: 32
+        height: 31
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8076e242c01f62670800000000000000
-      internalID: 8513757180039423752
+      spriteID: 1674ef92fac50f730800000000000000
+      internalID: 4030823573890156385
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      fish_string_0: 8513757180039423752
+      Mistletoe_0: 4030823573890156385
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

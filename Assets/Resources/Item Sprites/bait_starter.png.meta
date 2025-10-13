@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 2122f51cfe0d1934cb95a0615753d816
+guid: 76e7be104454f7a4085e28c8b2d2ed19
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8513757180039423752
-    second: fish_string_0
+      213: 6461888680365973389
+    second: Bobber_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: fish_string_0
+      name: Bobber_0
       rect:
         serializedVersion: 2
-        x: 1
-        y: 2
-        width: 30
-        height: 29
+        x: 4
+        y: 3
+        width: 24
+        height: 28
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8076e242c01f62670800000000000000
-      internalID: 8513757180039423752
+      spriteID: d8fd45ba48d3da950800000000000000
+      internalID: 6461888680365973389
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      fish_string_0: 8513757180039423752
+      Bobber_0: 6461888680365973389
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
