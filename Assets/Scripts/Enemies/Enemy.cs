@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -46,8 +47,14 @@ public class Enemy : MonoBehaviour
         spriteRenderer.color = originalColor;
         canMove = true;
         rb.linearVelocity = Vector2.zero;
-        
     }
-    
-    
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        Player player = other.gameObject.GetComponent<Player>();
+        if (player != null)
+        {
+            player.ChangeHealth(-5);
+        }
+    }
 }
