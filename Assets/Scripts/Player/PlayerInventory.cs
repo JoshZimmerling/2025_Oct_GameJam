@@ -7,6 +7,7 @@ using static Constants;
 public class PlayerInventory : MonoBehaviour
 {
     private Dictionary<FishType, int> countOfFish;
+    private List<FishType> typesOfFishSeen;
     private List<CraftableItem> craftedItems;
     private List<CraftableItem> equippedItems;
 
@@ -18,6 +19,7 @@ public class PlayerInventory : MonoBehaviour
     public void SetupStartingInventory()
     {
         countOfFish = Enum.GetValues(typeof(FishType)).Cast<FishType>().ToDictionary(fish => fish, fish => 0);
+        typesOfFishSeen = new List<FishType>();
         craftedItems = new List<CraftableItem>();
         equippedItems = new List<CraftableItem>
         {
@@ -35,6 +37,10 @@ public class PlayerInventory : MonoBehaviour
     public void AddFish(FishType fish, int countToAdd)
     {
         countOfFish[fish] += countToAdd;
+        if (!typesOfFishSeen.Contains(fish))
+        {
+            typesOfFishSeen.Add(fish);
+        }
     }
 
     public bool SpendFish(Dictionary<FishType, int> fishSpent)
@@ -60,9 +66,18 @@ public class PlayerInventory : MonoBehaviour
         return countOfFish[fish];
     }
 
-    public Dictionary<FishType, int> GetAllFishTypes()
+    public Dictionary<FishType, int> GetInventoryFishCount()
     {
         return countOfFish;
+    }
+
+    public bool HasSeenFish(FishType fish)
+    {
+        if (typesOfFishSeen.Contains(fish))
+        {
+            return true;
+        }
+        return false;
     }
 
     public void AddCraftedItem(CraftableItem item)

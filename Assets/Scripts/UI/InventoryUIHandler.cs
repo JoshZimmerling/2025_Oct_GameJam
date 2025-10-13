@@ -119,11 +119,11 @@ public class InventoryUIHandler : MonoBehaviour
         int xPos = -210;
         int yPos = 15;
         int counter = 0;
-        foreach (KeyValuePair<FishType, int> fish in playerScript.inventory.GetAllFishTypes())
+        foreach (KeyValuePair<FishType, int> fish in playerScript.inventory.GetInventoryFishCount())
         {
             GameObject createdPrefab = Instantiate(resourceCountPrefab, resourceListUI);
             createdPrefab.transform.localPosition = new Vector3(xPos, yPos, 0);
-            createdPrefab.GetComponentInChildren<Image>().sprite = Resources.Load<Sprite>("Fish Sprites/" + fish.Key.ToString());
+            createdPrefab.GetComponentInChildren<Image>().sprite = playerScript.inventory.HasSeenFish(fish.Key) ? Resources.Load<Sprite>("Fish Sprites/" + fish.Key.ToString()) : Resources.Load<Sprite>("Fish Sprites/QUESTION_MARK");
             createdPrefab.GetComponentInChildren<TextMeshProUGUI>().text = "- " + fish.Value;
             counter++;
             if (counter % 6 == 0)

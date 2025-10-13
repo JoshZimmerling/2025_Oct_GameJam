@@ -132,7 +132,7 @@ public class CraftablesUIHandler : MonoBehaviour
         {
             GameObject createdPrefab = Instantiate(craftingResourcePrefab, craftingResourceListUI);
             createdPrefab.transform.localPosition = new Vector3(0, yPos, 0);
-            createdPrefab.transform.Find("Resource Image").GetComponent<Image>().sprite = Resources.Load<Sprite>("Fish Sprites/" + craftingResource.Key.ToString());
+            createdPrefab.transform.Find("Resource Image").GetComponent<Image>().sprite = playerScript.inventory.HasSeenFish(craftingResource.Key) ? Resources.Load<Sprite>("Fish Sprites/" + craftingResource.Key.ToString()) : Resources.Load<Sprite>("Fish Sprites/QUESTION_MARK");
             createdPrefab.transform.Find("Resource Count").GetComponent<TextMeshProUGUI>().text = playerScript.inventory.GetFish(craftingResource.Key) + "/" + craftingResource.Value;
             //Setting the text color
             if(playerScript.inventory.GetFish(craftingResource.Key) < craftingResource.Value)
@@ -156,11 +156,11 @@ public class CraftablesUIHandler : MonoBehaviour
         int xPos = -210;
         int yPos = 15;
         int counter = 0;
-        foreach (KeyValuePair<FishType, int> fish in playerScript.inventory.GetAllFishTypes())
+        foreach (KeyValuePair<FishType, int> fish in playerScript.inventory.GetInventoryFishCount())
         {
             GameObject createdPrefab = Instantiate(resourceCountPrefab, resourceListUI);
             createdPrefab.transform.localPosition = new Vector3(xPos, yPos, 0);
-            createdPrefab.GetComponentInChildren<Image>().sprite = Resources.Load<Sprite>("Fish Sprites/" + fish.Key.ToString());
+            createdPrefab.GetComponentInChildren<Image>().sprite = playerScript.inventory.HasSeenFish(fish.Key) ? Resources.Load<Sprite>("Fish Sprites/" + fish.Key.ToString()) : Resources.Load<Sprite>("Fish Sprites/QUESTION_MARK");
             createdPrefab.GetComponentInChildren<TextMeshProUGUI>().text = "- " + fish.Value;
             counter++;
             if (counter % 6 == 0)
