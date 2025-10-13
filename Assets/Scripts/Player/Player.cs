@@ -5,11 +5,21 @@ public class Player : MonoBehaviour
 {
     [SerializeField] GameObject craftingScreen;
     [SerializeField] GameObject inventoryScreen;
+    [SerializeField] GameObject playerUIScreen;
+    
     public PlayerInventory inventory;
-
+    public PlayerUIHandler uiHandler;
+        
+    public int health;
+    public int mana;
+    
     void Start()
     {
         inventory = gameObject.GetComponent<PlayerInventory>();
+        uiHandler = playerUIScreen.GetComponent<PlayerUIHandler>();
+        
+        health = 100;
+        mana = 100;
     }
 
     private void Update()
@@ -36,6 +46,18 @@ public class Player : MonoBehaviour
                 inventoryScreen.GetComponent<InventoryUIHandler>().CloseInventoryMenu();
             }
         }
+    }
+
+    public void ChangeHealth(int amount)
+    {
+        health += amount;
+        uiHandler.SetHealth(health);
+    }
+
+    public void ChangeMana(int amount)
+    {
+        mana += amount;
+        uiHandler.SetMana(mana);
     }
 
 }

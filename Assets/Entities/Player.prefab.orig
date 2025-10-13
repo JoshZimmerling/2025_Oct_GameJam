@@ -66,11 +66,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Player
   craftingScreen: {fileID: 0}
   inventoryScreen: {fileID: 0}
-  playerUIScreen: {fileID: 0}
   inventory: {fileID: 5242960174048780008}
-  uiHandler: {fileID: 0}
-  health: 0
-  mana: 0
 --- !u!114 &5242960174048780008
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -242,7 +238,11 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+<<<<<<< HEAD
+  m_Sprite: {fileID: 4334783836991956000, guid: ca27583bb5c355c4f89757f4357a57cf, type: 3}
+=======
   m_Sprite: {fileID: 4334783836991956000, guid: 6a848f373b7899f4d96bc3bc28476712, type: 3}
+>>>>>>> 7420a67 (FIREBALLS)
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -297,8 +297,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9912e38c8607d94486c4a45a514d0a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Wand
-  player: {fileID: 441319161255465282}
   currentSpell: {fileID: 4538972243590622620, guid: 18c814dfc46f6ec45a08de38038c9017, type: 3}
-  currentSpellCooldown: 3
-  cooldownCounter: 0
-  currentSpellManaCost: 3
