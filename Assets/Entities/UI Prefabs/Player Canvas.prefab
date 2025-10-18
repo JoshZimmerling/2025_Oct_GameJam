@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 555857732070697541}
   - component: {fileID: 1613584530028358708}
   m_Layer: 5
-  m_Name: ActiveSpell2CD (1)
+  m_Name: ActiveSpell3CD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -412,8 +412,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerUIHandler
   healthText: {fileID: 6710754946629864781}
   manaText: {fileID: 2853666462743727666}
-  spellCdProgress: {fileID: 8137228581665530957}
   player: {fileID: 0}
+  spellImages:
+  - {fileID: 7039397238315536573}
+  - {fileID: 3621030002592109303}
+  - {fileID: 4079536516119406796}
+  spellCdProgressBars:
+  - {fileID: 8137228581665530957}
+  - {fileID: 7604077478908779789}
+  - {fileID: 1441512343680572735}
 --- !u!1 &5024583123907977736
 GameObject:
   m_ObjectHideFlags: 0
@@ -701,7 +708,7 @@ GameObject:
   - component: {fileID: 7535923337241611871}
   - component: {fileID: 4079536516119406796}
   m_Layer: 5
-  m_Name: ActiveSpell2Sprite (1)
+  m_Name: ActiveSpell3Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

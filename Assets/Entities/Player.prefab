@@ -64,9 +64,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d4ad24d8d70e184cafc0dd851bce004, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
-  craftingScreen: {fileID: 0}
-  inventoryScreen: {fileID: 0}
-  playerUIScreen: {fileID: 0}
   inventory: {fileID: 5242960174048780008}
   uiHandler: {fileID: 0}
   health: 100
@@ -298,7 +295,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Wand
   player: {fileID: 441319161255465282}
-  currentSpell: {fileID: 4538972243590622620, guid: 18c814dfc46f6ec45a08de38038c9017, type: 3}
-  currentSpellCooldown: 3
-  cooldownCounter: 0
+  inputActions: {fileID: 0}
+  spells:
+  - {fileID: 8787253628401571233, guid: e971a4c58f820d74cbca6dc66a740513, type: 3}
+  - {fileID: 4538972243590622620, guid: 18c814dfc46f6ec45a08de38038c9017, type: 3}
+  - {fileID: 7063088739605303930, guid: 0bd5f3a3584f0084f91b655e75a984eb, type: 3}
+  spellCooldowns: []
+  spellCooldownTimers: []
   currentSpellManaCost: 3
