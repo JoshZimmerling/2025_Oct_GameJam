@@ -8,7 +8,6 @@ using Random = UnityEngine.Random;
 
 public class Fishing : MonoBehaviour
 {
-    [SerializeField] GameObject player;
     [SerializeField] GameObject chargesBar;
     [SerializeField] List<Sprite> fishSpriteList;
 
@@ -48,8 +47,8 @@ public class Fishing : MonoBehaviour
     private void Start()
     {
         myCollider = gameObject.GetComponent<PolygonCollider2D>();
-        playerCollider = player.GetComponent<PolygonCollider2D>();
-        playerScript = player.GetComponent<Player>();
+        playerCollider = GameObject.Find("Player").GetComponent<PolygonCollider2D>();
+        playerScript = GameObject.Find("Player").GetComponent<Player>();
         playerInventoryScript = playerScript.inventory;
 
         fishingBar = GameObject.Find("Fishing Bar");

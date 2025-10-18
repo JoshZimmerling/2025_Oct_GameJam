@@ -6,8 +6,20 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Final Scenes/FinalScene.unity
+    path: Assets/Scenes/Final Scenes/StartingScene.unity
+    guid: 9ca22be1bb58b1047bcd51e98e478e34
+  - enabled: 1
+    path: Assets/Scenes/Final Scenes/GarageScene.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
+  - enabled: 1
+    path: Assets/Scenes/Final Scenes/OutsideScene.unity
+    guid: 78798012df344324fb89cbb8747ed8ba
+  - enabled: 1
+    path: Assets/Scenes/JoshScene.unity
+    guid: 06ead168e193a27449fad2239a382a48
+  - enabled: 1
+    path: Assets/Scenes/KaidenScene.unity
+    guid: f0e6862d965159f498e549db547b8a52
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

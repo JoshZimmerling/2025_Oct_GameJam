@@ -463,6 +463,10 @@ PrefabInstance:
       propertyPath: wand
       value: 
       objectReference: {fileID: 343545211}
+    - target: {fileID: 397172460852566457, guid: 99394454ac3e02a459af6b8db05a95fe, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 903812212}
     - target: {fileID: 5000750544956625480, guid: 99394454ac3e02a459af6b8db05a95fe, type: 3}
       propertyPath: m_Name
       value: Player Canvas

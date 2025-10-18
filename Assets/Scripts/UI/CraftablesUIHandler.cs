@@ -6,7 +6,7 @@ using static Constants;
 
 public class CraftablesUIHandler : MonoBehaviour
 {
-    [SerializeField] Player playerScript;
+    public Player playerScript;
 
     [SerializeField] Button closeMenuButton;
     [SerializeField] GameObject craftingCategoryPrefab;

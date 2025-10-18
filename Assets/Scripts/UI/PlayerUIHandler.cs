@@ -8,12 +8,15 @@ public class PlayerUIHandler : MonoBehaviour
     [SerializeField] TextMeshProUGUI manaText;
     
     [SerializeField] TextMeshProUGUI spellCd;
-    public Wand wand;
+    [SerializeField] GameObject player;
+    private Wand wand;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        DontDestroyOnLoad(this.gameObject);
+
+        wand = player.GetComponentInChildren<Wand>();
     }
 
     // Update is called once per frame

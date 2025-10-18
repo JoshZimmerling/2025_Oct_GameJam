@@ -257,7 +257,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b0651126975a4d43923ead075398537, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Fishing
-  player: {fileID: 0}
   chargesBar: {fileID: 5228932637584986943}
   fishSpriteList:
   - {fileID: -6706186308525103507, guid: ff08652941c0d174fbe1aca47a586d9a, type: 3}
@@ -746,7 +745,7 @@ Transform:
   m_GameObject: {fileID: 5228932637584986943}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.2, z: 0}
+  m_LocalPosition: {x: 0, y: 1.2, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1111,7 +1110,7 @@ Transform:
   m_GameObject: {fileID: 7028121252071215668}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.8, z: 0}
+  m_LocalPosition: {x: 0, y: 0.8, z: -2}
   m_LocalScale: {x: 1, y: 0.1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1294,7 +1293,7 @@ Transform:
   m_GameObject: {fileID: 7657982957033759299}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.65, z: 0}
+  m_LocalPosition: {x: 0, y: 1.65, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

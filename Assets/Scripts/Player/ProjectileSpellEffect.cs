@@ -19,7 +19,6 @@ public class ProjectileSpellEffect : SpellEffect
 
     public void SetDirection(Vector2 direction)
     {
-        Debug.Log("changing direction to " + direction);
         this.direction = direction.normalized;
     }
 }

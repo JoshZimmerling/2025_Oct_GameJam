@@ -69,8 +69,8 @@ MonoBehaviour:
   playerUIScreen: {fileID: 0}
   inventory: {fileID: 5242960174048780008}
   uiHandler: {fileID: 0}
-  health: 0
-  mana: 0
+  health: 100
+  mana: 100
 --- !u!114 &5242960174048780008
 MonoBehaviour:
   m_ObjectHideFlags: 0
