@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 
 public class Constants
 {
@@ -32,7 +33,8 @@ public class Constants
         FISHING_ROD_BAIT, // What you catch more of
         FISHING_ROD_LINE, // Fishing Depth
         WAND,
-        ACTIVE_SPELL,
+        PRIMARY_ACTIVE_SPELL,
+        SECONDARY_ACTIVE_SPELL,
         PASSIVE_SPELL,
         CHARM,
         BOOTS
@@ -42,7 +44,7 @@ public class Constants
         //FISHING ROD HANDLES
         new FishingRodHandle("Simple Speedy Handle", "A simple, speedy rod.\n\nFishing Time: 1.25s\nQTE Size: 10%\nQTE Range: 60%-80%", new Dictionary<FishType, int> { { FishType.WOOD_FISH, 5 }, { FishType.BRONZE_FISH, 3 } }, ItemType.FISHING_ROD_HANDLE, "handle_simple_speedy", 1.25f, .1f, .6f, .8f),
         new FishingRodHandle("Simple Steady Handle", "A simple rod to steady any shaky hands.\n\nFishing Time: 1.5s\nQTE Size: 15%\nQTE Range: 60%-80%", new Dictionary<FishType, int> { { FishType.BRONZE_FISH, 4 }, { FishType.IRON_FISH, 1 } }, ItemType.FISHING_ROD_HANDLE, "handle_simple_steady", 1.5f, .15f, .6f, .8f),
-        new FishingRodHandle("Simple Risky Handle", "A simple risky rod for those looking for any edge they can.\n\nFishing Time: 1.75s\nQTE Size: 10%\nQTE Range: 50%-75%", new Dictionary<FishType, int> { { FishType.STONE_FISH, 4 }, { FishType.IRON_FISH, 2 } }, ItemType.FISHING_ROD_HANDLE, "handle_simple_risky", 1.75f, .1f, .5f, .75f),
+        new FishingRodHandle("Simple Risky Handle", "A simple rod for those looking for any edge they can.\n\nFishing Time: 1.75s\nQTE Size: 10%\nQTE Range: 50%-75%", new Dictionary<FishType, int> { { FishType.STONE_FISH, 4 }, { FishType.IRON_FISH, 2 } }, ItemType.FISHING_ROD_HANDLE, "handle_simple_risky", 1.75f, .1f, .5f, .75f),
         new FishingRodHandle("Intermediate Speedy Handle", "A more advanced speed rod.\n\nFishing Time: 1s\nQTE Size: 15%\nQTE Range: 65%-85%", new Dictionary<FishType, int> { { FishType.SILVER_FISH, 10 } }, ItemType.FISHING_ROD_HANDLE, "handle_intermediate_speedy", 1f, .15f, .65f, .85f),
         new FishingRodHandle("Intermediate Steady Handle", "A dynamically supported rod for more ease of use.\n\nFishing Time: 1.3s\nQTE Size: 20%\nQTE Range: 60%-80%", new Dictionary<FishType, int> { { FishType.BRONZE_FISH, 12 }, { FishType.GOLD_FISH, 3 } }, ItemType.FISHING_ROD_HANDLE, "handle_intermediate_steady", 1.3f, .2f, .6f, .8f),
         new FishingRodHandle("Intermediate Risky Handle", "When a little bit of risk doesn't cut it.\n\nFishing Time: 1.6s\nQTE Size: 15%\nQTE Range: 30%-60%", new Dictionary<FishType, int> { { FishType.WOOD_FISH, 20 }, { FishType.IRON_FISH, 10 }, { FishType.GOLD_FISH, 1 } }, ItemType.FISHING_ROD_HANDLE, "handle_intermediate_risky", 1.6f, .15f, .3f, .6f),
@@ -82,7 +84,8 @@ public class Constants
         new CraftingCategory("Fishing Rod Bait", "Choosing the right bait can help make sure you find the type of fish you’re looking for.", ItemType.FISHING_ROD_BAIT, "bait_starter"),
         new CraftingCategory("Fishing Rod Line", "Unlock further depths to find brand new types of fish.", ItemType.FISHING_ROD_LINE, "line_10m"),
         new CraftingCategory("Wand", "desc", ItemType.WAND, null),
-        new CraftingCategory("Active Spell", "desc", ItemType.ACTIVE_SPELL, null),
+        new CraftingCategory("Primary Spell", "desc", ItemType.PRIMARY_ACTIVE_SPELL, null),
+        new CraftingCategory("Secondary Spell", "desc", ItemType.SECONDARY_ACTIVE_SPELL, null),
         new CraftingCategory("Passive Spell", "desc", ItemType.PASSIVE_SPELL, null),
         new CraftingCategory("Charm", "desc", ItemType.CHARM, null),
         new CraftingCategory("Boots", "desc", ItemType.BOOTS, null)
@@ -171,6 +174,22 @@ public class Constants
         public FishingRodLine(string name, string desc, Dictionary<FishType, int> costs, ItemType type, string image, FishingDepth depth) : base(name, desc, costs, type, image)
         {
             fishingDepth = depth;
+        }
+    }
+
+    public class WandItem : CraftableItem
+    {
+        public float damageModifier;
+        public float sizeModifier;
+        public float rangeModifier;
+        public float cooldownModifier;
+
+        public WandItem(string name, string desc, Dictionary<FishType, int> costs, ItemType type, string image, float dmgMod, float sizeMod, float rangeMod, float cdMod) : base(name, desc, costs, type, image)
+        {
+            damageModifier = dmgMod;
+            sizeModifier = sizeMod;
+            rangeModifier = rangeMod;
+            cooldownModifier = cdMod;
         }
     }
 }

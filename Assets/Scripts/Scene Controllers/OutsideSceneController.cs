@@ -11,7 +11,7 @@ public class OutsideSceneController : MonoBehaviour
     private GameObject player;
     private PolygonCollider2D playerCollider;
 
-    private static int dayCounter = 0;
+    public static int dayCounter = 0;
     private float dayStartTime;
     private int fullDayTime = 180;
     public bool dayComplete = false;
