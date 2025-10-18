@@ -41,9 +41,11 @@ public class Wand : MonoBehaviour
 
         castSpell1 = inputActions?.FindAction("Attack");
         castSpell2 = inputActions?.FindAction("ActiveSpell");
+        castSpell3 = inputActions?.FindAction("ActiveSpell2");
 
         spellHandler1 = ctx => OnAttack(ctx, 0);
         spellHandler2 = ctx => OnAttack(ctx, 1);
+        spellHandler3 = ctx => OnAttack(ctx, 2);
     }
 
     private void Update()
@@ -61,6 +63,9 @@ public class Wand : MonoBehaviour
 
         castSpell2.performed += spellHandler2;
         if (!castSpell2.enabled) castSpell2.Enable();
+        
+        castSpell3.performed += spellHandler3;
+        if (!castSpell3.enabled) castSpell3.Enable();
     }
     
     void OnDisable()
@@ -76,6 +81,13 @@ public class Wand : MonoBehaviour
             castSpell2.performed -= spellHandler2;
             if (castSpell2.enabled) castSpell2.Disable();
         }
+        
+        if (castSpell3 != null)
+        {
+            castSpell3.performed -= spellHandler3;
+            if (castSpell3.enabled) castSpell3.Disable();
+        }
+
     }
 
     private void OnAttack(InputAction.CallbackContext context, int spell)
