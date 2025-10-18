@@ -119,16 +119,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &120204456 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7604077478908779789, guid: 99394454ac3e02a459af6b8db05a95fe, type: 3}
-  m_PrefabInstance: {fileID: 7274855664990178018}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &208423580 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1441512343680572735, guid: 99394454ac3e02a459af6b8db05a95fe, type: 3}
-  m_PrefabInstance: {fileID: 7274855664990178018}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &360138146 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2196912456265420497, guid: 31911f3bdb99efd42969a1bd827b0855, type: 3}
@@ -412,6 +402,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &771190380 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1690932142098763350, guid: 31911f3bdb99efd42969a1bd827b0855, type: 3}
+  m_PrefabInstance: {fileID: 850600370}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9912e38c8607d94486c4a45a514d0a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Wand
 --- !u!1001 &850600370
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -432,33 +433,16 @@ PrefabInstance:
       propertyPath: playerUIScreen
       value: 
       objectReference: {fileID: 911831010}
-    - target: {fileID: 1690932142098763350, guid: 31911f3bdb99efd42969a1bd827b0855, type: 3}
-      propertyPath: castSpell1.m_Name
-      value: Cast Spell 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1690932142098763350, guid: 31911f3bdb99efd42969a1bd827b0855, type: 3}
-      propertyPath: castSpell2.m_Name
-      value: Cast Spell 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1690932142098763350, guid: 31911f3bdb99efd42969a1bd827b0855, type: 3}
-      propertyPath: spells.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1690932142098763350, guid: 31911f3bdb99efd42969a1bd827b0855, type: 3}
-      propertyPath: 'spells.Array.data[0]'
+<<<<<<< HEAD
+    - target: {fileID: 441319161255465282, guid: 31911f3bdb99efd42969a1bd827b0855, type: 3}
+      propertyPath: inventoryScreen
       value: 
-      objectReference: {fileID: 8787253628401571233, guid: e971a4c58f820d74cbca6dc66a740513, type: 3}
-    - target: {fileID: 1690932142098763350, guid: 31911f3bdb99efd42969a1bd827b0855, type: 3}
-      propertyPath: 'spells.Array.data[1]'
-      value: 
-      objectReference: {fileID: 4538972243590622620, guid: 18c814dfc46f6ec45a08de38038c9017, type: 3}
+      objectReference: {fileID: 0}
+=======
+>>>>>>> f9b7c44 (idk)
     - target: {fileID: 2196912456265420497, guid: 31911f3bdb99efd42969a1bd827b0855, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 2196912456265420497, guid: 31911f3bdb99efd42969a1bd827b0855, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2368571131921237975, guid: 31911f3bdb99efd42969a1bd827b0855, type: 3}
       propertyPath: m_LocalPosition.x
@@ -500,26 +484,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 9120649390017663537, guid: 31911f3bdb99efd42969a1bd827b0855, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31911f3bdb99efd42969a1bd827b0855, type: 3}
---- !u!114 &850917525 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4079536516119406796, guid: 99394454ac3e02a459af6b8db05a95fe, type: 3}
-  m_PrefabInstance: {fileID: 7274855664990178018}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
 --- !u!1 &911831010 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5000750544956625480, guid: 99394454ac3e02a459af6b8db05a95fe, type: 3}
@@ -805,11 +774,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1688106580 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8137228581665530957, guid: 99394454ac3e02a459af6b8db05a95fe, type: 3}
-  m_PrefabInstance: {fileID: 7274855664990178018}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7274855664990178018
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -819,64 +783,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 397172460852566457, guid: 99394454ac3e02a459af6b8db05a95fe, type: 3}
+      propertyPath: wand
+      value: 
+      objectReference: {fileID: 771190380}
+    - target: {fileID: 397172460852566457, guid: 99394454ac3e02a459af6b8db05a95fe, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 360138146}
-    - target: {fileID: 397172460852566457, guid: 99394454ac3e02a459af6b8db05a95fe, type: 3}
-      propertyPath: spellImage1
-      value: 
-      objectReference: {fileID: 7274855664990178020}
-    - target: {fileID: 397172460852566457, guid: 99394454ac3e02a459af6b8db05a95fe, type: 3}
-      propertyPath: spellImage2
-      value: 
-      objectReference: {fileID: 7274855664990178019}
-    - target: {fileID: 397172460852566457, guid: 99394454ac3e02a459af6b8db05a95fe, type: 3}
-      propertyPath: spellImage3
-      value: 
-      objectReference: {fileID: 850917525}
-    - target: {fileID: 397172460852566457, guid: 99394454ac3e02a459af6b8db05a95fe, type: 3}
-      propertyPath: spellImages.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 397172460852566457, guid: 99394454ac3e02a459af6b8db05a95fe, type: 3}
-      propertyPath: 'spellImages.Array.data[0]'
-      value: 
-      objectReference: {fileID: 7274855664990178020}
-    - target: {fileID: 397172460852566457, guid: 99394454ac3e02a459af6b8db05a95fe, type: 3}
-      propertyPath: 'spellImages.Array.data[1]'
-      value: 
-      objectReference: {fileID: 7274855664990178019}
-    - target: {fileID: 397172460852566457, guid: 99394454ac3e02a459af6b8db05a95fe, type: 3}
-      propertyPath: 'spellImages.Array.data[2]'
-      value: 
-      objectReference: {fileID: 850917525}
-    - target: {fileID: 397172460852566457, guid: 99394454ac3e02a459af6b8db05a95fe, type: 3}
-      propertyPath: spellCdProgressBars.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 397172460852566457, guid: 99394454ac3e02a459af6b8db05a95fe, type: 3}
-      propertyPath: 'spellCdProgressBars.Array.data[0]'
-      value: 
-      objectReference: {fileID: 1688106580}
-    - target: {fileID: 397172460852566457, guid: 99394454ac3e02a459af6b8db05a95fe, type: 3}
-      propertyPath: 'spellCdProgressBars.Array.data[1]'
-      value: 
-      objectReference: {fileID: 120204456}
-    - target: {fileID: 397172460852566457, guid: 99394454ac3e02a459af6b8db05a95fe, type: 3}
-      propertyPath: 'spellCdProgressBars.Array.data[2]'
-      value: 
-      objectReference: {fileID: 208423580}
-    - target: {fileID: 1441512343680572735, guid: 99394454ac3e02a459af6b8db05a95fe, type: 3}
-      propertyPath: m_Name
-      value: ActiveSpell3CD
-      objectReference: {fileID: 0}
     - target: {fileID: 5000750544956625480, guid: 99394454ac3e02a459af6b8db05a95fe, type: 3}
       propertyPath: m_Name
       value: Player Canvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 7553465961196241711, guid: 99394454ac3e02a459af6b8db05a95fe, type: 3}
-      propertyPath: m_Name
-      value: ActiveSpell3Sprite
       objectReference: {fileID: 0}
     - target: {fileID: 7896002720821991081, guid: 99394454ac3e02a459af6b8db05a95fe, type: 3}
       propertyPath: m_Pivot.x
@@ -963,28 +879,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 99394454ac3e02a459af6b8db05a95fe, type: 3}
---- !u!114 &7274855664990178019 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3621030002592109303, guid: 99394454ac3e02a459af6b8db05a95fe, type: 3}
-  m_PrefabInstance: {fileID: 7274855664990178018}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
---- !u!114 &7274855664990178020 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7039397238315536573, guid: 99394454ac3e02a459af6b8db05a95fe, type: 3}
-  m_PrefabInstance: {fileID: 7274855664990178018}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

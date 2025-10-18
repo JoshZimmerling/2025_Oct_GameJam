@@ -6,6 +6,7 @@ public class Spell : MonoBehaviour
     public SpellEffect effect;
 
     public float duration = 0.3f;
+    public float cooldown = 1f;
 
     public void CastSpell(Transform transform)
     {
@@ -28,8 +29,7 @@ public class Spell : MonoBehaviour
         {
             pse.SetDirection(direction.normalized);
         }
-
-
+        
         Destroy(spell, duration);
     }
 }
