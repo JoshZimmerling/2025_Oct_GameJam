@@ -9,6 +9,7 @@ using Random = UnityEngine.Random;
 public class Fishing : MonoBehaviour
 {
     [SerializeField] GameObject chargesBar;
+    [SerializeField] OutsideSceneController sceneController;
     [SerializeField] List<Sprite> fishSpriteList;
 
     static GameObject fishingBar;
@@ -68,7 +69,7 @@ public class Fishing : MonoBehaviour
     void Update()
     {
         // When right click is first pressed, start fishing
-        if (Mouse.current.rightButton.wasPressedThisFrame && playerCollider.IsTouching(myCollider) && canStartFishing)
+        if (Mouse.current.rightButton.wasPressedThisFrame && playerCollider.IsTouching(myCollider) && canStartFishing && !sceneController.dayComplete)
         {
             UpdateFishingStats();
             StartFishing();
