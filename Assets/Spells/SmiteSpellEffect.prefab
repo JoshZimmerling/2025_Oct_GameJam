@@ -105,6 +105,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpellEffect
   damage: 20
+  isPassthrough: 1
 --- !u!61 &8734262418932354745
 BoxCollider2D:
   m_ObjectHideFlags: 0
