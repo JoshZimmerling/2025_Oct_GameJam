@@ -551,6 +551,10 @@ PrefabInstance:
       propertyPath: sceneController
       value: 
       objectReference: {fileID: 341488721}
+    - target: {fileID: 8729164602089456618, guid: 5d4917f430229de4590aaf2169c10807, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8957933351511380026, guid: 5d4917f430229de4590aaf2169c10807, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.78

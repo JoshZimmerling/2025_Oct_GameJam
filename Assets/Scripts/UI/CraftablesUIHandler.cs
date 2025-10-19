@@ -35,6 +35,7 @@ public class CraftablesUIHandler : MonoBehaviour
 
     public void OpenCraftingMenu()
     {
+        playerScript.gameObject.GetComponent<PlayerMovement>().DisableMovement();
         itemInfoPanel.SetActive(false);
         UpdateResourceCount();
         EmptyCraftablesList();
@@ -44,6 +45,7 @@ public class CraftablesUIHandler : MonoBehaviour
 
     public void CloseCraftingMenu()
     {
+        playerScript.gameObject.GetComponent<PlayerMovement>().EnableMovement();
         itemInfoPanel.SetActive(false);
         EmptyCraftablesList();
         TurnOffAllCategoryBackgrounds();

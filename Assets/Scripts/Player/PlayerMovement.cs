@@ -46,4 +46,15 @@ public class PlayerMovement : MonoBehaviour
             Fishing.CancelCurrentFishing();
         }
     }
+
+    public void DisableMovement()
+    {
+        OnDisable();
+        direction = Vector2.zero;
+    }
+
+    public void EnableMovement()
+    {
+        OnEnable();
+    }
 }
