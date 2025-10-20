@@ -26,10 +26,4 @@ public class Player : MonoBehaviour
         uiHandler.SetHealth(health);
     }
 
-    public void ChangeMana(int amount)
-    {
-        mana += amount;
-        uiHandler.SetMana(mana);
-    }
-
 }

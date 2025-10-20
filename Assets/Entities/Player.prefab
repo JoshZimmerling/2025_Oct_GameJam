@@ -302,4 +302,8 @@ MonoBehaviour:
   - {fileID: 7063088739605303930, guid: 0bd5f3a3584f0084f91b655e75a984eb, type: 3}
   spellCooldowns: []
   spellCooldownTimers: []
+  damageModifier: 1
+  sizeModifier: 1
+  rangeModifier: 1
+  cooldownModifier: 1
   currentSpellManaCost: 3

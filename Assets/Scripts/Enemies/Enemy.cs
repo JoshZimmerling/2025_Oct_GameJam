@@ -10,10 +10,13 @@ public class Enemy : MonoBehaviour
     public Color damageColor = Color.red;
     public float damageLength = 0.1f;
 
-    public int health = 10;
+    public int startingHealth = 10;
+    public float currentHealth = 10;
     public bool canMove = true;
 
-    public Rigidbody2D rb; 
+    public Rigidbody2D rb;
+
+    public GameObject healthbar;
 
     void Start()
     {
@@ -22,12 +25,14 @@ public class Enemy : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-    public void Damage(int damage)
+    public void Damage(float damage)
     {
         StartCoroutine(Flash());
-        health -= damage;
+        currentHealth -= damage;
 
-        if (health <= 0)
+        healthbar.transform.localScale = new Vector3((float)currentHealth / (float) startingHealth, 1 ,  1);
+        
+        if (currentHealth <= 0)
         {
             Destroy(gameObject);
         }

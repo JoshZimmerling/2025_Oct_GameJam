@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static Constants;
 
 public class Wand : MonoBehaviour
 {
@@ -21,8 +22,14 @@ public class Wand : MonoBehaviour
     public List<float> spellCooldowns;
     public List<float> spellCooldownTimers;
 
-    public int currentSpellManaCost;
+    public float damageModifier;
+    public float sizeModifier;
+    public float rangeModifier;
+    public float cooldownModifier;
 
+    private PlayerInventory playerInventoryScript;
+    private WandItem equippedWandItem;
+        
     private void Start()
     {
         foreach (Spell spell in spells)
@@ -30,8 +37,28 @@ public class Wand : MonoBehaviour
             spellCooldowns.Add(spell.cooldown);
             spellCooldownTimers.Add(0f);
         }
+
+        playerInventoryScript = player.inventory; 
+    }
+    
+    private void Update()
+    {
+        for (int i = 0; i < spellCooldownTimers.Count; i++)
+        {
+            spellCooldownTimers[i] = Mathf.Max(0, spellCooldownTimers[i] - Time.deltaTime);
+        }
     }
 
+    public void UpdateWandStats()
+    {
+        equippedWandItem = (WandItem)playerInventoryScript.GetEquippedItemByItemType(ItemType.WAND); 
+        
+        damageModifier = equippedWandItem.damageModifier;
+        sizeModifier = equippedWandItem.sizeModifier;
+        rangeModifier = equippedWandItem.rangeModifier;
+        cooldownModifier = equippedWandItem.cooldownModifier;
+    }
+    
     void Awake()
     {
         if (inputActions == null)
@@ -47,15 +74,6 @@ public class Wand : MonoBehaviour
         spellHandler2 = ctx => OnAttack(ctx, 1);
         spellHandler3 = ctx => OnAttack(ctx, 2);
     }
-
-    private void Update()
-    {
-        for (int i = 0; i < spellCooldownTimers.Count; i++)
-        {
-            spellCooldownTimers[i] = Mathf.Max(0, spellCooldownTimers[i] - Time.deltaTime);
-        }
-    }
-
     void OnEnable()
     {
         castSpell1.performed += spellHandler1;
@@ -67,7 +85,6 @@ public class Wand : MonoBehaviour
         castSpell3.performed += spellHandler3;
         if (!castSpell3.enabled) castSpell3.Enable();
     }
-    
     void OnDisable()
     {
         if (castSpell1 != null)
@@ -87,27 +104,27 @@ public class Wand : MonoBehaviour
             castSpell3.performed -= spellHandler3;
             if (castSpell3.enabled) castSpell3.Disable();
         }
-
     }
 
     private void OnAttack(InputAction.CallbackContext context, int spell)
     {
-        Debug.Log("Casting spell " + spell);
+        UpdateWandStats();
+        
         if (spellCooldownTimers[spell] > 0)
         {
             return;
         }
 
         Vector2 screenPos = Pointer.current?.position.ReadValue() ?? Vector2.zero;
-
         var cam = Camera.main;
         Vector3 world = cam.ScreenToWorldPoint(new Vector3(screenPos.x, screenPos.y, cam.nearClipPlane));
         Vector2 world2D = new Vector2(world.x, world.y);
-        spells[spell].CastSpell(gameObject.transform, world2D);
-        player.ChangeMana(-currentSpellManaCost);
+        
+        spells[spell].CastSpell(gameObject.transform, world2D, this);
+        
         Fishing.CancelCurrentFishing();
 
-        spellCooldownTimers[spell] = spellCooldowns[spell];
+        spellCooldownTimers[spell] = spellCooldowns[spell] * cooldownModifier;
     }
 
     public float GetSpellCooldown(int spell)
@@ -119,4 +136,5 @@ public class Wand : MonoBehaviour
     {
         return spellCooldownTimers[spell];
     }
+
 }

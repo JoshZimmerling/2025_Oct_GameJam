@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3372643967921451749}
   - component: {fileID: 1222964781530627446}
-  - component: {fileID: 7038066119519189074}
   - component: {fileID: 8734262418932354745}
+  - component: {fileID: 263500737777285546}
   m_Layer: 0
   m_Name: SmiteSpellEffect
   m_TagString: Untagged
@@ -92,19 +92,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &7038066119519189074
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 713963457435600217}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a886a4b8e4e226443941bd601ea779a3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SpellEffect
-  damage: 20
 --- !u!61 &8734262418932354745
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -151,3 +138,17 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 3.59, y: 3.59}
   m_EdgeRadius: 0
+--- !u!114 &263500737777285546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 713963457435600217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e311dd0f186c4424892f044e4337959d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ClickSpellEffect
+  damage: 20
+  isPassthrough: 1
