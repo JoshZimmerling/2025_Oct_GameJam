@@ -44,6 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e066e685b99e83840a6472ae7026d712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Spell
-  effect: {fileID: 7038066119519189074, guid: 46407f2edda5b854a9e80777c428cfe1, type: 3}
+  effect: {fileID: 263500737777285546, guid: 46407f2edda5b854a9e80777c428cfe1, type: 3}
   duration: 0.5
   cooldown: 1

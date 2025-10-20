@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class SpellEffect : MonoBehaviour
 {
-    public int damage = 3;
+    public float damage = 3;
     public bool isPassthrough;
     private void OnTriggerEnter2D(Collider2D other)
     {

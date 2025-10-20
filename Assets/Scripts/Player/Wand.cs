@@ -21,6 +21,11 @@ public class Wand : MonoBehaviour
     public List<float> spellCooldowns;
     public List<float> spellCooldownTimers;
 
+    public float damageModifier;
+    public float sizeModifier;
+    public float rangeModifier;
+    public float cooldownModifier;
+
     public int currentSpellManaCost;
 
     private void Start()
@@ -31,7 +36,15 @@ public class Wand : MonoBehaviour
             spellCooldownTimers.Add(0f);
         }
     }
-
+    
+    private void Update()
+    {
+        for (int i = 0; i < spellCooldownTimers.Count; i++)
+        {
+            spellCooldownTimers[i] = Mathf.Max(0, spellCooldownTimers[i] - Time.deltaTime);
+        }
+    }
+    
     void Awake()
     {
         if (inputActions == null)
@@ -47,15 +60,6 @@ public class Wand : MonoBehaviour
         spellHandler2 = ctx => OnAttack(ctx, 1);
         spellHandler3 = ctx => OnAttack(ctx, 2);
     }
-
-    private void Update()
-    {
-        for (int i = 0; i < spellCooldownTimers.Count; i++)
-        {
-            spellCooldownTimers[i] = Mathf.Max(0, spellCooldownTimers[i] - Time.deltaTime);
-        }
-    }
-
     void OnEnable()
     {
         castSpell1.performed += spellHandler1;
@@ -67,7 +71,6 @@ public class Wand : MonoBehaviour
         castSpell3.performed += spellHandler3;
         if (!castSpell3.enabled) castSpell3.Enable();
     }
-    
     void OnDisable()
     {
         if (castSpell1 != null)
@@ -87,27 +90,25 @@ public class Wand : MonoBehaviour
             castSpell3.performed -= spellHandler3;
             if (castSpell3.enabled) castSpell3.Disable();
         }
-
     }
 
     private void OnAttack(InputAction.CallbackContext context, int spell)
     {
-        Debug.Log("Casting spell " + spell);
         if (spellCooldownTimers[spell] > 0)
         {
             return;
         }
 
         Vector2 screenPos = Pointer.current?.position.ReadValue() ?? Vector2.zero;
-
         var cam = Camera.main;
         Vector3 world = cam.ScreenToWorldPoint(new Vector3(screenPos.x, screenPos.y, cam.nearClipPlane));
         Vector2 world2D = new Vector2(world.x, world.y);
-        spells[spell].CastSpell(gameObject.transform, world2D);
-        player.ChangeMana(-currentSpellManaCost);
+        
+        spells[spell].CastSpell(gameObject.transform, world2D, this);
+        
         Fishing.CancelCurrentFishing();
 
-        spellCooldownTimers[spell] = spellCooldowns[spell];
+        spellCooldownTimers[spell] = spellCooldowns[spell] * cooldownModifier;
     }
 
     public float GetSpellCooldown(int spell)
@@ -119,4 +120,5 @@ public class Wand : MonoBehaviour
     {
         return spellCooldownTimers[spell];
     }
+
 }

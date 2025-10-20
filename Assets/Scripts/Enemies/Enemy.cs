@@ -11,7 +11,7 @@ public class Enemy : MonoBehaviour
     public float damageLength = 0.1f;
 
     public int startingHealth = 10;
-    public int currentHealth = 10;
+    public float currentHealth = 10;
     public bool canMove = true;
 
     public Rigidbody2D rb;
@@ -25,7 +25,7 @@ public class Enemy : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-    public void Damage(int damage)
+    public void Damage(float damage)
     {
         StartCoroutine(Flash());
         currentHealth -= damage;
