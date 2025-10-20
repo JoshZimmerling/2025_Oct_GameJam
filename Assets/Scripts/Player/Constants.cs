@@ -76,6 +76,12 @@ public class Constants
         new FishingRodLine("20m Fishing Line", "Some more fishing line to explore what lies below.\n\nFishing Depth: 20m", new Dictionary<FishType, int> { { FishType.WOOD_FISH, 15 }, { FishType.STONE_FISH, 10 }, { FishType.IRON_FISH, 3 }, { FishType.STRING_FISH, 1 } }, ItemType.FISHING_ROD_LINE, "line_20m", FishingDepth.D_20_METERS),
         new FishingRodLine("30m Fishing Line", "Metal reinforced fishing line to trek even deeper.\n\nFishing Depth: 30m", new Dictionary<FishType, int> { { FishType.BRONZE_FISH, 25 }, { FishType.SILVER_FISH, 10 }, { FishType.GOLD_FISH, 3 }, { FishType.STRING_FISH, 1 } }, ItemType.FISHING_ROD_LINE, "line_30m", FishingDepth.D_30_METERS),
         new FishingRodLine("40m Fishing Line", "To reach the depths.\n\nFishing Depth: 40m", new Dictionary<FishType, int> { { FishType.GOLD_FISH, 30 }, { FishType.DIAMOND_FISH, 10 }, { FishType.STRING_FISH, 1 } }, ItemType.FISHING_ROD_LINE, "line_40m", FishingDepth.D_40_METERS),
+        //WAND
+        new WandItem("Wand of the Novice", "A beginners wand to teach you the basics.\n\nDMG MOD: 1x\nSIZE MOD: 1.5x\nRANGE MOD: 1x\nCD MOD: 1x", new Dictionary<FishType, int> { { FishType.WOOD_FISH, 4 }, { FishType.STONE_FISH, 3 }, { FishType.BRONZE_FISH, 2 } }, ItemType.WAND, "", 1f, 1.5f, 1f, 1f),
+        new WandItem("Apprentice's Wand", "To be given to all apprentices on their first day.\n\nDMG MOD: 1x\nSIZE MOD: 1x\nRANGE MOD: 1.5x\nCD MOD: 1x", new Dictionary<FishType, int> { { FishType.WOOD_FISH, 5 }, { FishType.BRONZE_FISH, 1 }, { FishType.IRON_FISH, 1 } }, ItemType.WAND, "", 1f, 1f, 1.5f, 1f),
+        new WandItem("Beginners Combat Wand", "Built for your first duel.\n\nDMG MOD: 1.1x\nSIZE MOD: 1x\nRANGE MOD: 1x\nCD MOD: 0.8x", new Dictionary<FishType, int> { { FishType.BRONZE_FISH, 3 }, { FishType.IRON_FISH, 2 } }, ItemType.WAND, "", 1.1f, 1f, 1f, 0.8f),
+        new WandItem("Merlin's* Wand", "*Not that Merlin but, a Merlin?\n\nDMG MOD: 1x\nSIZE MOD: 1.4x\nRANGE MOD: 1.4x\nCD MOD: 1.25x", new Dictionary<FishType, int> { { FishType.WOOD_FISH, 12 }, { FishType.STONE_FISH, 6 } }, ItemType.WAND, "", 1f, 1.4f, 1.4f, 1.25f),
+        new WandItem("Wand of Swiftness", "A simple speedy spell slinger.\n\nDMG MOD: 0.75x\nSIZE MOD: 0.8x\nRANGE MOD: 1.2x\nCD MOD: 0.5x", new Dictionary<FishType, int> { { FishType.STONE_FISH, 8 }, { FishType.IRON_FISH, 3 }, { FishType.SAPPHIRE_FISH, 1} }, ItemType.WAND, "", 0.75f, 0.8f, 1.2f, 0.5f),
     };
 
     public static List<CraftingCategory> AllCraftingCategories = new List<CraftingCategory> {
@@ -83,7 +89,7 @@ public class Constants
         new CraftingCategory("Fishing Rod Shaft", "Shafts can improve your yield when making a successful catch. Some will generally help with catching more fish per cast while others specialize in certain species.", ItemType.FISHING_ROD_SHAFT, null),
         new CraftingCategory("Fishing Rod Bait", "Choosing the right bait can help make sure you find the type of fish you’re looking for.", ItemType.FISHING_ROD_BAIT, "bait_starter"),
         new CraftingCategory("Fishing Rod Line", "Unlock further depths to find brand new types of fish.", ItemType.FISHING_ROD_LINE, "line_10m"),
-        new CraftingCategory("Wand", "desc", ItemType.WAND, null),
+        new CraftingCategory("Wand", "Your tool for casting spells; choosing the right wand is imperative to fighting off those pesky critters.", ItemType.WAND, null),
         new CraftingCategory("Primary Spell", "desc", ItemType.PRIMARY_ACTIVE_SPELL, null),
         new CraftingCategory("Secondary Spell", "desc", ItemType.SECONDARY_ACTIVE_SPELL, null),
         new CraftingCategory("Passive Spell", "desc", ItemType.PASSIVE_SPELL, null),
