@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static Constants;
 
 public class Wand : MonoBehaviour
 {
@@ -26,8 +27,9 @@ public class Wand : MonoBehaviour
     public float rangeModifier;
     public float cooldownModifier;
 
-    public int currentSpellManaCost;
-
+    private PlayerInventory playerInventoryScript;
+    private WandItem equippedWandItem;
+        
     private void Start()
     {
         foreach (Spell spell in spells)
@@ -35,6 +37,8 @@ public class Wand : MonoBehaviour
             spellCooldowns.Add(spell.cooldown);
             spellCooldownTimers.Add(0f);
         }
+
+        playerInventoryScript = player.inventory; 
     }
     
     private void Update()
@@ -43,6 +47,16 @@ public class Wand : MonoBehaviour
         {
             spellCooldownTimers[i] = Mathf.Max(0, spellCooldownTimers[i] - Time.deltaTime);
         }
+    }
+
+    public void UpdateWandStats()
+    {
+        equippedWandItem = (WandItem)playerInventoryScript.GetEquippedItemByItemType(ItemType.WAND); 
+        
+        damageModifier = equippedWandItem.damageModifier;
+        sizeModifier = equippedWandItem.sizeModifier;
+        rangeModifier = equippedWandItem.rangeModifier;
+        cooldownModifier = equippedWandItem.cooldownModifier;
     }
     
     void Awake()
@@ -94,6 +108,8 @@ public class Wand : MonoBehaviour
 
     private void OnAttack(InputAction.CallbackContext context, int spell)
     {
+        UpdateWandStats();
+        
         if (spellCooldownTimers[spell] > 0)
         {
             return;
