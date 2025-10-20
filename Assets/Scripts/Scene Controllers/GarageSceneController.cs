@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class GarageSceneController : MonoBehaviour
 {
     [SerializeField] PolygonCollider2D doorToOutsideCollider;
+    [SerializeField] PolygonCollider2D bedCollider;
     [SerializeField] InventoryUIHandler inventoryUI;
     [SerializeField] PolygonCollider2D inventoryCollider;
     [SerializeField] CraftablesUIHandler craftingUI;
@@ -14,6 +15,8 @@ public class GarageSceneController : MonoBehaviour
     private GameObject player;
     private Player playerScript;
     private PolygonCollider2D playerCollider;
+
+    private static bool hasPlayerSlept = true;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -31,9 +34,13 @@ public class GarageSceneController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Keyboard.current.spaceKey.wasPressedThisFrame && playerCollider.IsTouching(doorToOutsideCollider))
+        if (Keyboard.current.spaceKey.wasPressedThisFrame && playerCollider.IsTouching(doorToOutsideCollider) && hasPlayerSlept)
         {
             SceneManager.LoadScene("OutsideScene");
+        }
+        if (Keyboard.current.spaceKey.wasPressedThisFrame && playerCollider.IsTouching(bedCollider) && !hasPlayerSlept)
+        {
+            //Reset player health
         }
 
         if (Keyboard.current.spaceKey.wasPressedThisFrame && playerCollider.IsTouching(inventoryCollider))
