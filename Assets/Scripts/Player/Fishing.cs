@@ -78,7 +78,7 @@ public class Fishing : MonoBehaviour
         if(fishingStartTime != -1f)
         {
             // If right click is released cancel the current fishing
-            if (Mouse.current.rightButton.wasReleasedThisFrame)
+            if (Mouse.current.rightButton.wasReleasedThisFrame || !playerCollider.IsTouching(myCollider))
             {
                 CancelCurrentFishing();
             }

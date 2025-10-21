@@ -42,12 +42,10 @@ public class Player : MonoBehaviour
 
     public IEnumerator DisplayText(string text, float duration)
     {
-        Debug.Log("Trying to display text");
         textbox.SetActive(true);
         textbox.GetComponentInChildren<TextMeshPro>().text = text;
         yield return new WaitForSeconds(duration);
         textbox.SetActive(false);
-        Debug.Log("Trying to stop text");
     }
 
 }
