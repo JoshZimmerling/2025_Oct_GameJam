@@ -6,9 +6,7 @@ using UnityEngine.UI;
 
 public class PlayerUIHandler : MonoBehaviour
 {
-    
     [SerializeField] TextMeshProUGUI healthText;
-    [SerializeField] TextMeshProUGUI manaText;
 
     [SerializeField] GameObject player;
     
@@ -35,11 +33,6 @@ public class PlayerUIHandler : MonoBehaviour
     public void SetHealth(int health)
     {
         healthText.text = health.ToString();
-    }
-
-    public void SetMana(int mana)
-    {
-        manaText.text = mana.ToString();
     }
 
     public void SetSpellCd()
