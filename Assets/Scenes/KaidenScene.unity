@@ -414,6 +414,14 @@ PrefabInstance:
       propertyPath: uiHandler
       value: 
       objectReference: {fileID: 911831015}
+    - target: {fileID: 1690932142098763350, guid: 31911f3bdb99efd42969a1bd827b0855, type: 3}
+      propertyPath: sizeModifier
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1690932142098763350, guid: 31911f3bdb99efd42969a1bd827b0855, type: 3}
+      propertyPath: cooldownModifier
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2196912456265420497, guid: 31911f3bdb99efd42969a1bd827b0855, type: 3}
       propertyPath: m_Name
       value: Player
