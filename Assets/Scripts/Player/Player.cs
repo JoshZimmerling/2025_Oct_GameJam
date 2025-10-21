@@ -1,9 +1,12 @@
+using System.Collections;
+using TMPro;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
     [SerializeField] public PlayerInventory inventory;
     [SerializeField] PlayerUIHandler uiHandler;
+    [SerializeField] GameObject textbox;
         
     public int maxHealth = 100;
     public int currentHealth;
@@ -13,6 +16,7 @@ public class Player : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
 
         inventory = gameObject.GetComponent<PlayerInventory>();
+        textbox.SetActive(false);
         currentHealth = maxHealth;
     }
 
@@ -34,6 +38,16 @@ public class Player : MonoBehaviour
     public void SetFullHealth()
     {
         currentHealth = maxHealth;
+    }
+
+    public IEnumerator DisplayText(string text, float duration)
+    {
+        Debug.Log("Trying to display text");
+        textbox.SetActive(true);
+        textbox.GetComponentInChildren<TextMeshPro>().text = text;
+        yield return new WaitForSeconds(duration);
+        textbox.SetActive(false);
+        Debug.Log("Trying to stop text");
     }
 
 }
