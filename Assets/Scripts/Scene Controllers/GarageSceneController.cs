@@ -44,13 +44,13 @@ public class GarageSceneController : MonoBehaviour
                 }
                 else
                 {
-                    playerScript.StartCoroutine(playerScript.DisplayText("zzzzzzzzz", 2f));
+                    playerScript.DisplayText("zzzzzzzzz", 2f);
                 }
             }
             else if (playerCollider.IsTouching(bedCollider)){
                 if (hasPlayerSlept)
                 {
-                    playerScript.StartCoroutine(playerScript.DisplayText("Not really feeling a nap rn", 2f));
+                    playerScript.DisplayText("Not really feeling a nap rn", 2f);
                 }
                 else
                 {

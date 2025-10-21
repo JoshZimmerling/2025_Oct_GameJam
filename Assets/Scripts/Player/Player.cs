@@ -40,7 +40,12 @@ public class Player : MonoBehaviour
         currentHealth = maxHealth;
     }
 
-    public IEnumerator DisplayText(string text, float duration)
+    public void DisplayText(string text, float duration)
+    {
+        StartCoroutine(TextDisplayLogic(text, duration));
+    }
+
+    private IEnumerator TextDisplayLogic(string text, float duration)
     {
         textbox.SetActive(true);
         textbox.GetComponentInChildren<TextMeshPro>().text = text;
