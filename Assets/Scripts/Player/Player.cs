@@ -7,7 +7,8 @@ public class Player : MonoBehaviour
     [SerializeField] public PlayerInventory inventory;
     [SerializeField] PlayerUIHandler uiHandler;
     [SerializeField] GameObject textbox;
-        
+    private Coroutine currentTextBoxCoroutine;
+
     public int maxHealth = 100;
     public int currentHealth;
     
@@ -42,7 +43,20 @@ public class Player : MonoBehaviour
 
     public void DisplayText(string text, float duration)
     {
-        StartCoroutine(TextDisplayLogic(text, duration));
+        if (currentTextBoxCoroutine != null)
+        {
+            StopCoroutine(currentTextBoxCoroutine);
+        }
+        currentTextBoxCoroutine = StartCoroutine(TextDisplayLogic(text, duration));
+    }
+
+    public void ClearText()
+    {
+        if (currentTextBoxCoroutine != null)
+        {
+            StopCoroutine(currentTextBoxCoroutine);
+            textbox.SetActive(false);
+        }
     }
 
     private IEnumerator TextDisplayLogic(string text, float duration)

@@ -55,6 +55,7 @@ public class GarageSceneController : MonoBehaviour
                 else
                 {
                     hasPlayerSlept = true;
+                    playerScript.ClearText();
                     playerScript.SetFullHealth();
                 }
             }
