@@ -1,5 +1,3 @@
-using Unity.Mathematics;
-using UnityEditor.UIElements;
 using UnityEngine;
 
 public class Spell : MonoBehaviour
