@@ -43,10 +43,7 @@ public class Player : MonoBehaviour
 
     public void DisplayText(string text, float duration)
     {
-        if (currentTextBoxCoroutine != null)
-        {
-            StopCoroutine(currentTextBoxCoroutine);
-        }
+        ClearText();
         currentTextBoxCoroutine = StartCoroutine(TextDisplayLogic(text, duration));
     }
 

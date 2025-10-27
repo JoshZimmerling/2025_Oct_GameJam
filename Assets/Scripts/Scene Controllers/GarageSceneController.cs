@@ -16,6 +16,7 @@ public class GarageSceneController : MonoBehaviour
     private PolygonCollider2D playerCollider;
 
     private static bool hasPlayerSlept;
+    private static bool firstTimeEnteringGarage = true;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -24,8 +25,17 @@ public class GarageSceneController : MonoBehaviour
         playerScript = player.GetComponent<Player>();
         playerCollider = player.GetComponent<PolygonCollider2D>();
 
-        player.transform.position = new Vector3(0,0,player.transform.position.z);
-        hasPlayerSlept = false;
+        if (firstTimeEnteringGarage)
+        {
+            player.transform.position = new Vector3(-6f, -2f, player.transform.position.z);
+            hasPlayerSlept = true;
+            firstTimeEnteringGarage = false;
+        }
+        else
+        {
+            player.transform.position = new Vector3(6f, 0, player.transform.position.z);
+            hasPlayerSlept = false;
+        }
 
         inventoryUI.playerScript = playerScript;
         craftingUI.playerScript = playerScript;
@@ -56,9 +66,8 @@ public class GarageSceneController : MonoBehaviour
                 }
                 else
                 {
-                    playerScript.DisplayText("zzzzzzzzzz", 2f);
                     hasPlayerSlept = true;
-                    playerScript.ClearText();
+                    playerScript.DisplayText("zzzzzzzzzz", 2f);
                     playerScript.SetFullHealth();
                 }
             }
