@@ -29,6 +29,8 @@ public class GarageSceneController : MonoBehaviour
 
         inventoryUI.playerScript = playerScript;
         craftingUI.playerScript = playerScript;
+
+        GameObject.Find("Camera").GetComponent<CameraScript>().UpdateCameraZoom(5);
     }
 
     // Update is called once per frame
@@ -44,7 +46,7 @@ public class GarageSceneController : MonoBehaviour
                 }
                 else
                 {
-                    playerScript.DisplayText("zzzzzzzzz", 2f);
+                    playerScript.DisplayText("I'm too sleepy", 2f);
                 }
             }
             else if (playerCollider.IsTouching(bedCollider)){
@@ -54,6 +56,7 @@ public class GarageSceneController : MonoBehaviour
                 }
                 else
                 {
+                    playerScript.DisplayText("zzzzzzzzzz", 2f);
                     hasPlayerSlept = true;
                     playerScript.ClearText();
                     playerScript.SetFullHealth();

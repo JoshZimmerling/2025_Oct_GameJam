@@ -16,6 +16,8 @@ public class OutsideSceneController : MonoBehaviour
     private int fullDayTime = 180;
     public bool dayComplete = false;
 
+    CameraScript camera;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -28,11 +30,15 @@ public class OutsideSceneController : MonoBehaviour
         dayStartTime = Time.time;
 
         player.transform.position = new Vector3(0, 0, player.transform.position.z);
+
+        camera = GameObject.Find("Camera").GetComponent<CameraScript>();
+        camera.UpdateCameraZoom(7);
     }
 
     // Update is called once per frame
     void Update()
     {
+        dayInfo.transform.position = new Vector3(player.transform.position.x + (8f/5f * camera.GetCameraZoom()), player.transform.position.y + (4f/5f * camera.GetCameraZoom()), dayInfo.transform.position.z);
         if (!dayComplete)
         {
             TimeUpdate();

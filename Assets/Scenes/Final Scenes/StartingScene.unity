@@ -1070,7 +1070,7 @@ GameObject:
   - component: {fileID: 681010123}
   - component: {fileID: 681010124}
   m_Layer: 0
-  m_Name: Main Camera
+  m_Name: Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1119,7 +1119,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 7
+  orthographic size: 5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1203,9 +1203,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 681010119}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30711410c48ddaf47b7c6cfaea18f202, type: 3}
+  m_Script: {fileID: 11500000, guid: fe29d76d58cee18499a9e4778059327d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraScript
+  player: {fileID: 1454297286}
 --- !u!1 &790985691
 GameObject:
   m_ObjectHideFlags: 0
@@ -2302,6 +2303,11 @@ SpriteRenderer:
 --- !u!1 &1454297280 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2196912456265420497, guid: 31911f3bdb99efd42969a1bd827b0855, type: 3}
+  m_PrefabInstance: {fileID: 1782946931}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1454297286 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2368571131921237975, guid: 31911f3bdb99efd42969a1bd827b0855, type: 3}
   m_PrefabInstance: {fileID: 1782946931}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1782946931
