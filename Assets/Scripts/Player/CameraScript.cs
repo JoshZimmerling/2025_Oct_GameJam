@@ -3,7 +3,7 @@ using UnityEngine;
 public class CameraScript : MonoBehaviour
 {
     private float cameraZoom;
-    private Transform transform;
+    private Transform myTransform;
     [SerializeField] Transform player;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -11,7 +11,7 @@ public class CameraScript : MonoBehaviour
     {
         DontDestroyOnLoad(this.gameObject);
 
-        transform = gameObject.GetComponent<Transform>();
+        myTransform = gameObject.GetComponent<Transform>();
 
         cameraZoom = 5;
         UpdateCameraZoom(cameraZoom);
@@ -19,7 +19,7 @@ public class CameraScript : MonoBehaviour
 
     void Update()
     {
-        transform.position = new Vector3(player.position.x, player.position.y, -10);
+        myTransform.position = new Vector3(player.position.x, player.position.y, -10);
     }
 
     public void UpdateCameraZoom(float zoom)
