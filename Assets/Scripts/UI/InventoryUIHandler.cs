@@ -34,6 +34,7 @@ public class InventoryUIHandler : MonoBehaviour
     public void OpenInventoryMenu()
     {
         playerScript.gameObject.GetComponent<PlayerMovement>().DisableMovement();
+        playerScript.gameObject.GetComponentInChildren<Wand>().DisableSpells();
         itemInfoPanel.SetActive(false);
         UpdateResourceCount();
         PopulateInventoryItemsList();
@@ -43,6 +44,7 @@ public class InventoryUIHandler : MonoBehaviour
     public void CloseInventoryMenu()
     {
         playerScript.gameObject.GetComponent<PlayerMovement>().EnableMovement();
+        playerScript.gameObject.GetComponentInChildren<Wand>().EnableSpells();
         itemInfoPanel.SetActive(false);
         gameObject.SetActive(false);
         TurnOffEquippedItemBackgrounds();

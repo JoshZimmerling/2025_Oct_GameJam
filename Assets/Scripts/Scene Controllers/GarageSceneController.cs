@@ -27,13 +27,13 @@ public class GarageSceneController : MonoBehaviour
 
         if (firstTimeEnteringGarage)
         {
-            player.transform.position = new Vector3(-6f, -2f, player.transform.position.z);
+            player.transform.position = new Vector3(-6.4f, -2f, player.transform.position.z);
             hasPlayerSlept = true;
             firstTimeEnteringGarage = false;
         }
         else
         {
-            player.transform.position = new Vector3(6f, 0, player.transform.position.z);
+            player.transform.position = new Vector3(6.4f, 0, player.transform.position.z);
             hasPlayerSlept = false;
         }
 

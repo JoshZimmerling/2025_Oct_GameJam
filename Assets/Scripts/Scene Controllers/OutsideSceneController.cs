@@ -29,7 +29,7 @@ public class OutsideSceneController : MonoBehaviour
         dayInfo.GetComponentInChildren<TextMeshPro>().text = "Day " + dayCounter;
         dayStartTime = Time.time;
 
-        player.transform.position = new Vector3(0, 0, player.transform.position.z);
+        player.transform.position = new Vector3(-6.4f, -2f, player.transform.position.z);
 
         cameraScript = GameObject.Find("Camera").GetComponent<CameraScript>();
         cameraScript.UpdateCameraZoom(7);

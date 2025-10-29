@@ -137,4 +137,14 @@ public class Wand : MonoBehaviour
         return spellCooldownTimers[spell];
     }
 
+    public void DisableSpells()
+    {
+        OnDisable();
+    }
+
+    public void EnableSpells()
+    {
+        OnEnable();
+    }
+
 }
