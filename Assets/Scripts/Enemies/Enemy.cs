@@ -18,11 +18,16 @@ public class Enemy : MonoBehaviour
 
     public GameObject healthbar;
 
+    public float healthBarStartingXScale;
+    public float healthBarStartingXPos;
+
     void Start()
     {
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         originalColor = spriteRenderer.color;
         rb = GetComponent<Rigidbody2D>();
+        healthBarStartingXPos = healthbar.transform.localPosition.x;
+        healthBarStartingXScale = healthbar.transform.localScale.x;
     }
 
     public void Damage(float damage)
@@ -30,7 +35,7 @@ public class Enemy : MonoBehaviour
         StartCoroutine(Flash());
         currentHealth -= damage;
 
-        healthbar.transform.localScale = new Vector3((float)currentHealth / (float) startingHealth, 1 ,  1);
+        ScaleHealthBar();
         
         if (currentHealth <= 0)
         {
@@ -61,5 +66,14 @@ public class Enemy : MonoBehaviour
         {
             player.ChangeHealth(-5);
         }
+    }
+
+    private void ScaleHealthBar()
+    {
+        float healthPercentage = (float)currentHealth / (float) startingHealth;
+        float newXScale = healthBarStartingXScale * healthPercentage;
+        
+        healthbar.transform.localScale = new Vector3(newXScale, healthbar.transform.localScale.y ,  healthbar.transform.localScale.z);
+        healthbar.transform.localPosition = new Vector2(healthBarStartingXPos - (healthBarStartingXScale-newXScale) * 1/2, healthbar.transform.localPosition.y);
     }
 }
