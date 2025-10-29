@@ -28,6 +28,9 @@ public class Enemy : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         healthBarStartingXPos = healthbar.transform.localPosition.x;
         healthBarStartingXScale = healthbar.transform.localScale.x;
+
+        //Allows the enemies to ignore the outdoor boundaries (this is handled in unitys settings now but keeping it around as reminder) ||| Edit -> Project Settings -> Physics 2D -> Layer Collision Matrix
+        Physics.IgnoreLayerCollision(LayerMask.NameToLayer("Enemy"), LayerMask.NameToLayer("OutdoorBoundary"), true);
     }
 
     public void Damage(float damage)
@@ -61,7 +64,7 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Player player = other.gameObject.GetComponent<Player>();
+        Player player = other.transform.GetComponentInParent<Player>();
         if (player != null)
         {
             player.ChangeHealth(-5);

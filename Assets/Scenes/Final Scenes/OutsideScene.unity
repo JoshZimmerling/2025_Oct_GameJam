@@ -4028,7 +4028,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8957933351511380026, guid: 5d4917f430229de4590aaf2169c10807, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 16.9
+      value: 15.82
       objectReference: {fileID: 0}
     - target: {fileID: 8957933351511380026, guid: 5d4917f430229de4590aaf2169c10807, type: 3}
       propertyPath: m_LocalPosition.y
@@ -4299,7 +4299,7 @@ GameObject:
   - component: {fileID: 1931737946}
   - component: {fileID: 1931737945}
   - component: {fileID: 1931737944}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Wall Tilemap
   m_TagString: Untagged
   m_Icon: {fileID: 0}

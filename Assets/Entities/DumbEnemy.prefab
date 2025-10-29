@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 903322041336850340}
   - component: {fileID: 5331002100503267928}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: HealthBarOutline
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -100,7 +100,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3578156891124940763}
   - component: {fileID: 3560968262857997429}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: HealthBarBackground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -170,7 +170,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.5188679, g: 0.5188679, b: 0.5188679, a: 1}
+  m_Color: {r: 0.754717, g: 0.20291919, b: 0.20291919, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -189,7 +189,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1491430465051420505}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Healthbar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -224,7 +224,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9172324517342617461}
   - component: {fileID: 1779280223070560888}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Isometric Diamond
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -314,7 +314,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1609540424894164673}
   - component: {fileID: 3314846557462495415}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: HealthbarSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -403,11 +403,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8260281579197994696}
-  - component: {fileID: 4984881693090558905}
   - component: {fileID: 4977477763617601819}
   - component: {fileID: 5947270969820581372}
   - component: {fileID: 8769338045319181258}
-  m_Layer: 0
+  - component: {fileID: 4984881693090558905}
+  m_Layer: 7
   m_Name: DumbEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -431,19 +431,6 @@ Transform:
   - {fileID: 1491430465051420505}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4984881693090558905
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8731523128728504031}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb330bc6cbdacec448330d31bc503f7a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DumbEnemyScript
-  moveSpeed: 3
 --- !u!50 &4977477763617601819
 Rigidbody2D:
   serializedVersion: 5
@@ -550,3 +537,16 @@ MonoBehaviour:
   healthbar: {fileID: 7925164714729268450}
   healthBarStartingXScale: 0
   healthBarStartingXPos: 0
+--- !u!114 &4984881693090558905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8731523128728504031}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb330bc6cbdacec448330d31bc503f7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DumbEnemyScript
+  moveSpeed: 3

@@ -29,7 +29,7 @@ public class Player : MonoBehaviour
     public void ChangeHealth(int amount)
     {
         currentHealth += amount;
-        if(currentHealth < maxHealth)
+        if(currentHealth > maxHealth)
         {
             currentHealth = maxHealth;
         }

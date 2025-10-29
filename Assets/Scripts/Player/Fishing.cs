@@ -48,7 +48,7 @@ public class Fishing : MonoBehaviour
     private void Start()
     {
         myCollider = gameObject.GetComponent<PolygonCollider2D>();
-        playerCollider = GameObject.Find("Player").GetComponent<PolygonCollider2D>();
+        playerCollider = GameObject.Find("Player").transform.Find("Hitbox Collider").gameObject.GetComponent<PolygonCollider2D>();
         playerScript = GameObject.Find("Player").GetComponent<Player>();
         playerInventoryScript = playerScript.inventory;
 
