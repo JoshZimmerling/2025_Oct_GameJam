@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using static Unity.VisualScripting.Metadata;
 
 public class StartingSceneController : MonoBehaviour
 {
@@ -12,7 +13,7 @@ public class StartingSceneController : MonoBehaviour
     void Start()
     {
         player = GameObject.Find("Player");
-        playerCollider = player.GetComponent<PolygonCollider2D>();
+        playerCollider = player.transform.Find("Hitbox Collider").gameObject.GetComponent<PolygonCollider2D>();
     }
 
     // Update is called once per frame

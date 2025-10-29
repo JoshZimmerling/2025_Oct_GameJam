@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6477186643426666820}
   - component: {fileID: 441319161255465282}
   - component: {fileID: 5242960174048780008}
-  - component: {fileID: 1659042617313652976}
+  - component: {fileID: 1761127074648526905}
   - component: {fileID: 272746210079199238}
   m_Layer: 0
   m_Name: Player
@@ -37,6 +37,7 @@ Transform:
   - {fileID: 4155464024243365071}
   - {fileID: 2074048416823788050}
   - {fileID: 7080665459520483769}
+  - {fileID: 8535675696015390589}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6477186643426666820
@@ -52,7 +53,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
   moveSpeed: 5
-  rb: {fileID: 1659042617313652976}
+  rb: {fileID: 1761127074648526905}
 --- !u!114 &441319161255465282
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -82,7 +83,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 907f0eacf1e693e488740aeea2de0910, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerInventory
---- !u!50 &1659042617313652976
+--- !u!50 &1761127074648526905
 Rigidbody2D:
   serializedVersion: 5
   m_ObjectHideFlags: 0
@@ -155,12 +156,95 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0, y: 1.046465}
-      - {x: -0.4631676, y: 0.7852868}
-      - {x: -0.49485296, y: -0.7857835}
-      - {x: 0.034552336, y: -1.039343}
-      - {x: 0.4716233, y: -0.75093436}
-      - {x: 0.5096357, y: 0.7272058}
+    - - {x: 0.25, y: -0.3}
+      - {x: -0.3, y: -0.3}
+      - {x: -0.3, y: -0.9}
+      - {x: 0.25, y: -0.9}
+  m_UseDelaunayMesh: 0
+--- !u!1 &2407430156573976671
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8535675696015390589}
+  - component: {fileID: 3758177955656210811}
+  m_Layer: 0
+  m_Name: Hitbox/Interactables Collider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8535675696015390589
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2407430156573976671}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2368571131921237975}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!60 &3758177955656210811
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2407430156573976671}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.1, y: 1}
+      - {x: -0.4, y: 0.6}
+      - {x: -0.4, y: -0.9}
+      - {x: -0.1, y: -1}
+      - {x: 0.3, y: -0.9}
+      - {x: 0.3, y: 0.6}
   m_UseDelaunayMesh: 0
 --- !u!1 &2693634292836456941
 GameObject:
@@ -493,7 +577,7 @@ Transform:
   m_GameObject: {fileID: 5673310123647705676}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
-  m_LocalPosition: {x: 0, y: -0.25, z: 4}
+  m_LocalPosition: {x: 0, y: -0.25, z: 0.2}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -23,7 +23,7 @@ public class GarageSceneController : MonoBehaviour
     {
         player = GameObject.Find("Player");
         playerScript = player.GetComponent<Player>();
-        playerCollider = player.GetComponent<PolygonCollider2D>();
+        playerCollider = player.transform.Find("Hitbox Collider").gameObject.GetComponent<PolygonCollider2D>();
 
         if (firstTimeEnteringGarage)
         {

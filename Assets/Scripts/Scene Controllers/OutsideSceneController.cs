@@ -22,7 +22,7 @@ public class OutsideSceneController : MonoBehaviour
     void Start()
     {
         player = GameObject.Find("Player");
-        playerCollider = player.GetComponent<PolygonCollider2D>();
+        playerCollider = player.transform.Find("Hitbox Collider").gameObject.GetComponent<PolygonCollider2D>();
         timeDial = dayInfo.transform.Find("Dial");
 
         dayCounter++;
