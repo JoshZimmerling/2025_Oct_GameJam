@@ -6,26 +6,28 @@ public class Enemy : MonoBehaviour
 {
     SpriteRenderer spriteRenderer;
 
-    public Color originalColor; 
-    public Color damageColor = Color.red;
-    public float damageLength = 0.1f;
+    private Color originalColor = Color.white;
+    private Color damageColor = Color.red;
+    private float damageLength = 0.1f;
 
-    public int startingHealth = 10;
-    public float currentHealth = 10;
-    public bool canMove = true;
+    public float startingHealth = 10;
+    private float currentHealth;
+    public float moveSpeed = 2f;
+    private bool canMove = true;
 
-    public Rigidbody2D rb;
+    private Rigidbody2D rb;
 
     public GameObject healthbar;
 
-    public float healthBarStartingXScale;
-    public float healthBarStartingXPos;
+    private float healthBarStartingXScale;
+    private float healthBarStartingXPos;
 
     void Start()
     {
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         originalColor = spriteRenderer.color;
         rb = GetComponent<Rigidbody2D>();
+        currentHealth = startingHealth;
         healthBarStartingXPos = healthbar.transform.localPosition.x;
         healthBarStartingXScale = healthbar.transform.localScale.x;
 
@@ -52,23 +54,21 @@ public class Enemy : MonoBehaviour
         rb.AddForce(direction * value, ForceMode2D.Impulse);
     }
 
+    public bool CanMove()
+    {
+        return canMove;
+    }
+
     IEnumerator Flash()
     {
         canMove = false;
+        rb.bodyType = RigidbodyType2D.Dynamic;
         spriteRenderer.color = damageColor;
         yield return new WaitForSeconds(damageLength);
         spriteRenderer.color = originalColor;
+        rb.bodyType = RigidbodyType2D.Kinematic;
         canMove = true;
         rb.linearVelocity = Vector2.zero;
-    }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        Player player = other.transform.GetComponentInParent<Player>();
-        if (player != null)
-        {
-            player.ChangeHealth(-5);
-        }
     }
 
     private void ScaleHealthBar()

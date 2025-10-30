@@ -1,14 +1,10 @@
 fileFormatVersion: 2
-<<<<<<< HEAD
-guid: ca27583bb5c355c4f89757f4357a57cf
-=======
-guid: 6a848f373b7899f4d96bc3bc28476712
->>>>>>> 7420a67 (FIREBALLS)
+guid: 35afd6e25a60b724ea4ed5dbd71292c6
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4334783836991956000
-    second: player_0
+      213: 4990863248174018062
+    second: enemy_mosquito_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -104,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: player_0
+      name: enemy_mosquito_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 32
-        height: 64
+        x: 5
+        y: 6
+        width: 20
+        height: 21
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -119,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 024a20edeee382c30800000000000000
-      internalID: 4334783836991956000
+      spriteID: e0ee6f57eab134540800000000000000
+      internalID: 4990863248174018062
       vertices: []
       indices: 
       edges: []
@@ -139,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      player_0: 4334783836991956000
+      enemy_mosquito_0: 4990863248174018062
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
