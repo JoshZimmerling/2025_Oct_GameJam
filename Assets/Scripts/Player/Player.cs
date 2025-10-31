@@ -11,14 +11,22 @@ public class Player : MonoBehaviour
 
     public int maxHealth = 100;
     public int currentHealth;
-    
+
+    public GameObject healthbar;
+
+    private float healthBarStartingXScale;
+    private float healthBarStartingXPos;
+
     void Start()
     {
         DontDestroyOnLoad(this.gameObject);
 
         inventory = gameObject.GetComponent<PlayerInventory>();
         textbox.SetActive(false);
+
         currentHealth = maxHealth;
+        healthBarStartingXPos = healthbar.transform.localPosition.x;
+        healthBarStartingXScale = healthbar.transform.localScale.x;
     }
 
     private void Update()
@@ -33,12 +41,13 @@ public class Player : MonoBehaviour
         {
             currentHealth = maxHealth;
         }
+        ScaleHealthBar();
         uiHandler.SetHealth(currentHealth);
     }
 
     public void SetFullHealth()
     {
-        currentHealth = maxHealth;
+        ChangeHealth(maxHealth);
     }
 
     public void DisplayText(string text, float duration)
@@ -64,4 +73,12 @@ public class Player : MonoBehaviour
         textbox.SetActive(false);
     }
 
+    private void ScaleHealthBar()
+    {
+        float healthPercentage = (float)currentHealth / (float)maxHealth;
+        float newXScale = healthBarStartingXScale * healthPercentage;
+
+        healthbar.transform.localScale = new Vector3(newXScale, healthbar.transform.localScale.y, healthbar.transform.localScale.z);
+        healthbar.transform.localPosition = new Vector3(healthBarStartingXPos - (healthBarStartingXScale - newXScale) * 1 / 2, healthbar.transform.localPosition.y, healthbar.transform.localPosition.z);
+    }
 }
