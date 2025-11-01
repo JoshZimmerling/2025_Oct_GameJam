@@ -37,24 +37,13 @@ public class PlayerUIHandler : MonoBehaviour
 
     public void SetSpellCd()
     {
-        for (int i = 0; i < wand.spells.Count; i++)
-        {
-            if (wand.GetSpellTimer(i)== 0)
-            {
-                spellCdProgressBars[i].transform.localScale = new Vector3(1, 0, 1);
-            }
-            else
-            {
-                spellCdProgressBars[i].transform.localScale = new Vector3(1, 1 - ( wand.GetSpellTimer(i) / wand.GetSpellCooldown(i) ), 1);
-            }
-        }
+        spellCdProgressBars[0].transform.localScale = wand.GetPrimaryActiveSpell().cooldownTimer == 0 ? new Vector3(1, 0, 1) : new Vector3(1, 1 - (wand.GetPrimaryActiveSpell().cooldownTimer / wand.GetPrimaryActiveSpell().cooldown), 1);
+        spellCdProgressBars[1].transform.localScale = wand.GetSecondaryActiveSpell().cooldownTimer == 0 ? new Vector3(1, 0, 1) : new Vector3(1, 1 - (wand.GetSecondaryActiveSpell().cooldownTimer / wand.GetSecondaryActiveSpell().cooldown), 1);
     }
 
     public void UpdateSpellIcons()
     {
-        for (int i = 0; i < wand.spells.Count; i++)
-        {
-            spellImages[i].sprite = wand.spells[i].effect.GetComponentInChildren<SpriteRenderer>().sprite;
-        }
+        spellImages[0].sprite = wand.GetPrimaryActiveSpell().effect.GetComponentInChildren<SpriteRenderer>().sprite;
+        spellImages[1].sprite = wand.GetSecondaryActiveSpell().effect.GetComponentInChildren<SpriteRenderer>().sprite;
     }
 }

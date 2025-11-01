@@ -528,7 +528,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   startingHealth: 10
-  moveSpeed: 2
+  moveSpeed: 3
   healthbar: {fileID: 7925164714729268450}
 --- !u!114 &4984881693090558905
 MonoBehaviour:

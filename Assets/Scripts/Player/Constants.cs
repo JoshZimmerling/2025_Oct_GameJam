@@ -85,6 +85,10 @@ public class Constants
         new WandItem("Pocket Wand", "You’ve heard of a pocket knife.\n\nDMG MOD: 2.5x\nSIZE MOD: 0.5x\nRANGE MOD: 0.25x\nCD MOD: 0.75x", new Dictionary<FishType, int> { { FishType.IRON_FISH, 15 }, { FishType.SILVER_FISH, 10 } }, ItemType.WAND, "", 2.5f, 0.5f, 0.25f, 0.75f),
         new WandItem("Large Caliber Wand", "Steady...\n\nDMG MOD: 2x\nSIZE MOD: 1.25x\nRANGE MOD: 2x\nCD MOD: 2x", new Dictionary<FishType, int> { { FishType.STONE_FISH, 15 }, { FishType.BRONZE_FISH, 10 }, { FishType.GOLD_FISH, 3 } }, ItemType.WAND, "", 2f, 1.25f, 2f, 2f),
         new WandItem("Wand of the Mage", "A professional’s choice.\n\nDMG MOD: 1.25x\nSIZE MOD: 1.25x\nRANGE MOD: 1.25x\nCD MOD: 0.75x", new Dictionary<FishType, int> { { FishType.WOOD_FISH, 30 }, { FishType.EMERALD_FISH, 1 } }, ItemType.WAND, "", 1.25f, 1.25f, 1.25f, .75f),
+        //PRIMARY ACTIVE SPELL
+        new ActiveSpellItem("Lightning Spell", "Shoot a beam of lightning towards your target, dealing good damage across multiple enemies.\n\nDMG: 3\nRANGE: SHORT\nCOOLDOWN: 0.25s\nPIERCING: YES", new Dictionary<FishType, int> { { FishType.BRONZE_FISH, 4 }, { FishType.IRON_FISH, 1 } }, ItemType.PRIMARY_ACTIVE_SPELL, "", "LightningSpell"),
+        //SECONDARY ACTIVE SPELL
+        new ActiveSpellItem("Meteor Spell", "Call down a large meteor that does damage in an area around the cast location.\n\nDMG: 10\nRANGE: LONG\nCOOLDOWN: 10s\nPIERCING: YES", new Dictionary<FishType, int> { { FishType.STONE_FISH, 1 } }, ItemType.SECONDARY_ACTIVE_SPELL, "", "MeteorSpell"),
     };
 
     public static List<CraftingCategory> AllCraftingCategories = new List<CraftingCategory> {
@@ -199,6 +203,16 @@ public class Constants
             sizeModifier = sizeMod;
             rangeModifier = rangeMod;
             cooldownModifier = cdMod;
+        }
+    }
+
+    public class ActiveSpellItem : CraftableItem
+    {
+        public string spellName;
+
+        public ActiveSpellItem(string name, string desc, Dictionary<FishType, int> costs, ItemType type, string image, string spell) : base(name, desc, costs, type, image)
+        {
+            spellName = spell;
         }
     }
 }

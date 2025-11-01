@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2210729355803896931}
   - component: {fileID: 7063088739605303930}
   m_Layer: 0
-  m_Name: SmiteSpell
+  m_Name: MeteorSpell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46,4 +46,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Spell
   effect: {fileID: 263500737777285546, guid: 46407f2edda5b854a9e80777c428cfe1, type: 3}
   duration: 0.5
-  cooldown: 1
+  cooldown: 10
+  cooldownTimer: 0

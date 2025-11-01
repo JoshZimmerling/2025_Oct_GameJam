@@ -1,12 +1,15 @@
-using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using static Constants;
 
 public class Spawnzone : MonoBehaviour
 {
     private Collider2D zone;
     private bool shouldSpawnEnemies;
 
-    public GameObject enemy;
+    [SerializeField] List<GameObject> spawnableEnemies;
+    [SerializeField] List<int> enemySpawnChances;
     
     public float spawnTimer;
     public float defaultSpawnTimer = 5;
@@ -26,8 +29,21 @@ public class Spawnzone : MonoBehaviour
             if (spawnTimer <= 0)
             {
                 Vector2 spawnLoc = zone.GetRandomPointInside();
-                Instantiate(enemy, spawnLoc, Quaternion.identity);
                 spawnTimer = defaultSpawnTimer;
+
+                GameObject enemyToSpawn = spawnableEnemies[0]; 
+                int randomNumber = Random.Range(0, 100);
+                for (int i = 0; i < enemySpawnChances.Count; i++)
+                {
+                    if (randomNumber < enemySpawnChances[i])
+                    {
+                        enemyToSpawn = spawnableEnemies[i];
+                        break;
+                    }
+                    randomNumber -= enemySpawnChances[i];
+                }
+
+                Instantiate(enemyToSpawn, spawnLoc, Quaternion.identity);
             }
         }
     }

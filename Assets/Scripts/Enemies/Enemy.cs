@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class Enemy : MonoBehaviour
 {
@@ -16,6 +17,10 @@ public class Enemy : MonoBehaviour
     private bool canMove = true;
 
     private Rigidbody2D rb;
+    private Vector2 target;
+    private Vector2 direction;
+
+    private Player player;
 
     public GameObject healthbar;
 
@@ -27,6 +32,7 @@ public class Enemy : MonoBehaviour
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         originalColor = spriteRenderer.color;
         rb = GetComponent<Rigidbody2D>();
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         currentHealth = startingHealth;
         healthBarStartingXPos = healthbar.transform.localPosition.x;
         healthBarStartingXScale = healthbar.transform.localScale.x;
@@ -57,6 +63,19 @@ public class Enemy : MonoBehaviour
     public bool CanMove()
     {
         return canMove;
+    }
+
+    public Player GetPlayer()
+    {
+        return player;
+    }
+
+    public void MoveTowardsPlayer(float speed)
+    {
+        target = player.transform.position;
+        direction = (target - (Vector2)transform.position).normalized;
+
+        rb.MovePosition(rb.position + direction * speed * Time.fixedDeltaTime);
     }
 
     IEnumerator Flash()

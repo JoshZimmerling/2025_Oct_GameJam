@@ -661,7 +661,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 703ae89a714230e4882e702254392693, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Spawnzone
-  enemy: {fileID: 8731523128728504031, guid: 1887d4cfab84b324eb907600ec1c4010, type: 3}
+  spawnableEnemies:
+  - {fileID: 8731523128728504031, guid: 1887d4cfab84b324eb907600ec1c4010, type: 3}
+  enemySpawnChances: 64000000
   spawnTimer: 0
   defaultSpawnTimer: 5
 --- !u!1 &1665658457

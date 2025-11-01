@@ -11,7 +11,10 @@ public class SpellEffect : MonoBehaviour
         if (enemy != null)
         {
             enemy.Damage(damage);
-            enemy.HitKnockback(3, transform.position);
+            if (damage > 0)
+            {
+                enemy.HitKnockback(3, transform.position);
+            }
             
             if (!isPassthrough)
             {

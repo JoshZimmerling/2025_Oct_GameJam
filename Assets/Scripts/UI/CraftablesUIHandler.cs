@@ -165,7 +165,7 @@ public class CraftablesUIHandler : MonoBehaviour
             GameObject createdPrefab = Instantiate(resourceCountPrefab, resourceListUI);
             createdPrefab.transform.localPosition = new Vector3(xPos, yPos, 0);
             createdPrefab.GetComponentInChildren<Image>().sprite = playerScript.inventory.HasSeenFish(fish.Key) ? Resources.Load<Sprite>("Fish Sprites/" + fish.Key.ToString()) : Resources.Load<Sprite>("Fish Sprites/QUESTION_MARK");
-            createdPrefab.GetComponentInChildren<TextMeshProUGUI>().text = fish.Value.ToString();
+            createdPrefab.GetComponentInChildren<TextMeshProUGUI>().text = " " + fish.Value.ToString();
             counter++;
             if (counter % 6 == 0)
             {

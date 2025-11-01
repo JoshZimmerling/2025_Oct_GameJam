@@ -28,6 +28,8 @@ public class PlayerInventory : MonoBehaviour
             new FishingRodLine("10m Fishing Line", "Your every day fishing line; nothing special..\n\nFishing Depth: 10m", new Dictionary<FishType, int> (), ItemType.FISHING_ROD_LINE, "line_10m", FishingDepth.D_10_METERS),
             new FishingRodBait("Starting Fishing Bait", "Your every day fishing bait; nothing special..\n\nFish Type: NONE\nFind Chance Increase: 0x", new Dictionary<FishType, int>(), ItemType.FISHING_ROD_BAIT, "bait_starter", new List<FishType>(), 1f),
             new WandItem("Starting Wand", "Your every day wand; nothing special..\n\nDMG MOD: 1x\nSIZE MOD: 1x\nRANGE MOD: 1x\nCD MOD: 1x", new Dictionary<FishType, int>(), ItemType.WAND, "", 1f, 1f, 1f, 1f),
+            new ActiveSpellItem("Fireball Spell", "Shoot a ball of fire towards your target, dealing large damage from a distance.\n\nDMG: 5\nRANGE: LONG\nCOOLDOWN: 1s\nPIERCING: NO", new Dictionary<FishType, int>(), ItemType.PRIMARY_ACTIVE_SPELL, "", "FireballSpell"),
+            new ActiveSpellItem("Healing Spell", "Recovers a bit of health.\n\nHEALING: 5\nCOOLDOWN: 15s", new Dictionary<FishType, int>(), ItemType.SECONDARY_ACTIVE_SPELL, "", "HealSpell"),
             //new FishingRodHandle("Test Handle", "You should not have found this...\n\nFishing Time: 0.2s\nQTE Size: 100%\nQTE Range: 0%-100%", new Dictionary<FishType, int>(), ItemType.FISHING_ROD_HANDLE, null, .2f, 1f, .5f, .5f),
             //new FishingRodShaft("Test Shaft", "You should not have found this...\n\nFish Type: ALL\nChance to Multiply: 50%\nMutiplier Amount: 5x", new Dictionary<FishType, int>(), ItemType.FISHING_ROD_SHAFT, null, new List<FishType> { FishType.WOOD_FISH, FishType.STONE_FISH, FishType.BRONZE_FISH, FishType.IRON_FISH, FishType.SILVER_FISH, FishType.GOLD_FISH, FishType.DIAMOND_FISH, FishType.SAPPHIRE_FISH, FishType.EMERALD_FISH, FishType.RUBY_FISH, FishType.STRING_FISH}, 50, 5),
             //new FishingRodLine("Test Fishing Line", "You should not have found this...\n\nFishing Depth: 10m", new Dictionary<FishType, int> (), ItemType.FISHING_ROD_LINE, null, FishingDepth.D_10_METERS),
@@ -100,6 +102,19 @@ public class PlayerInventory : MonoBehaviour
         }
         equippedItems.Add(item);
         craftedItems.Remove(item);
+
+        switch(item.itemType)
+        {
+            case (ItemType.WAND):
+                GetComponentInChildren<Wand>().UpdateWandStats();
+                break;
+            case (ItemType.PRIMARY_ACTIVE_SPELL):
+                GetComponentInChildren<Wand>().ResetEquippedSpells();
+                break;
+            case (ItemType.SECONDARY_ACTIVE_SPELL):
+                GetComponentInChildren<Wand>().ResetEquippedSpells();
+                break;
+        }
     }
 
     public void UnequipItem(CraftableItem item)

@@ -1,5 +1,6 @@
 using System.Collections;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -41,6 +42,8 @@ public class Player : MonoBehaviour
         {
             currentHealth = maxHealth;
         }
+
+        StartCoroutine(Flash(amount < 0 ? Color.red : Color.green));
         ScaleHealthBar();
         uiHandler.SetHealth(currentHealth);
     }
@@ -80,5 +83,12 @@ public class Player : MonoBehaviour
 
         healthbar.transform.localScale = new Vector3(newXScale, healthbar.transform.localScale.y, healthbar.transform.localScale.z);
         healthbar.transform.localPosition = new Vector3(healthBarStartingXPos - (healthBarStartingXScale - newXScale) * 1 / 2, healthbar.transform.localPosition.y, healthbar.transform.localPosition.z);
+    }
+
+    private IEnumerator Flash(Color color)
+    {
+        transform.Find("PlayerSprite").GetComponent<SpriteRenderer>().color = color;
+        yield return new WaitForSeconds(0.1f);
+        transform.Find("PlayerSprite").GetComponent<SpriteRenderer>().color = Color.white;
     }
 }

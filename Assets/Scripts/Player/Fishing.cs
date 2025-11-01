@@ -266,13 +266,13 @@ public class Fishing : MonoBehaviour
     private void GiveFishingReward()
     {
         int randomRangeIncrease = DetermineFishingRewardsOdds();
-        int randomNumber = Random.Range(1, 100 + randomRangeIncrease);
+        int randomNumber = Random.Range(0, 100 + randomRangeIncrease);
         FishType fishCaught = FishType.WOOD_FISH; //Could not be left blank so needed a default, it should never use this
         int numFishCaught = 1;
 
         foreach(KeyValuePair<FishType, int> fishOdds in CurrentFishingOdds)
         {
-            if (randomNumber <= fishOdds.Value)
+            if (randomNumber < fishOdds.Value)
             {
                 fishCaught = fishOdds.Key;
                 break;
@@ -280,7 +280,7 @@ public class Fishing : MonoBehaviour
             randomNumber -= fishOdds.Value;
         }
 
-        if (equippedShaft != null && equippedShaft.fishTypesToMultiply.Contains(fishCaught) && Random.Range(1,100) < equippedShaft.chanceToMultiply)
+        if (equippedShaft != null && equippedShaft.fishTypesToMultiply.Contains(fishCaught) && Random.Range(0,100) < equippedShaft.chanceToMultiply)
         {
             numFishCaught = equippedShaft.multiplierAmount;
         }

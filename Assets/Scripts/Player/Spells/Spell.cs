@@ -6,6 +6,7 @@ public class Spell : MonoBehaviour
 
     public float duration = 0.3f;
     public float cooldown = 1f;
+    public float cooldownTimer = 0;
     
     public void CastSpell(Transform transform, Vector2 target, Wand wand)
     {
