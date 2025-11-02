@@ -24,7 +24,7 @@ public class Mosquito : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_enemy.CanMove())
+        if (_enemy.GetCanMove())
         {
             //Out of range, move towards player
             if (!inAttackAnimation && Vector2.Distance(_enemy.GetPlayer().transform.position, transform.position) > attackRange)

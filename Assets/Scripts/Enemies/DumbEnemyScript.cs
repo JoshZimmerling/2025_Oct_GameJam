@@ -16,7 +16,7 @@ public class DumbEnemyScript : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (_enemy.CanMove())
+        if (_enemy.GetCanMove())
         {
             _enemy.MoveTowardsPlayer(_enemy.moveSpeed);
         }
@@ -27,7 +27,17 @@ public class DumbEnemyScript : MonoBehaviour
         Player player = other.transform.GetComponentInParent<Player>();
         if (player != null)
         {
+            _enemy.SetCanMove(false);
             player.ChangeHealth(-5);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        Player player = other.transform.GetComponentInParent<Player>();
+        if (player != null)
+        {
+            _enemy.SetCanMove(true);
         }
     }
 }

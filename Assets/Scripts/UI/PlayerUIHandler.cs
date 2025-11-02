@@ -36,8 +36,8 @@ public class PlayerUIHandler : MonoBehaviour
 
     public void SetSpellCd()
     {
-        spellCdProgressBars[0].transform.localScale = wand.GetPrimaryActiveSpell().cooldownTimer == 0 ? new Vector3(1, 0, 1) : new Vector3(1, 1 - (wand.GetPrimaryActiveSpell().cooldownTimer / wand.GetPrimaryActiveSpell().cooldown), 1);
-        spellCdProgressBars[1].transform.localScale = wand.GetSecondaryActiveSpell().cooldownTimer == 0 ? new Vector3(1, 0, 1) : new Vector3(1, 1 - (wand.GetSecondaryActiveSpell().cooldownTimer / wand.GetSecondaryActiveSpell().cooldown), 1);
+        spellCdProgressBars[0].transform.localScale = wand.GetPrimaryActiveSpell().cooldownTimer == 0 ? new Vector3(1, 0, 1) : new Vector3(1, 1 - (wand.GetPrimaryActiveSpell().cooldownTimer / (wand.GetPrimaryActiveSpell().cooldown * wand.cooldownModifier)), 1);
+        spellCdProgressBars[1].transform.localScale = wand.GetSecondaryActiveSpell().cooldownTimer == 0 ? new Vector3(1, 0, 1) : new Vector3(1, 1 - (wand.GetSecondaryActiveSpell().cooldownTimer / (wand.GetSecondaryActiveSpell().cooldown * wand.cooldownModifier)), 1);
     }
 
     public void UpdateSpellIcons()

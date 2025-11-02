@@ -60,9 +60,14 @@ public class Enemy : MonoBehaviour
         rb.AddForce(direction * value, ForceMode2D.Impulse);
     }
 
-    public bool CanMove()
+    public bool GetCanMove()
     {
         return canMove;
+    }
+
+    public void SetCanMove(bool move)
+    {
+        canMove = move;
     }
 
     public Player GetPlayer()

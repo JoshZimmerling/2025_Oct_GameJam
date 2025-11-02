@@ -1,50 +1,35 @@
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using static Constants;
 
 public class Spawnzone : MonoBehaviour
 {
     private Collider2D zone;
-    private bool shouldSpawnEnemies;
 
     [SerializeField] List<GameObject> spawnableEnemies;
     [SerializeField] List<int> enemySpawnChances;
-    
-    public float spawnTimer;
-    public float defaultSpawnTimer = 5;
-    
 
     private void Start()
     {
         zone = GetComponent<Collider2D>();
-        shouldSpawnEnemies = true;
     }
 
-    private void FixedUpdate()
+    public void spawnEnemy()
     {
-        if (shouldSpawnEnemies)
+        Vector2 spawnLoc = zone.GetRandomPointInside();
+
+        GameObject enemyToSpawn = spawnableEnemies[0];
+        int randomNumber = Random.Range(0, 100);
+        for (int i = 0; i < enemySpawnChances.Count; i++)
         {
-            spawnTimer -= Time.deltaTime;
-            if (spawnTimer <= 0)
+            if (randomNumber < enemySpawnChances[i])
             {
-                Vector2 spawnLoc = zone.GetRandomPointInside();
-                spawnTimer = defaultSpawnTimer;
-
-                GameObject enemyToSpawn = spawnableEnemies[0]; 
-                int randomNumber = Random.Range(0, 100);
-                for (int i = 0; i < enemySpawnChances.Count; i++)
-                {
-                    if (randomNumber < enemySpawnChances[i])
-                    {
-                        enemyToSpawn = spawnableEnemies[i];
-                        break;
-                    }
-                    randomNumber -= enemySpawnChances[i];
-                }
-
-                Instantiate(enemyToSpawn, spawnLoc, Quaternion.identity);
+                enemyToSpawn = spawnableEnemies[i];
+                break;
             }
+            randomNumber -= enemySpawnChances[i];
         }
+
+        Instantiate(enemyToSpawn, spawnLoc, Quaternion.identity);
     }
 }

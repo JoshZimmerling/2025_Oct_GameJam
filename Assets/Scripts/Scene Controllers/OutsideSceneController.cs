@@ -16,9 +16,14 @@ public class OutsideSceneController : MonoBehaviour
     private int fullDayTime = 180;
     public bool dayComplete = false;
 
+    [SerializeField] Spawnzone treeSpawnZone;
+    [SerializeField] Spawnzone waterSpawnZone;
+    private float minTimeBetweenSpawns;
+    private float maxTimeBetweenSpawns;
+    private float spawnTimer;
+
     CameraScript cameraScript;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         player = GameObject.Find("Player");
@@ -33,24 +38,44 @@ public class OutsideSceneController : MonoBehaviour
 
         cameraScript = GameObject.Find("Camera").GetComponent<CameraScript>();
         cameraScript.UpdateCameraZoom(7);
+
+        minTimeBetweenSpawns = 4f - (dayCounter * .1f) < 2f ? 2f : 4f - (dayCounter * .1f);
+        maxTimeBetweenSpawns = 7.5f - (dayCounter * .1f) < 4f ? 4f : 7.5f - (dayCounter * .1f);
+        ResetSpawnTimer();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        dayInfo.transform.position = new Vector3(player.transform.position.x + (8f/5f * cameraScript.GetCameraZoom()), player.transform.position.y + (4f/5f * cameraScript.GetCameraZoom()), dayInfo.transform.position.z);
-        if (!dayComplete)
-        {
-            TimeUpdate();
-        }
-
         if (Keyboard.current.spaceKey.wasPressedThisFrame && playerCollider.IsTouching(doorToGarageCollider))
         {
             SceneManager.LoadScene("GarageScene");
         }
+        dayInfo.transform.position = new Vector3(player.transform.position.x + (8f / 5f * cameraScript.GetCameraZoom()), player.transform.position.y + (4f / 5f * cameraScript.GetCameraZoom()), dayInfo.transform.position.z);
     }
 
-    private void TimeUpdate()
+    private void FixedUpdate()
+    {
+        if (!dayComplete)
+        {
+            TimeUIUpdate();
+        }
+
+        spawnTimer -= Time.deltaTime;
+        if (spawnTimer <= 0)
+        {
+            if(Random.Range(0f,1f) <= 0.5f)
+            {
+                treeSpawnZone.spawnEnemy();
+            }
+            else
+            {
+                waterSpawnZone.spawnEnemy();
+            }
+            ResetSpawnTimer();
+        }
+    }
+
+    private void TimeUIUpdate()
     {
         float currentTime = Time.time - dayStartTime;
         float percentageCompleted = currentTime / (float)fullDayTime;
@@ -65,5 +90,12 @@ public class OutsideSceneController : MonoBehaviour
             dayComplete = true;
             Fishing.CancelCurrentFishing();
         }
+    }
+
+    private void ResetSpawnTimer()
+    {
+        float rand1 = Random.Range(minTimeBetweenSpawns/2f, minTimeBetweenSpawns / 2f + (maxTimeBetweenSpawns - minTimeBetweenSpawns) / 2f);
+        float rand2 = Random.Range(minTimeBetweenSpawns/2f, minTimeBetweenSpawns / 2f + (maxTimeBetweenSpawns - minTimeBetweenSpawns) / 2f);
+        spawnTimer = rand1+rand2;
     }
 }
