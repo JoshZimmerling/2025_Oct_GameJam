@@ -29,7 +29,7 @@ public class Wand : MonoBehaviour
     {
         playerInventoryScript = player.inventory;
         UpdateWandStats();
-        ResetEquippedSpells();
+        InitialSpellsSetup();
     }
 
     private void Awake()
@@ -64,11 +64,20 @@ public class Wand : MonoBehaviour
 
     public void ResetEquippedSpells()
     {
+        Debug.Log(((ActiveSpellItem)playerInventoryScript.GetEquippedItemByItemType(ItemType.PRIMARY_ACTIVE_SPELL)).spellName);
         primaryActiveSpell = Resources.Load<GameObject>("Spells/" + ((ActiveSpellItem)playerInventoryScript.GetEquippedItemByItemType(ItemType.PRIMARY_ACTIVE_SPELL)).spellName).GetComponent<Spell>();
         secondaryActiveSpell = Resources.Load<GameObject>("Spells/" + ((ActiveSpellItem)playerInventoryScript.GetEquippedItemByItemType(ItemType.SECONDARY_ACTIVE_SPELL)).spellName).GetComponent<Spell>();
         GameObject.Find("Player Canvas").GetComponent<PlayerUIHandler>().UpdateSpellIcons();
     }
-    
+
+    //Seperate method needed since UI may not be initialized upon this initialization so we cannot call UpdateSpellIcons yet
+    private void InitialSpellsSetup()
+    {
+        primaryActiveSpell = Resources.Load<GameObject>("Spells/" + ((ActiveSpellItem)playerInventoryScript.GetEquippedItemByItemType(ItemType.PRIMARY_ACTIVE_SPELL)).spellName).GetComponent<Spell>();
+        secondaryActiveSpell = Resources.Load<GameObject>("Spells/" + ((ActiveSpellItem)playerInventoryScript.GetEquippedItemByItemType(ItemType.SECONDARY_ACTIVE_SPELL)).spellName).GetComponent<Spell>();
+    }
+
+
     void OnEnable()
     {
         primaryActiveSpellAction.performed += primarySpellHandler;

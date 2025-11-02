@@ -22,7 +22,6 @@ public class PlayerUIHandler : MonoBehaviour
         wand = player.GetComponentInChildren<Wand>();
         
         UpdateSpellIcons();
-        
     }
     
     void Update()
