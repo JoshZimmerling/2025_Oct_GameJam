@@ -94,8 +94,8 @@ public class OutsideSceneController : MonoBehaviour
 
     private void ResetSpawnTimer()
     {
-        float rand1 = Random.Range(minTimeBetweenSpawns/2f, minTimeBetweenSpawns / 2f + (maxTimeBetweenSpawns - minTimeBetweenSpawns) / 2f);
-        float rand2 = Random.Range(minTimeBetweenSpawns/2f, minTimeBetweenSpawns / 2f + (maxTimeBetweenSpawns - minTimeBetweenSpawns) / 2f);
+        float rand1 = Random.Range(minTimeBetweenSpawns/2f, maxTimeBetweenSpawns / 2f);
+        float rand2 = Random.Range(minTimeBetweenSpawns/2f, maxTimeBetweenSpawns / 2f);
         spawnTimer = rand1+rand2;
     }
 }
