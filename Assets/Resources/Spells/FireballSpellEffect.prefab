@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5127191385760170540}
   - component: {fileID: 6660981454951547331}
   - component: {fileID: 8758089912175144352}
-  - component: {fileID: 3959681141710145024}
+  - component: {fileID: 3338230580048068470}
   - component: {fileID: -1723543810296659583}
   m_Layer: 0
   m_Name: FireballSpellEffect
@@ -82,8 +82,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: d10707ebdda187744a992dd80c791c38, type: 3}
-  m_Color: {r: 0.9150943, g: 0.61265147, b: 0.06474723, a: 1}
+  m_Sprite: {fileID: -6607481912129624618, guid: ea7bfd967b5af34499f304adf806ac12, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -106,10 +106,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ProjectileSpellEffect
   damage: 5
+  isPassthrough: 0
   speed: 7
   direction: {x: 0, y: 0}
---- !u!58 &3959681141710145024
-CircleCollider2D:
+--- !u!60 &3338230580048068470
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -142,8 +143,32 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.005740285, y: 0}
-  m_Radius: 0.5057403
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.17629933, y: 0.259457}
+      - {x: -0.018568158, y: 0.26680136}
+      - {x: -0.12827563, y: 0.20025754}
+      - {x: -0.34865034, y: 0.15917575}
+      - {x: -0.48010886, y: 0.016628742}
+      - {x: -0.37547565, y: -0.12426019}
+      - {x: -0.22627687, y: -0.18795478}
+      - {x: -0.0071353912, y: -0.2534418}
+      - {x: 0.18429029, y: -0.25945687}
+      - {x: 0.3134247, y: -0.22630501}
+      - {x: 0.4123919, y: -0.09608793}
+      - {x: 0.41239166, y: 0.09608793}
+      - {x: 0.32478344, y: 0.23625052}
+  m_UseDelaunayMesh: 0
 --- !u!50 &-1723543810296659583
 Rigidbody2D:
   serializedVersion: 5
