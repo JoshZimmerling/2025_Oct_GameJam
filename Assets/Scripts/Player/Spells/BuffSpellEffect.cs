@@ -10,13 +10,22 @@ public class BuffSpellEffect : SpellEffect
     [SerializeField] BuffType buffType;
     [SerializeField] float buffAmount;
 
+    GameObject player;
+
     void Start()
     {
+        player = GameObject.Find("Player");
+
         switch (buffType)
         {
             case BuffType.HEAL:
-                GameObject.Find("Player").GetComponent<Player>().ChangeHealth((int)buffAmount);
+                player.GetComponent<Player>().ChangeHealth((int)buffAmount);
                 break;
         }
+    }
+
+    private void Update()
+    {
+        transform.position = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z -.1f);
     }
 }

@@ -69,7 +69,7 @@ public class Fishing : MonoBehaviour
     void Update()
     {
         // When right click is first pressed, start fishing
-        if (Mouse.current.rightButton.wasPressedThisFrame && playerCollider.IsTouching(myCollider) && canStartFishing && !sceneController.dayComplete)
+        if (Mouse.current.rightButton.wasPressedThisFrame && playerCollider.IsTouching(myCollider) && canStartFishing && !sceneController.isDayComplete())
         {
             UpdateFishingStats();
             StartFishing();

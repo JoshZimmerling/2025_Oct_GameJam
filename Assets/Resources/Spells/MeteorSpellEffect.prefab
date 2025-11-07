@@ -152,3 +152,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ClickSpellEffect
   damage: 10
   isPassthrough: 1
+  maxRange: 8

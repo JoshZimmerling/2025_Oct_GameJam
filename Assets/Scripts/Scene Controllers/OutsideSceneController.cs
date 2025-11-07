@@ -1,4 +1,5 @@
 using TMPro;
+using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -11,16 +12,18 @@ public class OutsideSceneController : MonoBehaviour
     private GameObject player;
     private PolygonCollider2D playerCollider;
 
-    public static int dayCounter = 0;
+    private static int dayCounter = 0;
     private float dayStartTime;
-    private int fullDayTime = 180;
-    public bool dayComplete = false;
+    [SerializeField] int fullDayTime = 180;
+    private bool dayComplete = false;
 
     [SerializeField] Spawnzone treeSpawnZone;
     [SerializeField] Spawnzone waterSpawnZone;
     private float minTimeBetweenSpawns;
     private float maxTimeBetweenSpawns;
     private float spawnTimer;
+
+    [SerializeField] GameObject nightOverlay;
 
     CameraScript cameraScript;
 
@@ -29,6 +32,7 @@ public class OutsideSceneController : MonoBehaviour
         player = GameObject.Find("Player");
         playerCollider = player.transform.Find("Hitbox Collider").gameObject.GetComponent<PolygonCollider2D>();
         timeDial = dayInfo.transform.Find("Dial");
+        nightOverlay.SetActive(false);
 
         dayCounter++;
         dayInfo.GetComponentInChildren<TextMeshPro>().text = "Day " + dayCounter;
@@ -85,11 +89,21 @@ public class OutsideSceneController : MonoBehaviour
         float angle = Mathf.Deg2Rad * 180f * (1f - percentageCompleted);
         timeDial.localPosition = new Vector3(Mathf.Cos(angle), Mathf.Sin(angle), -0.1f) * 0.5f - new Vector3(0, 0.15f, 0);
 
+        if (percentageCompleted >= 0.6f)
+        {
+            nightOverlay.SetActive(true);
+            nightOverlay.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, (percentageCompleted - .6f) * 2f);
+        }
         if (percentageCompleted >= 1)
         {
             dayComplete = true;
             Fishing.CancelCurrentFishing();
         }
+    }
+
+    public bool isDayComplete()
+    {
+        return dayComplete;
     }
 
     private void ResetSpawnTimer()
