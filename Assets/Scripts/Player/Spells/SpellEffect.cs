@@ -17,7 +17,7 @@ public class SpellEffect : MonoBehaviour
             enemy.Damage(damage);
             enemy.HitKnockback(knockback, transform.position);
         }
-        
+
         if (!isPassthrough)
         {
             Destroy(gameObject);
@@ -28,7 +28,7 @@ public class SpellEffect : MonoBehaviour
     {
         if(slowPercentage > 0 && slowDuration > 0)
         {
-            enemy.Slow(35f, 1.5f);
+            enemy.Slow(slowPercentage, slowDuration);
             enemy.HitKnockback(knockback, transform.position);
         }
 

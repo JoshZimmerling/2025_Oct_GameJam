@@ -73,7 +73,6 @@ public class Wand : MonoBehaviour
 
     public void ResetEquippedSpells()
     {
-        Debug.Log(((SpellItem)playerInventoryScript.GetEquippedItemByItemType(ItemType.PRIMARY_ACTIVE_SPELL)).spellName);
         primaryActiveSpell = Resources.Load<GameObject>("Spells/" + ((SpellItem)playerInventoryScript.GetEquippedItemByItemType(ItemType.PRIMARY_ACTIVE_SPELL)).spellName).GetComponent<Spell>();
         secondaryActiveSpell = Resources.Load<GameObject>("Spells/" + ((SpellItem)playerInventoryScript.GetEquippedItemByItemType(ItemType.SECONDARY_ACTIVE_SPELL)).spellName).GetComponent<Spell>();
         passiveSpell = Resources.Load<GameObject>("Spells/" + ((SpellItem)playerInventoryScript.GetEquippedItemByItemType(ItemType.PASSIVE_SPELL)).spellName).GetComponent<Spell>();

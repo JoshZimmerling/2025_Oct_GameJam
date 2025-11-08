@@ -28,6 +28,7 @@ public class ProjectileSpellEffect : SpellEffect
         if (enemy != null)
         {
             DamageEnemy(enemy);
+            SlowEnemy(enemy);
         }
     }
 }

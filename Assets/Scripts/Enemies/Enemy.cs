@@ -1,7 +1,5 @@
-using System;
 using System.Collections;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
 public class Enemy : MonoBehaviour
 {
@@ -10,13 +8,13 @@ public class Enemy : MonoBehaviour
     private Color originalColor = Color.white;
     private Color damageColor = Color.red;
     private Color slowedColor = new Color(150f/255f, 200f/255f, 250f/255f);
-    private float damageLength = 0.1f;
 
     public float startingHealth = 10;
     private float currentHealth;
     public float moveSpeed = 2f;
     private bool canMove = true;
     private bool slowed = false;
+    private Coroutine slowCoroutine;
 
     private Rigidbody2D rb;
     private Vector2 target;
@@ -43,14 +41,6 @@ public class Enemy : MonoBehaviour
         Physics.IgnoreLayerCollision(LayerMask.NameToLayer("Enemy"), LayerMask.NameToLayer("OutdoorBoundary"), true);
     }
 
-    private void FixedUpdate()
-    {
-        if (canMove && slowed)
-        {
-            spriteRenderer.color = slowedColor;
-        }
-    }
-
     public void Damage(float damage)
     {
         StartCoroutine(Flash());
@@ -66,13 +56,17 @@ public class Enemy : MonoBehaviour
 
     public void Slow(float percentSlow, float slowLength)
     {
-        StartCoroutine(SlowMovespeed(percentSlow, slowLength));
+        if(slowCoroutine != null)
+        {
+            StopCoroutine(slowCoroutine);
+            moveSpeed /= (100f - percentSlow) / 100f;
+        }
+        slowCoroutine = StartCoroutine(SlowMovespeed(percentSlow, slowLength));
     }
 
     public void HitKnockback(float value, Vector2 source)
     {
-        Vector2 direction = ((Vector2)transform.position - (Vector2)source).normalized;
-        rb.AddForce(direction * value, ForceMode2D.Impulse);
+        StartCoroutine(Knockback(value, source));
     }
 
     public bool GetCanMove()
@@ -100,24 +94,38 @@ public class Enemy : MonoBehaviour
 
     IEnumerator Flash()
     {
-        canMove = false;
-        rb.bodyType = RigidbodyType2D.Dynamic;
         spriteRenderer.color = damageColor;
-        yield return new WaitForSeconds(damageLength);
-        spriteRenderer.color = originalColor;
-        rb.bodyType = RigidbodyType2D.Kinematic;
-        canMove = true;
-        rb.linearVelocity = Vector2.zero;
+
+        yield return new WaitForSeconds(0.15f);
+
+        spriteRenderer.color = slowed ? slowedColor : originalColor;
     }
 
     IEnumerator SlowMovespeed(float slowPercentage, float slowLength)
     {
-        moveSpeed *= (100f-slowPercentage) / 100f;
         slowed = true;
+        moveSpeed *= (100f-slowPercentage) / 100f;
+        spriteRenderer.color = slowedColor;
+
         yield return new WaitForSeconds(slowLength);
+
         slowed = false;
-        spriteRenderer.color = originalColor;
         moveSpeed /= (100f - slowPercentage) / 100f;
+        spriteRenderer.color = originalColor;
+    }
+
+    IEnumerator Knockback(float knockbackAmount, Vector2 source)
+    {
+        canMove = false;
+        rb.bodyType = RigidbodyType2D.Dynamic;
+        Vector2 direction = ((Vector2)transform.position - (Vector2)source).normalized;
+        rb.AddForce(direction * knockbackAmount, ForceMode2D.Impulse);
+
+        yield return new WaitForSeconds(0.15f);
+
+        canMove = true;
+        rb.bodyType = RigidbodyType2D.Kinematic;
+        rb.linearVelocity = Vector2.zero;
     }
 
     private void ScaleHealthBar()
