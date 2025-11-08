@@ -21,6 +21,11 @@ public class ProjectileSpellEffect : SpellEffect
     private void FixedUpdate()
     {
         rb.MovePosition(rb.position + direction * speed * Time.fixedDeltaTime);
+
+        if(gameObject.name.Contains("SnowballSpellEffect"))
+        {
+            transform.Rotate(Vector3.back * 200 * Time.deltaTime);
+        }
     }
 
     public void SetDirection(Vector2 direction)
@@ -33,8 +38,7 @@ public class ProjectileSpellEffect : SpellEffect
         Enemy enemy = other.gameObject.GetComponent<Enemy>();
         if (enemy != null)
         {
-            DamageEnemy(enemy);
-            SlowEnemy(enemy);
+            HitEnemy(enemy);
         }
     }
 }

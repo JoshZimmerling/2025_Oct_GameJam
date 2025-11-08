@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -10,7 +11,8 @@ public class Fishing : MonoBehaviour
 {
     [SerializeField] GameObject chargesBar;
     [SerializeField] OutsideSceneController sceneController;
-    [SerializeField] List<Sprite> fishSpriteList;
+
+    private List<Sprite> fishSpriteList = new List<Sprite>();
 
     static GameObject fishingBar;
     GameObject fishingBarGreenArea;
@@ -62,6 +64,10 @@ public class Fishing : MonoBehaviour
         fishingRewardText = fishingReward.transform.Find("Fishing Reward Text").gameObject;
         fishingReward.SetActive(false);
         fishingBar.SetActive(false);
+
+        foreach (FishType fish in Enum.GetValues(typeof(FishType))){
+            fishSpriteList.Add(Resources.Load<Sprite>("Fish Sprites/" + fish.ToString()));
+        }
 
         EmptyFishingChargesProgress();
     }

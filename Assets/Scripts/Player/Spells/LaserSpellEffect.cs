@@ -36,7 +36,7 @@ public class LaserSpellEffect : SpellEffect
             Enemy enemy = col.gameObject.GetComponent<Enemy>();
             if (enemy != null)
             {
-                DamageEnemy(enemy);
+                HitEnemy(enemy);
             }
         }
     }
