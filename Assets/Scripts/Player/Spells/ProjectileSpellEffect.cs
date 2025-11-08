@@ -12,6 +12,12 @@ public class ProjectileSpellEffect : SpellEffect
         rb = GetComponent<Rigidbody2D>();
     }
 
+    public override void Setup(Wand wand)
+    {
+        damage *= wand.damageModifier;
+        gameObject.transform.localScale *= wand.sizeModifier;
+    }
+
     private void FixedUpdate()
     {
         rb.MovePosition(rb.position + direction * speed * Time.fixedDeltaTime);

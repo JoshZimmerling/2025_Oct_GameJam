@@ -11,6 +11,13 @@ public class ClickSpellEffect : SpellEffect
 
     private void Start()
     {
+
+    }
+
+    public override void Setup(Wand wand)
+    {
+        damage *= wand.damageModifier;
+        gameObject.transform.localScale *= wand.sizeModifier;
         DamageEnemies();
     }
 
@@ -35,6 +42,7 @@ public class ClickSpellEffect : SpellEffect
     private void DamageEnemies()
     {
         List<Collider2D> collidersOverlapping = new List<Collider2D>();
+        Physics2D.SyncTransforms();
         Physics2D.OverlapCollider(this.GetComponent<Collider2D>(), collidersOverlapping);
 
         foreach (Collider2D col in collidersOverlapping)

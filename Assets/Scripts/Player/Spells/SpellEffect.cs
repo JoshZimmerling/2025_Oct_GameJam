@@ -37,4 +37,7 @@ public class SpellEffect : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    //Each extension class has its own setup method being called
+    public virtual void Setup(Wand wand){}
 }
