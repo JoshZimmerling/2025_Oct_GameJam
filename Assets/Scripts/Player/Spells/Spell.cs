@@ -29,6 +29,11 @@ public class Spell : MonoBehaviour
                 spellEffect.gameObject.transform.localScale *= wand.sizeModifier;
                 deleteSpellTime = spellDuration * wand.rangeModifier;
                 break;
+            case LaserSpellEffect:
+                spellEffect = Instantiate(effect, transform.position, transform.rotation);
+                spellEffect.gameObject.transform.localScale = new Vector2(spellEffect.gameObject.transform.localScale.x * wand.rangeModifier, spellEffect.gameObject.transform.localScale.y);
+                spellEffect.gameObject.transform.localScale *= wand.sizeModifier;
+                break;
             case ClickSpellEffect:
                 if(Vector2.Distance(player.transform.position, target) > (((ClickSpellEffect)effect).GetMaxRange() * wand.rangeModifier))
                 {

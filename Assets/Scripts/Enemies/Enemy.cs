@@ -9,12 +9,14 @@ public class Enemy : MonoBehaviour
 
     private Color originalColor = Color.white;
     private Color damageColor = Color.red;
+    private Color slowedColor = new Color(150f/255f, 200f/255f, 250f/255f);
     private float damageLength = 0.1f;
 
     public float startingHealth = 10;
     private float currentHealth;
     public float moveSpeed = 2f;
     private bool canMove = true;
+    private bool slowed = false;
 
     private Rigidbody2D rb;
     private Vector2 target;
@@ -41,6 +43,14 @@ public class Enemy : MonoBehaviour
         Physics.IgnoreLayerCollision(LayerMask.NameToLayer("Enemy"), LayerMask.NameToLayer("OutdoorBoundary"), true);
     }
 
+    private void FixedUpdate()
+    {
+        if (canMove && slowed)
+        {
+            spriteRenderer.color = slowedColor;
+        }
+    }
+
     public void Damage(float damage)
     {
         StartCoroutine(Flash());
@@ -54,7 +64,12 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public void HitKnockback(int value, Vector2 source)
+    public void Slow(float percentSlow, float slowLength)
+    {
+        StartCoroutine(SlowMovespeed(percentSlow, slowLength));
+    }
+
+    public void HitKnockback(float value, Vector2 source)
     {
         Vector2 direction = ((Vector2)transform.position - (Vector2)source).normalized;
         rb.AddForce(direction * value, ForceMode2D.Impulse);
@@ -93,6 +108,16 @@ public class Enemy : MonoBehaviour
         rb.bodyType = RigidbodyType2D.Kinematic;
         canMove = true;
         rb.linearVelocity = Vector2.zero;
+    }
+
+    IEnumerator SlowMovespeed(float slowPercentage, float slowLength)
+    {
+        moveSpeed *= (100f-slowPercentage) / 100f;
+        slowed = true;
+        yield return new WaitForSeconds(slowLength);
+        slowed = false;
+        spriteRenderer.color = originalColor;
+        moveSpeed /= (100f - slowPercentage) / 100f;
     }
 
     private void ScaleHealthBar()

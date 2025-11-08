@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3372643967921451749}
+  - component: {fileID: 263500737777285546}
   - component: {fileID: 1222964781530627446}
   - component: {fileID: 8734262418932354745}
-  - component: {fileID: 263500737777285546}
   m_Layer: 0
   m_Name: MeteorSpellEffect
   m_TagString: Untagged
@@ -34,6 +34,24 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &263500737777285546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 713963457435600217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e311dd0f186c4424892f044e4337959d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ClickSpellEffect
+  damage: 10
+  isPassthrough: 1
+  knockback: 5
+  maxRange: 8
+  doesDamageReproc: 0
+  damageReprocRate: 0
 --- !u!212 &1222964781530627446
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -138,18 +156,3 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 3.59, y: 3.59}
   m_EdgeRadius: 0
---- !u!114 &263500737777285546
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 713963457435600217}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e311dd0f186c4424892f044e4337959d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ClickSpellEffect
-  damage: 10
-  isPassthrough: 1
-  maxRange: 8

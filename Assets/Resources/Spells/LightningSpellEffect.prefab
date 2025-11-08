@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3830883814361180131}
   - component: {fileID: 8737564523864358992}
   m_Layer: 0
-  m_Name: lightning-bolt-png-34127_0
+  m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -99,7 +99,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7237497444502650608}
-  - component: {fileID: 4435798679671713748}
+  - component: {fileID: 4319273946688890274}
   - component: {fileID: 539669628054873390}
   m_Layer: 0
   m_Name: LightningSpellEffect
@@ -124,7 +124,7 @@ Transform:
   - {fileID: 3830883814361180131}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4435798679671713748
+--- !u!114 &4319273946688890274
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -133,11 +133,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 8842231162133022819}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a886a4b8e4e226443941bd601ea779a3, type: 3}
+  m_Script: {fileID: 11500000, guid: 56578d931cfdf854fa861db02e1f9bd1, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SpellEffect
-  damage: 3
+  m_EditorClassIdentifier: Assembly-CSharp::LaserSpellEffect
+  damage: 2
   isPassthrough: 1
+  knockback: 2
 --- !u!61 &539669628054873390
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -87,9 +87,9 @@ public class Constants
         new WandItem("Rapid Fire Wand", "So anyways I started blasting.\n\nDMG MOD: 0.5x\nSIZE MOD: 1x\nRANGE MOD: 1x\nCD MOD: 0.2x", new Dictionary<FishType, int> { { FishType.SILVER_FISH, 15 }, { FishType.GOLD_FISH, 10 } }, ItemType.WAND, "", 0.5f, 1f, 1f, .2f),
         new WandItem("Wand of the Wizard", "For once you have truly mastered casting spells.\n\nDMG MOD: 1.4x\nSIZE MOD: 1.4x\nRANGE MOD: 1.4x\nCD MOD: 0.7x", new Dictionary<FishType, int> { { FishType.IRON_FISH, 10 }, { FishType.GOLD_FISH, 5 }, { FishType.RUBY_FISH, 1 } }, ItemType.WAND, "", 1.4f, 1.4f, 1.4f, .7f),
         //PRIMARY ACTIVE SPELL
-        new ActiveSpellItem("Lightning Spell", "Shoot a beam of lightning towards your target, dealing good damage across multiple enemies.\n\nDMG: 3\nRANGE: SHORT\nCOOLDOWN: 0.25s\nPIERCING: YES", new Dictionary<FishType, int> { { FishType.BRONZE_FISH, 4 }, { FishType.IRON_FISH, 1 } }, ItemType.PRIMARY_ACTIVE_SPELL, "", "LightningSpell"),
+        new SpellItem("Lightning Spell", "Shoot a beam of lightning towards your target, dealing good damage across multiple enemies.\n\nDMG: 2\nRANGE: SHORT\nCOOLDOWN: 0.5s\nPIERCING: YES", new Dictionary<FishType, int> { { FishType.BRONZE_FISH, 4 }, { FishType.IRON_FISH, 1 } }, ItemType.PRIMARY_ACTIVE_SPELL, "", "LightningSpell"),
         //SECONDARY ACTIVE SPELL
-        new ActiveSpellItem("Meteor Spell", "Call down a large meteor that does damage in an area around the cast location.\n\nDMG: 10\nRANGE: LONG\nCOOLDOWN: 10s\nPIERCING: YES", new Dictionary<FishType, int> { { FishType.STONE_FISH, 10    } }, ItemType.SECONDARY_ACTIVE_SPELL, "", "MeteorSpell"),
+        new SpellItem("Meteor Spell", "Call down a large meteor that does damage in an area around the cast location.\n\nDMG: 10\nRANGE: LONG\nCOOLDOWN: 10s\nPIERCING: YES", new Dictionary<FishType, int> { { FishType.STONE_FISH, 10    } }, ItemType.SECONDARY_ACTIVE_SPELL, "", "MeteorSpell"),
     };
 
     public static List<CraftingCategory> AllCraftingCategories = new List<CraftingCategory> {
@@ -207,11 +207,11 @@ public class Constants
         }
     }
 
-    public class ActiveSpellItem : CraftableItem
+    public class SpellItem : CraftableItem
     {
         public string spellName;
 
-        public ActiveSpellItem(string name, string desc, Dictionary<FishType, int> costs, ItemType type, string image, string spell) : base(name, desc, costs, type, image)
+        public SpellItem(string name, string desc, Dictionary<FishType, int> costs, ItemType type, string image, string spell) : base(name, desc, costs, type, image)
         {
             spellName = spell;
         }

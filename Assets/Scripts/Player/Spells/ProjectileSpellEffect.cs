@@ -1,6 +1,6 @@
-using System;
 using UnityEngine;
 
+//This class is for projectile spells that do originate from the player (i.e. Xereth E)
 public class ProjectileSpellEffect : SpellEffect
 {
     public float speed;
@@ -20,5 +20,14 @@ public class ProjectileSpellEffect : SpellEffect
     public void SetDirection(Vector2 direction)
     {
         this.direction = direction.normalized;
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        Enemy enemy = other.gameObject.GetComponent<Enemy>();
+        if (enemy != null)
+        {
+            DamageEnemy(enemy);
+        }
     }
 }

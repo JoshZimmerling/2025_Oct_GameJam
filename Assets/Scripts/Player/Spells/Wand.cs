@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using static Constants;
@@ -7,6 +8,7 @@ using static Constants;
 public class Wand : MonoBehaviour
 {
     public Player player;
+    private bool canCastSpells = true;
 
     [SerializeField] private InputActionAsset inputActions;
 
@@ -16,6 +18,7 @@ public class Wand : MonoBehaviour
     private Spell secondaryActiveSpell;
     private InputAction secondaryActiveSpellAction;
     private Action<InputAction.CallbackContext> secondarySpellHandler;
+    private Spell passiveSpell;
 
     public float damageModifier;
     public float sizeModifier;
@@ -50,6 +53,12 @@ public class Wand : MonoBehaviour
     {
         primaryActiveSpell.cooldownTimer = Mathf.Max(0, primaryActiveSpell.cooldownTimer - Time.deltaTime);
         secondaryActiveSpell.cooldownTimer = Mathf.Max(0, secondaryActiveSpell.cooldownTimer - Time.deltaTime);
+        passiveSpell.cooldownTimer = Mathf.Max(0, passiveSpell.cooldownTimer - Time.deltaTime);
+        if(passiveSpell.cooldownTimer <= 0 && canCastSpells)
+        {
+            passiveSpell.CastSpell(gameObject.transform, new Vector2(), this);
+            passiveSpell.cooldownTimer = passiveSpell.cooldown * cooldownModifier;
+        }
     }
 
     public void UpdateWandStats()
@@ -64,22 +73,30 @@ public class Wand : MonoBehaviour
 
     public void ResetEquippedSpells()
     {
-        Debug.Log(((ActiveSpellItem)playerInventoryScript.GetEquippedItemByItemType(ItemType.PRIMARY_ACTIVE_SPELL)).spellName);
-        primaryActiveSpell = Resources.Load<GameObject>("Spells/" + ((ActiveSpellItem)playerInventoryScript.GetEquippedItemByItemType(ItemType.PRIMARY_ACTIVE_SPELL)).spellName).GetComponent<Spell>();
-        secondaryActiveSpell = Resources.Load<GameObject>("Spells/" + ((ActiveSpellItem)playerInventoryScript.GetEquippedItemByItemType(ItemType.SECONDARY_ACTIVE_SPELL)).spellName).GetComponent<Spell>();
+        Debug.Log(((SpellItem)playerInventoryScript.GetEquippedItemByItemType(ItemType.PRIMARY_ACTIVE_SPELL)).spellName);
+        primaryActiveSpell = Resources.Load<GameObject>("Spells/" + ((SpellItem)playerInventoryScript.GetEquippedItemByItemType(ItemType.PRIMARY_ACTIVE_SPELL)).spellName).GetComponent<Spell>();
+        secondaryActiveSpell = Resources.Load<GameObject>("Spells/" + ((SpellItem)playerInventoryScript.GetEquippedItemByItemType(ItemType.SECONDARY_ACTIVE_SPELL)).spellName).GetComponent<Spell>();
+        passiveSpell = Resources.Load<GameObject>("Spells/" + ((SpellItem)playerInventoryScript.GetEquippedItemByItemType(ItemType.PASSIVE_SPELL)).spellName).GetComponent<Spell>();
         GameObject.Find("Player Canvas").GetComponent<PlayerUIHandler>().UpdateSpellIcons();
     }
 
     //Seperate method needed since UI may not be initialized upon this initialization so we cannot call UpdateSpellIcons yet
     private void InitialSpellsSetup()
     {
-        primaryActiveSpell = Resources.Load<GameObject>("Spells/" + ((ActiveSpellItem)playerInventoryScript.GetEquippedItemByItemType(ItemType.PRIMARY_ACTIVE_SPELL)).spellName).GetComponent<Spell>();
-        secondaryActiveSpell = Resources.Load<GameObject>("Spells/" + ((ActiveSpellItem)playerInventoryScript.GetEquippedItemByItemType(ItemType.SECONDARY_ACTIVE_SPELL)).spellName).GetComponent<Spell>();
+        primaryActiveSpell = Resources.Load<GameObject>("Spells/" + ((SpellItem)playerInventoryScript.GetEquippedItemByItemType(ItemType.PRIMARY_ACTIVE_SPELL)).spellName).GetComponent<Spell>();
+        secondaryActiveSpell = Resources.Load<GameObject>("Spells/" + ((SpellItem)playerInventoryScript.GetEquippedItemByItemType(ItemType.SECONDARY_ACTIVE_SPELL)).spellName).GetComponent<Spell>();
+        passiveSpell = Resources.Load<GameObject>("Spells/" + ((SpellItem)playerInventoryScript.GetEquippedItemByItemType(ItemType.PASSIVE_SPELL)).spellName).GetComponent<Spell>();
+
+        primaryActiveSpell.cooldownTimer = 0;
+        secondaryActiveSpell.cooldownTimer = 0;
+        passiveSpell.cooldownTimer = 0;
     }
 
 
     void OnEnable()
     {
+        canCastSpells = true;
+
         primaryActiveSpellAction.performed += primarySpellHandler;
         if (!primaryActiveSpellAction.enabled) primaryActiveSpellAction.Enable();
 
@@ -88,6 +105,8 @@ public class Wand : MonoBehaviour
     }
     void OnDisable()
     {
+        canCastSpells = false;
+
         if (primaryActiveSpellAction != null)
         {
             primaryActiveSpellAction.performed -= primarySpellHandler;
@@ -128,6 +147,11 @@ public class Wand : MonoBehaviour
     public Spell GetSecondaryActiveSpell()
     {
         return secondaryActiveSpell;
+    }
+
+    public Spell GetPassiveSpell()
+    {
+        return passiveSpell;
     }
 
     public void DisableSpells()
