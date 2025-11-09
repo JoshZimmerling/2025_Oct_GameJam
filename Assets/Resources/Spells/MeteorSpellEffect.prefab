@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3372643967921451749}
   - component: {fileID: 263500737777285546}
   - component: {fileID: 1222964781530627446}
-  - component: {fileID: 8734262418932354745}
+  - component: {fileID: 7362181936415692683}
   m_Layer: 0
   m_Name: MeteorSpellEffect
   m_TagString: Untagged
@@ -29,7 +29,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -47,6 +47,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ClickSpellEffect
   damage: 10
+  slowPercentage: 0
+  slowDuration: 0
   isPassthrough: 1
   knockback: 5
   maxRange: 8
@@ -99,7 +101,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -4910088520043721169, guid: bc942cf5fd931074b9fd34c7a3cec2fd, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 44cd716c016323241a5b103b94c92e42, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -110,8 +112,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &8734262418932354745
-BoxCollider2D:
+--- !u!60 &7362181936415692683
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -140,7 +142,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -148,11 +150,23 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3.59, y: 3.59}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 3.59, y: 3.59}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.11092317, y: 0.24592304}
+      - {x: -0.1097126, y: 0.25569898}
+      - {x: -0.24200249, y: 0.18423292}
+      - {x: -0.41581726, y: 0.01007691}
+      - {x: -0.41454577, y: -0.15373248}
+      - {x: -0.3805288, y: -0.21973073}
+      - {x: -0.16228843, y: -0.4082499}
+      - {x: -0.09046781, y: -0.44300532}
+      - {x: 0.083634615, y: -0.4505961}
+      - {x: 0.3800192, y: -0.19757694}
+      - {x: 0.36943257, y: -0.025798261}
+  m_UseDelaunayMesh: 0

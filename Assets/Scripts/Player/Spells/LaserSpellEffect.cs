@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using static BuffSpellEffect;
 
 //This class is for laser spells that do originate from the player (i.e. Xereth Q)
 public class LaserSpellEffect : SpellEffect
