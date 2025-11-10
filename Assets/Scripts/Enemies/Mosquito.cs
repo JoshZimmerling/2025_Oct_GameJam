@@ -6,6 +6,9 @@ public class Mosquito : MonoBehaviour
     [SerializeField] int attackDamage;
     [SerializeField] float attackCooldown;
     [SerializeField] float attackRange;
+    [SerializeField] bool isPoisonous;
+    [SerializeField] int poisonDamage;
+    [SerializeField] int poisonDuration;
 
     private bool attackOnCooldown = false;
     private bool inAttackAnimation = false;
@@ -50,6 +53,10 @@ public class Mosquito : MonoBehaviour
         if (player != null)
         {
             player.ChangeHealth(-1 * attackDamage);
+            if (isPoisonous)
+            {
+                player.Poison(poisonDamage, poisonDuration);
+            }
             StopAllCoroutines();
             StartCoroutine(AttackMovement());
         }

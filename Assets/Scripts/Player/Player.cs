@@ -11,8 +11,10 @@ public class Player : MonoBehaviour
 
     public int maxHealth = 100;
     public int currentHealth;
+    private bool isPoisoned = false;
+    Coroutine poisonCoroutine;
 
-    public GameObject healthbar;
+    [SerializeField] GameObject healthbar;
 
     private float healthBarStartingXScale;
     private float healthBarStartingXPos;
@@ -45,6 +47,15 @@ public class Player : MonoBehaviour
         StartCoroutine(Flash(amount < 0 ? Color.red : Color.green));
         ScaleHealthBar();
         uiHandler.SetHealth(currentHealth);
+    }
+
+    public void Poison(int damage, int duration)
+    {
+        if (isPoisoned)
+        {
+            StopCoroutine(poisonCoroutine);
+        }
+        poisonCoroutine = StartCoroutine(PoisonDamage(damage, duration));
     }
 
     public void SetFullHealth()
@@ -88,6 +99,18 @@ public class Player : MonoBehaviour
     {
         transform.Find("PlayerSprite").GetComponent<SpriteRenderer>().color = color;
         yield return new WaitForSeconds(0.1f);
-        transform.Find("PlayerSprite").GetComponent<SpriteRenderer>().color = Color.white;
+        transform.Find("PlayerSprite").GetComponent<SpriteRenderer>().color = isPoisoned ? Color.purple : Color.white;
+    }
+
+    private IEnumerator PoisonDamage(int damage, int duration)
+    {
+        isPoisoned = true;
+        while (duration > 0)
+        {
+            yield return new WaitForSeconds(1.0f);
+            ChangeHealth(-1 * damage);
+            duration--;
+        }
+        isPoisoned = false;
     }
 }
