@@ -30,7 +30,7 @@ public class Mosquito : MonoBehaviour
         if (_enemy.GetCanMove())
         {
             //Out of range, move towards player
-            if (!inAttackAnimation && Vector2.Distance(_enemy.GetPlayer().transform.position, transform.position) > attackRange)
+            if (!inAttackAnimation && _enemy.DistanceToPlayer() > attackRange)
             {
                 _enemy.MoveTowardsPlayer(_enemy.moveSpeed);
             }

@@ -8916,9 +8916,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Spawnzone
   spawnableEnemies:
-  - {fileID: 3374524358304489832, guid: 455edcd1c8aa6b74d9cde58fee36efe0, type: 3}
   - {fileID: 851450384387631589, guid: 9ec3f4fda10d7c94eab1738b6de409ed, type: 3}
-  enemySpawnChances: 1e00000046000000
+  - {fileID: 3374524358304489832, guid: 455edcd1c8aa6b74d9cde58fee36efe0, type: 3}
+  enemySpawnChances: 4100000023000000
 --- !u!60 &451595742
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -8999,7 +8999,7 @@ GameObject:
   - component: {fileID: 625160981}
   - component: {fileID: 625160980}
   m_Layer: 0
-  m_Name: Door
+  m_Name: DoorToGarage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9065,7 +9065,7 @@ Transform:
   m_GameObject: {fileID: 625160979}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -7.49, y: -2.42, z: 0}
+  m_LocalPosition: {x: -7.49, y: -2.42, z: 0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -24360,10 +24360,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Spawnzone
   spawnableEnemies:
-  - {fileID: 3374524358304489832, guid: 455edcd1c8aa6b74d9cde58fee36efe0, type: 3}
   - {fileID: 851450384387631589, guid: 9ec3f4fda10d7c94eab1738b6de409ed, type: 3}
-  - {fileID: 8731523128728504031, guid: 1887d4cfab84b324eb907600ec1c4010, type: 3}
-  enemySpawnChances: 190000003200000019000000
+  - {fileID: 3374524358304489832, guid: 455edcd1c8aa6b74d9cde58fee36efe0, type: 3}
+  - {fileID: 3774652731042798261, guid: 6f94ef077849de643973f32b641717d1, type: 3}
+  - {fileID: 8038432961036280911, guid: 63eda44ca462c574f903648fe7c2aa4a, type: 3}
+  enemySpawnChances: 1e000000140000001e00000014000000
 --- !u!60 &2119810482
 PolygonCollider2D:
   m_ObjectHideFlags: 0

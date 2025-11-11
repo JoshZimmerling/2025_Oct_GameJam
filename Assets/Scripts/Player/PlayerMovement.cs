@@ -9,7 +9,6 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 direction;
     
     InputAction moveAction;
-    InputAction jumpAction;
     
     private void OnEnable()
     {
@@ -56,5 +55,10 @@ public class PlayerMovement : MonoBehaviour
     public void EnableMovement()
     {
         OnEnable();
+    }
+
+    public Vector2 GetMovementDirection()
+    {
+        return direction;
     }
 }

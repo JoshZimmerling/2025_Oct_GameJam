@@ -92,6 +92,11 @@ public class Enemy : MonoBehaviour
         rb.MovePosition(rb.position + direction * speed * Time.fixedDeltaTime);
     }
 
+    public float DistanceToPlayer()
+    {
+        return Vector2.Distance(player.transform.position, transform.position);
+    }
+
     IEnumerator Flash()
     {
         spriteRenderer.color = damageColor;
