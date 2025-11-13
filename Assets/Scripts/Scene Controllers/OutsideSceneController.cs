@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -22,6 +24,10 @@ public class OutsideSceneController : MonoBehaviour
     private float maxTimeBetweenSpawns;
     private float spawnTimer;
 
+    private bool isBossFightDay;
+    private static int numBossesCompleted = 0;
+    [SerializeField] List<GameObject> bossList;
+
     [SerializeField] GameObject nightOverlay;
 
     CameraScript cameraScript;
@@ -45,6 +51,8 @@ public class OutsideSceneController : MonoBehaviour
         minTimeBetweenSpawns = 4f - (dayCounter * .1f) < 2f ? 2f : 4f - (dayCounter * .1f);
         maxTimeBetweenSpawns = 7.5f - (dayCounter * .1f) < 4f ? 4f : 7.5f - (dayCounter * .1f);
         ResetSpawnTimer();
+
+        CheckForBossFight();
     }
 
     void Update()
@@ -64,7 +72,7 @@ public class OutsideSceneController : MonoBehaviour
         }
 
         spawnTimer -= Time.deltaTime;
-        if (spawnTimer <= 0)
+        if (spawnTimer <= 0 && !isBossFightDay)
         {
             if(Random.Range(0f,1f) <= 0.5f)
             {
@@ -110,5 +118,60 @@ public class OutsideSceneController : MonoBehaviour
         float rand1 = Random.Range(minTimeBetweenSpawns/2f, maxTimeBetweenSpawns / 2f);
         float rand2 = Random.Range(minTimeBetweenSpawns/2f, maxTimeBetweenSpawns / 2f);
         spawnTimer = rand1+rand2;
+    }
+
+    private void CheckForBossFight()
+    {
+        switch (numBossesCompleted)
+        {
+            //FIRST BOSS
+            //Cannot show up on or before day 6
+            //Ramping percentage chance of spawning on days 7-11 (15%, 30%, 45%, 60%, 75%)
+            //Guarenteed to have spawned by day 12
+            case 0:
+                if (dayCounter <= 6)
+                {
+                    isBossFightDay = false;
+                }
+                else if (dayCounter <= 11)
+                {
+                    float randomNumber = Random.Range(0, 100 / (dayCounter - 6));
+                    if (randomNumber <= 15)
+                    {
+                        isBossFightDay = true;
+                    }
+                    else 
+                    {
+                        isBossFightDay = false;
+                    }
+                }
+                else
+                {
+                    isBossFightDay = true;
+                }
+                break;
+        }
+        if (isBossFightDay)
+        {
+            StartCoroutine(StartBossFight());
+        }
+    }
+
+    IEnumerator StartBossFight()
+    {
+        yield return new WaitForSeconds(5);
+        Debug.Log("Spawning Boss");
+        switch (numBossesCompleted)
+        {
+            case 0:
+                Instantiate(bossList[0]);
+                break;
+            case 1:
+                Instantiate(bossList[1]);
+                break;
+            case 2:
+                Instantiate(bossList[2]);
+                break;
+        }
     }
 }

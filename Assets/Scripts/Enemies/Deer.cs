@@ -122,7 +122,6 @@ public class Deer : MonoBehaviour
     {
         repositioning = true;
         float randomAngle = Random.Range(60f, 90f) * ((Random.Range(0, 2) == 0) ? 1f : -1f);
-        Debug.Log(randomAngle);
         repositionDirection = rotateVectorByDegrees((Vector2)_enemy.GetPlayer().transform.position - (Vector2)transform.position, randomAngle).normalized;
 
         yield return new WaitForSeconds(0.5f);
