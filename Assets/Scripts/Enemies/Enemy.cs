@@ -17,8 +17,6 @@ public class Enemy : MonoBehaviour
     private Coroutine slowCoroutine;
 
     private Rigidbody2D rb;
-    private Vector2 target;
-    private Vector2 direction;
 
     private Player player;
 
@@ -90,10 +88,23 @@ public class Enemy : MonoBehaviour
 
     public void MoveTowardsPlayer(float speed)
     {
-        target = player.transform.position;
-        direction = (target - (Vector2)transform.position).normalized;
+        Move(((Vector2)player.transform.position - (Vector2)transform.position).normalized, speed);
+    }
 
-        rb.MovePosition(rb.position + direction * speed * Time.fixedDeltaTime);
+    public void Move(Vector2 dir, float speed)
+    {
+        if (dir.x > 0)
+        {
+            transform.rotation = new Quaternion(0, 0, 0, 0);
+            transform.Find("Healthbar").localRotation = new Quaternion(0, 0, 0, 0);
+        }
+        else if (dir.x < 0)
+        {
+            transform.rotation = new Quaternion(0, 180, 0, 0);
+            transform.Find("Healthbar").localRotation = new Quaternion(0, 180, 0, 0);
+        }
+
+        rb.MovePosition(rb.position + dir * speed * Time.fixedDeltaTime);
     }
 
     public float DistanceToPlayer()

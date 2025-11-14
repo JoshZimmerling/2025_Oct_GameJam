@@ -43,6 +43,18 @@ public class PlayerMovement : MonoBehaviour
         if(direction != Vector2.zero)
         {
             Fishing.CancelCurrentFishing();
+            if(direction.x > 0)
+            {
+                transform.rotation = new Quaternion(0, 0, 0, 0);
+                transform.Find("Textbox").localRotation = new Quaternion(0, 0, 0, 0);
+                transform.Find("Healthbar").localRotation = new Quaternion(0, 0, 0, 0);
+            }
+            else if(direction.x < 0)
+            {
+                transform.rotation = new Quaternion(0, 180, 0, 0);
+                transform.Find("Textbox").localRotation = new Quaternion(0, 180, 0, 0);
+                transform.Find("Healthbar").localRotation = new Quaternion(0, 180, 0, 0);
+            }
         }
     }
 

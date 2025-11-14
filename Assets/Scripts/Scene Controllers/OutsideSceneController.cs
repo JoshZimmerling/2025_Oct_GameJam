@@ -164,13 +164,13 @@ public class OutsideSceneController : MonoBehaviour
         switch (numBossesCompleted)
         {
             case 0:
-                Instantiate(bossList[0]);
+                Instantiate(bossList[0], GameObject.Find("BossSpawnPosition").transform.position, Quaternion.identity);
                 break;
             case 1:
-                Instantiate(bossList[1]);
+                Instantiate(bossList[1], GameObject.Find("BossSpawnPosition").transform.position, Quaternion.identity);
                 break;
             case 2:
-                Instantiate(bossList[2]);
+                Instantiate(bossList[2], GameObject.Find("BossSpawnPosition").transform.position, Quaternion.identity);
                 break;
         }
     }

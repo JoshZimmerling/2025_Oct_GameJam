@@ -14,7 +14,6 @@ public class Deer : MonoBehaviour
     [SerializeField] float attackRange;
 
     private Enemy _enemy;
-    private Rigidbody2D rb;
 
     private bool frantic = false;
     [SerializeField] GameObject franticIndicator;
@@ -30,7 +29,6 @@ public class Deer : MonoBehaviour
     void Start()
     {
         _enemy = GetComponent<Enemy>();
-        rb = GetComponent<Rigidbody2D>();
 
         franticIndicator.SetActive(false);
         repositionTimer = repositionCooldown;
@@ -44,13 +42,13 @@ public class Deer : MonoBehaviour
         {
             if (frantic)
             {
-                rb.MovePosition(rb.position + runDirection * _enemy.moveSpeed * 2.5f * Time.fixedDeltaTime);
+                _enemy.Move(runDirection, _enemy.moveSpeed * 2.5f);
             }
             else
             {
                 if (_enemy.DistanceToPlayer() <= attackRange)
                 {
-                    if (_enemy.DistanceToPlayer() >= (attackRange * 0.5f))
+                    if (_enemy.DistanceToPlayer() >= (attackRange * 0.4f))
                     {
                         repositionTimer = Mathf.Max(0, repositionTimer - Time.deltaTime);
                         if (repositionTimer <= 0f && !repositioning ) 
@@ -59,7 +57,7 @@ public class Deer : MonoBehaviour
                         }
                         else if (repositioning)
                         {
-                            rb.MovePosition(rb.position + repositionDirection * _enemy.moveSpeed * Time.fixedDeltaTime);
+                            _enemy.Move(repositionDirection, _enemy.moveSpeed);
                         }
 
                         if (cooldownTimer == 0)
