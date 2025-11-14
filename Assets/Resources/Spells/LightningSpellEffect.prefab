@@ -136,7 +136,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56578d931cfdf854fa861db02e1f9bd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LaserSpellEffect
-  damage: 2
+  damage: 3
   slowPercentage: 0
   slowDuration: 0
   isPassthrough: 1

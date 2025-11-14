@@ -50,13 +50,17 @@ public class Enemy : MonoBehaviour
         
         if (currentHealth <= 0)
         {
+            if (gameObject.GetComponent<Boss>() != null)
+            {
+                gameObject.GetComponent<Boss>().OnDeath();
+            }
             Destroy(gameObject);
         }
     }
 
     public void Slow(float percentSlow, float slowLength)
     {
-        if(slowCoroutine != null)
+        if(slowed)
         {
             StopCoroutine(slowCoroutine);
             moveSpeed /= (100f - percentSlow) / 100f;

@@ -89,7 +89,7 @@ public class Constants
         //PRIMARY ACTIVE SPELL
         new SpellItem("Lightning Spell", "Shoot a beam of lightning towards your target, dealing good damage across multiple enemies.\n\nDMG: 2\nRANGE: SHORT\nCOOLDOWN: 0.5s\nPIERCING: YES", new Dictionary<FishType, int> { { FishType.BRONZE_FISH, 4 }, { FishType.IRON_FISH, 1 } }, ItemType.PRIMARY_ACTIVE_SPELL, "", "LightningSpell"),
         //SECONDARY ACTIVE SPELL
-        new SpellItem("Meteor Spell", "Call down a large meteor that does damage in an area around the cast location.\n\nDMG: 10\nRANGE: LONG\nCOOLDOWN: 15s\nPIERCING: YES", new Dictionary<FishType, int> { { FishType.STONE_FISH, 10 } }, ItemType.SECONDARY_ACTIVE_SPELL, "", "MeteorSpell"),
+        new SpellItem("Meteor Spell", "Call down a large meteor that does damage in an area around the cast location.\n\nDMG: 10\nRANGE: LONG\nCOOLDOWN: 15s\nPIERCING: YES", new Dictionary<FishType, int> { { FishType.STONE_FISH, 15 } }, ItemType.SECONDARY_ACTIVE_SPELL, "", "MeteorSpell"),
     };
 
     public static List<CraftingCategory> AllCraftingCategories = new List<CraftingCategory> {

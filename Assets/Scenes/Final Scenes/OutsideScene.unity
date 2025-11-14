@@ -5039,6 +5039,8 @@ MonoBehaviour:
   fullDayTime: 180
   treeSpawnZone: {fileID: 2119810481}
   waterSpawnZone: {fileID: 451595741}
+  bossList:
+  - {fileID: 8715254775045100164, guid: 7c4f3b9a11211874fa178ce6e05f8b8a, type: 3}
   nightOverlay: {fileID: 1517494938}
 --- !u!4 &341488722
 Transform:
@@ -8967,9 +8969,9 @@ PolygonCollider2D:
     m_Paths:
     - - {x: 25.053972, y: 8.906942}
       - {x: 23.34797, y: 8.87744}
-      - {x: 18.322498, y: 4.8657694}
-      - {x: 18.381788, y: -6.797373}
-      - {x: 20.032413, y: -8.05582}
+      - {x: 20.061253, y: 6.784393}
+      - {x: 20.000628, y: -8.090258}
+      - {x: 20.101534, y: -9.265446}
       - {x: 21.039177, y: -10.156897}
       - {x: 25.197552, y: -10.069351}
   m_UseDelaunayMesh: 0

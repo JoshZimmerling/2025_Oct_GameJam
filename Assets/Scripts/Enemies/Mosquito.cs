@@ -15,12 +15,9 @@ public class Mosquito : MonoBehaviour
 
     private Enemy _enemy;
 
-    private Rigidbody2D rb;
-
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
         _enemy = GetComponent<Enemy>();
     }
 
