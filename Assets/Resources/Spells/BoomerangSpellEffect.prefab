@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 5127191385760170540}
   - component: {fileID: 8758089912175144352}
   - component: {fileID: 6660981454951547331}
-  - component: {fileID: 1187294174338938312}
+  - component: {fileID: 3338230580048068470}
   - component: {fileID: -1723543810296659583}
   m_Layer: 0
-  m_Name: SnowballSpellEffect
+  m_Name: BoomerangSpellEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -47,17 +47,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88c995cdab671ff478f0e9d8ace0c542, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ProjectileSpellEffect
-  damage: 0
-  slowPercentage: 35
-  slowDuration: 2.25
+  damage: 2
+  slowPercentage: 0
+  slowDuration: 0
   isPassthrough: 1
-  knockback: 8
-  speed: 5
+  knockback: 1
+  speed: 12
   direction: {x: 0, y: 0}
   doesSpellRotate: 1
-  rotationSpeed: 250
-  doesBoomerang: 0
-  timeToBoomerang: 0
+  rotationSpeed: 500
+  doesBoomerang: 1
+  timeToBoomerang: 0.5
 --- !u!212 &6660981454951547331
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -105,7 +105,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 94e842e84d6cffe44b5dbc88e4f9fc56, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c76c36ce75c10f24aaee6f13b5b11a07, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -116,8 +116,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &1187294174338938312
-CircleCollider2D:
+--- !u!60 &3338230580048068470
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -151,7 +151,42 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.5
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.40920615, y: 0.31396723}
+      - {x: 0.37291396, y: 0.35269618}
+      - {x: 0.2813766, y: 0.35057342}
+      - {x: 0.05769813, y: 0.15917575}
+      - {x: -0.054340363, y: 0.16041166}
+      - {x: -0.2875197, y: 0.3483144}
+      - {x: -0.37589908, y: 0.34940076}
+      - {x: -0.41073215, y: 0.31560868}
+      - {x: -0.4120612, y: 0.25850296}
+      - {x: -0.13109064, y: 0.051553547}
+      - {x: -0.13276148, y: -0.048673213}
+      - {x: -0.4130609, y: -0.2479977}
+      - {x: -0.41016412, y: -0.31752345}
+      - {x: -0.37163734, y: -0.35148522}
+      - {x: -0.27622867, y: -0.346238}
+      - {x: -0.059789658, y: -0.16356757}
+      - {x: 0.050175667, y: -0.16261744}
+      - {x: 0.28089857, y: -0.34616488}
+      - {x: 0.37278366, y: -0.34924755}
+      - {x: 0.40728652, y: -0.31561878}
+      - {x: 0.4075786, y: -0.25108236}
+      - {x: 0.12827826, y: -0.051488698}
+      - {x: 0.13158178, y: 0.054792345}
+      - {x: 0.40902627, y: 0.2610278}
+  m_UseDelaunayMesh: 0
 --- !u!50 &-1723543810296659583
 Rigidbody2D:
   serializedVersion: 5
