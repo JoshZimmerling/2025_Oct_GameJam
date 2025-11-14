@@ -89,6 +89,8 @@ public class Constants
         //PRIMARY ACTIVE SPELL
         new SpellItem("Lightning Spell", "Fire a blast of lightning towards your target, dealing good damage across multiple enemies.\n\nDMG: 3\nRANGE: SHORT\nCOOLDOWN: 0.5s\nPIERCING: YES", new Dictionary<FishType, int> { { FishType.BRONZE_FISH, 4 }, { FishType.IRON_FISH, 1 } }, ItemType.PRIMARY_ACTIVE_SPELL, "", "LightningSpell"),
         new SpellItem("Light Beam Spell", "Quickly shoot a beam of light towards your target, piercing through all enemies hit.\n\nDMG: 1\nRANGE: MEDIUM\nCOOLDOWN: 0.33s\nPIERCING: YES", new Dictionary<FishType, int> { { FishType.WOOD_FISH, 4 }, { FishType.STONE_FISH, 6 }, { FishType.BRONZE_FISH, 2 } }, ItemType.PRIMARY_ACTIVE_SPELL, "", "LightBeamSpell"),
+        
+        new SpellItem("Pulse Spell", "Emit a damaging aura around you dealing damage to all nearby enemies.\n\nDMG: 4\nRANGE: VERY SHORT\nCOOLDOWN: 0.4s\nPIERCING: YES", new Dictionary<FishType, int> { { FishType.STONE_FISH, 10 }, { FishType.IRON_FISH, 7 }, { FishType.SILVER_FISH, 5 } }, ItemType.PRIMARY_ACTIVE_SPELL, "", "PulseSpell"),
         //SECONDARY ACTIVE SPELL
         new SpellItem("Meteor Spell", "Call down a large meteor that does damage in an area around the cast location.\n\nDMG: 10\nRANGE: LONG\nCOOLDOWN: 15s\nPIERCING: YES", new Dictionary<FishType, int> { { FishType.STONE_FISH, 15 } }, ItemType.SECONDARY_ACTIVE_SPELL, "", "MeteorSpell"),
     };
@@ -99,9 +101,9 @@ public class Constants
         new CraftingCategory("Fishing Rod Bait", "Choosing the right bait can help make sure you find the type of fish you’re looking for.", ItemType.FISHING_ROD_BAIT, "bait_starter"),
         new CraftingCategory("Fishing Rod Line", "Unlock further depths to find brand new types of fish.", ItemType.FISHING_ROD_LINE, "line_10m"),
         new CraftingCategory("Wand", "Your tool for casting spells; choosing the right wand is imperative to fighting off those pesky critters.", ItemType.WAND, null),
-        new CraftingCategory("Primary Spell", "desc", ItemType.PRIMARY_ACTIVE_SPELL, null),
-        new CraftingCategory("Secondary Spell", "desc", ItemType.SECONDARY_ACTIVE_SPELL, null),
-        new CraftingCategory("Passive Spell", "desc", ItemType.PASSIVE_SPELL, null),
+        new CraftingCategory("Primary Spell", "Your main damage source; primary spells often do good amounts of damage on a pretty low cooldown.", ItemType.PRIMARY_ACTIVE_SPELL, null),
+        new CraftingCategory("Secondary Spell", "Secondary spells can have many effects, whether an additional damage source or a utility spell.", ItemType.SECONDARY_ACTIVE_SPELL, null),
+        new CraftingCategory("Passive Spell", "A spell that will automatically cast in the background, causing various effects to the player.", ItemType.PASSIVE_SPELL, null),
         new CraftingCategory("Charm", "desc", ItemType.CHARM, null),
         new CraftingCategory("Boots", "desc", ItemType.BOOTS, null)
     };

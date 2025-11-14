@@ -22,7 +22,7 @@ public class ProjectileSpellEffect : SpellEffect
     {
         rb.MovePosition(rb.position + direction * speed * Time.fixedDeltaTime);
 
-        if(gameObject.name.Contains("SnowballSpellEffect"))
+        if(gameObject.name.Contains("SnowballSpell"))
         {
             transform.Rotate(Vector3.back * 200 * Time.deltaTime);
         }

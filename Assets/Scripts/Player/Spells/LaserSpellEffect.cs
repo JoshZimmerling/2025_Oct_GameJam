@@ -9,6 +9,11 @@ public class LaserSpellEffect : SpellEffect
     void Start()
     {
         player = GameObject.Find("Player");
+
+        if (gameObject.name.Contains("PulseSpell"))
+        {
+            transform.rotation = Quaternion.identity;
+        }
     }
 
     public override void Setup(Wand wand)
