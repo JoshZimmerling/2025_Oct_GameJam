@@ -95,6 +95,17 @@ public class Deer : MonoBehaviour
 
     private void ShootAtPlayer()
     {
+        if ((_enemy.GetPlayer().transform.position.x - transform.position.x) > 0)
+        {
+            transform.rotation = new Quaternion(0, 0, 0, 0);
+            transform.Find("Healthbar").localRotation = new Quaternion(0, 0, 0, 0);
+        }
+        else if ((_enemy.GetPlayer().transform.position.x - transform.position.x) < 0)
+        {
+            transform.rotation = new Quaternion(0, 180, 0, 0);
+            transform.Find("Healthbar").localRotation = new Quaternion(0, 180, 0, 0);
+        }
+
         cooldownTimer = attackCooldown;
         GameObject bullet = Instantiate(projectile, transform.position, transform.rotation);
         bullet.GetComponent<EnemyProjectile>().SetStats(projectileDamage, projectileSpeed);

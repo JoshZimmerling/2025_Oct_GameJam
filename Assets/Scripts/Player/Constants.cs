@@ -90,10 +90,12 @@ public class Constants
         new SpellItem("Lightning Spell", "Fire a blast of lightning towards your target, dealing good damage across multiple enemies.\n\nDMG: 3\nRANGE: SHORT\nCOOLDOWN: 0.5s\nPIERCING: YES", new Dictionary<FishType, int> { { FishType.BRONZE_FISH, 4 }, { FishType.IRON_FISH, 1 } }, ItemType.PRIMARY_ACTIVE_SPELL, "", "LightningSpell"),
         new SpellItem("Light Beam Spell", "Quickly shoot a beam of light towards your target, piercing through all enemies hit.\n\nDMG: 1\nRANGE: MEDIUM\nCOOLDOWN: 0.33s\nPIERCING: YES", new Dictionary<FishType, int> { { FishType.WOOD_FISH, 4 }, { FishType.STONE_FISH, 6 }, { FishType.BRONZE_FISH, 2 } }, ItemType.PRIMARY_ACTIVE_SPELL, "", "LightBeamSpell"),
         
-        new SpellItem("Pulse Spell", "Emit a damaging aura around you dealing damage to all nearby enemies.\n\nDMG: 4\nRANGE: VERY SHORT\nCOOLDOWN: 0.4s\nPIERCING: YES", new Dictionary<FishType, int> { { FishType.STONE_FISH, 10 }, { FishType.IRON_FISH, 7 }, { FishType.SILVER_FISH, 5 } }, ItemType.PRIMARY_ACTIVE_SPELL, "", "PulseSpell"),
-        new SpellItem("Boomerang Spell", "Less of a spell and more of a heave, this projectile does damage on the way out and back from the player.\n\nDMG: 2x2\nRANGE: LONG\nCOOLDOWN: 1s\nPIERCING: YES", new Dictionary<FishType, int> { { FishType.WOOD_FISH, 20 }, { FishType.SILVER_FISH, 4 }, { FishType.GOLD_FISH, 1 } }, ItemType.PRIMARY_ACTIVE_SPELL, "", "BoomerangSpell"),
+        new SpellItem("Pulse Spell", "Emit a damaging aura around you dealing damage to all nearby enemies.\n\nDMG: 5\nRANGE: VERY SHORT\nCOOLDOWN: 0.4s\nPIERCING: YES", new Dictionary<FishType, int> { { FishType.STONE_FISH, 10 }, { FishType.IRON_FISH, 7 }, { FishType.SILVER_FISH, 5 } }, ItemType.PRIMARY_ACTIVE_SPELL, "", "PulseSpell"),
+        new SpellItem("Boomerang Spell", "Less of a spell and more of a heave, this projectile does damage on the way out and back from the player.\n\nDMG: 2x2\nRANGE: LONG\nCOOLDOWN: 1s\nPIERCING: YES", new Dictionary<FishType, int> { { FishType.WOOD_FISH, 20 }, { FishType.SILVER_FISH, 4 }, { FishType.EMERALD_FISH, 1 } }, ItemType.PRIMARY_ACTIVE_SPELL, "", "BoomerangSpell"),
         //SECONDARY ACTIVE SPELL
         new SpellItem("Meteor Spell", "Call down a large meteor that does damage in an area around the cast location.\n\nDMG: 10\nRANGE: LONG\nCOOLDOWN: 15s\nPIERCING: YES", new Dictionary<FishType, int> { { FishType.STONE_FISH, 15 } }, ItemType.SECONDARY_ACTIVE_SPELL, "", "MeteorSpell"),
+        //PASSIVE SPELL
+        new SpellItem("Spell of Swiftness", "Occasionally grants a small burst of movement speed.\n\nSPEED: +20%\nDURATION: 5s\nCOOLDOWN: 20s", new Dictionary<FishType, int> { { FishType.BRONZE_FISH, 5 } }, ItemType.PASSIVE_SPELL, "", "SpeedSpell"),
     };
 
     public static List<CraftingCategory> AllCraftingCategories = new List<CraftingCategory> {

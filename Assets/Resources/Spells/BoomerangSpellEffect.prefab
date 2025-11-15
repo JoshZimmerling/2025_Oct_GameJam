@@ -52,7 +52,7 @@ MonoBehaviour:
   slowDuration: 0
   isPassthrough: 1
   knockback: 1
-  speed: 12
+  speed: 10
   direction: {x: 0, y: 0}
   doesSpellRotate: 1
   rotationSpeed: 500

@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -72,5 +73,17 @@ public class PlayerMovement : MonoBehaviour
     public Vector2 GetMovementDirection()
     {
         return direction;
+    }
+
+    public void ChangeSpeed(float speedChange, float changeDuration)
+    {
+        StartCoroutine(SpeedBuff(speedChange, changeDuration));
+    }
+
+    private IEnumerator SpeedBuff(float speedChange, float changeDuration)
+    {
+        moveSpeed *= speedChange;
+        yield return new WaitForSeconds(changeDuration);
+        moveSpeed /= speedChange;
     }
 }

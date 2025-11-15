@@ -541,7 +541,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4401a0681b22fd345b26ab1c13851828, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
-  startingHealth: 8
+  startingHealth: 9
   moveSpeed: 2.5
   healthbar: {fileID: 9123498104380157248}
 --- !u!114 &8519674249348892234
@@ -557,7 +557,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Deer
   projectile: {fileID: 5860289697823742698, guid: f2333c8daae7abd469b487d217c70c7f, type: 3}
-  projectileDamage: 8
+  projectileDamage: 10
   projectileSpeed: 14
   projectileLifetime: 2.5
   leadProjectile: 0

@@ -4,11 +4,13 @@ public class BuffSpellEffect : SpellEffect
 {
     public enum BuffType
     {
-        HEAL
+        HEAL,
+        SPEED
     }
 
     [SerializeField] BuffType buffType;
     [SerializeField] float buffAmount;
+    [SerializeField] float buffDuration;
 
     GameObject player;
 
@@ -20,6 +22,9 @@ public class BuffSpellEffect : SpellEffect
         {
             case BuffType.HEAL:
                 player.GetComponent<Player>().ChangeHealth((int)buffAmount);
+                break;
+            case BuffType.SPEED:
+                player.GetComponent<PlayerMovement>().ChangeSpeed(buffAmount, buffDuration);
                 break;
         }
     }
