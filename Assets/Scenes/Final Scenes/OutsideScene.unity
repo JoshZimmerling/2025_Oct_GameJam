@@ -8920,7 +8920,8 @@ MonoBehaviour:
   spawnableEnemies:
   - {fileID: 851450384387631589, guid: 9ec3f4fda10d7c94eab1738b6de409ed, type: 3}
   - {fileID: 3374524358304489832, guid: 455edcd1c8aa6b74d9cde58fee36efe0, type: 3}
-  enemySpawnChances: 4100000023000000
+  - {fileID: 2056726428457499143, guid: 78e0f881cb2f65b4e97a98892ddc071a, type: 3}
+  enemySpawnChances: 1e0000001400000032000000
 --- !u!60 &451595742
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -9759,7 +9760,7 @@ Transform:
   m_GameObject: {fileID: 1915536896}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.96, y: 7.05, z: 0}
+  m_LocalPosition: {x: 2.96, y: 8.32, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

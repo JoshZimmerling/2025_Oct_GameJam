@@ -18,8 +18,6 @@ public class PlayerUIHandler : MonoBehaviour
     void Start()
     {
         DontDestroyOnLoad(this.gameObject);
-
-        wand = player.GetComponentInChildren<Wand>();
     }
     
     void Update()
@@ -30,6 +28,11 @@ public class PlayerUIHandler : MonoBehaviour
     public void SetHealth(int health)
     {
         healthText.text = health.ToString();
+    }
+
+    public void SetWand()
+    {
+        wand = player.GetComponentInChildren<Wand>();
     }
 
     public void SetSpellCd()

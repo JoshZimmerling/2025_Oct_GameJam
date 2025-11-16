@@ -109,7 +109,10 @@ public class Enemy : MonoBehaviour
 
     public float DistanceToPlayer()
     {
-        return Vector2.Distance(player.transform.position, transform.position);
+        float distanceBetweenCenters = Vector2.Distance(player.transform.position, transform.position);
+        float edgeDistance = distanceBetweenCenters - player.GetComponentInChildren<SpriteRenderer>().bounds.extents.y - gameObject.GetComponentInChildren<SpriteRenderer>().bounds.extents.x;
+
+        return edgeDistance;
     }
 
     IEnumerator Flash()

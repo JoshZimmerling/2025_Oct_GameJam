@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Spell : MonoBehaviour
 {
-    public SpellEffect effect;
+    [SerializeField] public SpellEffect effect;
 
     [SerializeField] float spellDuration = 0.3f;
     private float deleteSpellTime;
@@ -10,7 +10,7 @@ public class Spell : MonoBehaviour
     public float cooldownTimer = 0;
 
     private GameObject player;
-    
+
     public void CastSpell(Transform transform, Vector2 target, Wand wand)
     {
         GameObject spellEffectObject = null;

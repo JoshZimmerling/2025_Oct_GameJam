@@ -123,6 +123,7 @@ public class OutsideSceneController : MonoBehaviour
 
     private void CheckForBossFight()
     {
+        isBossFightDay = false;
         isBossDead = true;
         switch (numBossesCompleted)
         {
@@ -131,23 +132,15 @@ public class OutsideSceneController : MonoBehaviour
             //Ramping percentage chance of spawning on days 7-11 (15%, 30%, 45%, 60%, 75%)
             //Guarenteed to have spawned by day 12
             case 0:
-                if (dayCounter <= 6)
-                {
-                    isBossFightDay = true;
-                }
-                else if (dayCounter <= 11)
+                if (dayCounter > 6 && dayCounter <= 11)
                 {
                     float randomNumber = Random.Range(0, 100 / (dayCounter - 6));
                     if (randomNumber <= 15)
                     {
                         isBossFightDay = true;
                     }
-                    else 
-                    {
-                        isBossFightDay = false;
-                    }
                 }
-                else
+                else if (dayCounter >= 12)
                 {
                     isBossFightDay = true;
                 }
@@ -186,5 +179,6 @@ public class OutsideSceneController : MonoBehaviour
     {
         player.GetComponent<Player>().inventory.AddFish(Constants.FishType.STRING_FISH, 1);
         isBossDead = true;
+        numBossesCompleted++;
     }
 }
