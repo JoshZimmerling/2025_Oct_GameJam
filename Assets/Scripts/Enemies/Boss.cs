@@ -3,6 +3,7 @@ using UnityEngine;
 public class Boss : MonoBehaviour
 {
     private GameObject player;
+    [SerializeField] GameObject stringFish;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -23,6 +24,7 @@ public class Boss : MonoBehaviour
 
     public void OnDeath()
     {
-        player.GetComponent<Player>().inventory.AddFish(Constants.FishType.STRING_FISH, 1);
+        Instantiate(stringFish, transform.position, Quaternion.identity);
+        GameObject.Find("Scene Script Holder").GetComponent<OutsideSceneController>().BossKilled();
     }
 }

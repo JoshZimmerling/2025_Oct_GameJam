@@ -83,6 +83,7 @@ public class Wand : MonoBehaviour
         primaryActiveSpell = Resources.Load<GameObject>("Spells/" + ((SpellItem)playerInventoryScript.GetEquippedItemByItemType(ItemType.PRIMARY_ACTIVE_SPELL)).spellName).GetComponent<Spell>();
         secondaryActiveSpell = Resources.Load<GameObject>("Spells/" + ((SpellItem)playerInventoryScript.GetEquippedItemByItemType(ItemType.SECONDARY_ACTIVE_SPELL)).spellName).GetComponent<Spell>();
         passiveSpell = Resources.Load<GameObject>("Spells/" + ((SpellItem)playerInventoryScript.GetEquippedItemByItemType(ItemType.PASSIVE_SPELL)).spellName).GetComponent<Spell>();
+        GameObject.Find("Player Canvas").GetComponent<PlayerUIHandler>().UpdateSpellIcons();
 
         primaryActiveSpell.cooldownTimer = 0;
         secondaryActiveSpell.cooldownTimer = 0;

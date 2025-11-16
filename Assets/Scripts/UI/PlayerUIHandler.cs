@@ -20,8 +20,6 @@ public class PlayerUIHandler : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
 
         wand = player.GetComponentInChildren<Wand>();
-        
-        UpdateSpellIcons();
     }
     
     void Update()

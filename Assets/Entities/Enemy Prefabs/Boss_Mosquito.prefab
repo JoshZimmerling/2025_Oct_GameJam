@@ -538,6 +538,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3223615f66112f54495e568b1c77de00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Boss
+  stringFish: {fileID: 5253180466919636739, guid: ff1962c9c4fff854aa3a3c9be3066d35, type: 3}
 --- !u!114 &7229162795352333251
 MonoBehaviour:
   m_ObjectHideFlags: 0

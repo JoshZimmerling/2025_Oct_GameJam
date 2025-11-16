@@ -43,6 +43,10 @@ public class Player : MonoBehaviour
         {
             currentHealth = maxHealth;
         }
+        else if(currentHealth <= 0)
+        {
+            Application.Quit();
+        }
 
         StartCoroutine(Flash(amount < 0 ? Color.red : Color.green));
         ScaleHealthBar();

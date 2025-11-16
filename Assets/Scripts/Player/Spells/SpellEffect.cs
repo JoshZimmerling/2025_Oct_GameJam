@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SpellEffect : MonoBehaviour
@@ -8,15 +9,19 @@ public class SpellEffect : MonoBehaviour
     [SerializeField] bool isPassthrough;
     [SerializeField] float knockback;
 
+    private bool canHit = true;
+
     protected void HitEnemy(Enemy enemy)
     {
-        if (damage > 0)
+        if (damage > 0 && canHit)
         {
+            canHit = isPassthrough ? true : false;
             enemy.Damage(damage);
             enemy.HitKnockback(knockback, transform.position);
         }
-        if (slowPercentage > 0 && slowDuration > 0)
+        if (slowPercentage > 0 && slowDuration > 0 && canHit)
         {
+            canHit = isPassthrough ? true : false;
             enemy.Slow(slowPercentage, slowDuration);
             enemy.HitKnockback(knockback, transform.position);
         }

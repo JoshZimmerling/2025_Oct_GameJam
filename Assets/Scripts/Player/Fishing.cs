@@ -69,15 +69,15 @@ public class Fishing : MonoBehaviour
             fishSpriteList.Add(Resources.Load<Sprite>("Fish Sprites/" + fish.ToString()));
         }
 
+        UpdateFishingStats();
         EmptyFishingChargesProgress();
     }
     
     void Update()
     {
         // When right click is first pressed, start fishing
-        if (Keyboard.current.leftShiftKey.wasPressedThisFrame && playerCollider.IsTouching(myCollider) && canStartFishing && !sceneController.isDayComplete())
+        if (Keyboard.current.leftShiftKey.wasPressedThisFrame && playerCollider.IsTouching(myCollider) && canStartFishing && !sceneController.isDayComplete() && !sceneController.IsBossDay())
         {
-            UpdateFishingStats();
             StartFishing();
         }
         // FishingStartTime will be -1 when we are not fishing, so this check is to check if we are currently fishing

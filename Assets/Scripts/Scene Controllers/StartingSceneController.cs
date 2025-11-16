@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
-using static Unity.VisualScripting.Metadata;
 
 public class StartingSceneController : MonoBehaviour
 {

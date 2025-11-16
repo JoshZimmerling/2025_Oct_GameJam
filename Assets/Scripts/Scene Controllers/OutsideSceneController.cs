@@ -25,6 +25,7 @@ public class OutsideSceneController : MonoBehaviour
     private float spawnTimer;
 
     private bool isBossFightDay;
+    private bool isBossDead;
     private static int numBossesCompleted = 0;
     [SerializeField] List<GameObject> bossList;
 
@@ -57,7 +58,7 @@ public class OutsideSceneController : MonoBehaviour
 
     void Update()
     {
-        if (Keyboard.current.spaceKey.wasPressedThisFrame && playerCollider.IsTouching(doorToGarageCollider))
+        if (Keyboard.current.spaceKey.wasPressedThisFrame && playerCollider.IsTouching(doorToGarageCollider) && isBossDead)
         {
             SceneManager.LoadScene("GarageScene");
         }
@@ -122,6 +123,7 @@ public class OutsideSceneController : MonoBehaviour
 
     private void CheckForBossFight()
     {
+        isBossDead = true;
         switch (numBossesCompleted)
         {
             //FIRST BOSS
@@ -131,7 +133,7 @@ public class OutsideSceneController : MonoBehaviour
             case 0:
                 if (dayCounter <= 6)
                 {
-                    isBossFightDay = false;
+                    isBossFightDay = true;
                 }
                 else if (dayCounter <= 11)
                 {
@@ -153,6 +155,7 @@ public class OutsideSceneController : MonoBehaviour
         }
         if (isBossFightDay)
         {
+            isBossDead = false;
             StartCoroutine(StartBossFight());
         }
     }
@@ -160,7 +163,6 @@ public class OutsideSceneController : MonoBehaviour
     IEnumerator StartBossFight()
     {
         yield return new WaitForSeconds(5);
-        Debug.Log("Spawning Boss");
         switch (numBossesCompleted)
         {
             case 0:
@@ -173,5 +175,16 @@ public class OutsideSceneController : MonoBehaviour
                 Instantiate(bossList[2], GameObject.Find("BossSpawnPosition").transform.position, Quaternion.identity);
                 break;
         }
+    }
+
+    public bool IsBossDay()
+    {
+        return isBossFightDay;
+    }
+
+    public void BossKilled()
+    {
+        player.GetComponent<Player>().inventory.AddFish(Constants.FishType.STRING_FISH, 1);
+        isBossDead = true;
     }
 }

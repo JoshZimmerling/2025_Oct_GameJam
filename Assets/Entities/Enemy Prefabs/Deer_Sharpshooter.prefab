@@ -556,7 +556,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bf7a145d55d3ea419c30977ec615177, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Deer
-  projectile: {fileID: 5860289697823742698, guid: f2333c8daae7abd469b487d217c70c7f, type: 3}
+  projectile: {fileID: 5860289697823742698, guid: 11890bf643a99f749b16a25a1ca69507, type: 3}
   projectileDamage: 10
   projectileSpeed: 14
   projectileLifetime: 2.5
