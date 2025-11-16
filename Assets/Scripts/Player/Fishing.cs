@@ -75,7 +75,7 @@ public class Fishing : MonoBehaviour
     void Update()
     {
         // When right click is first pressed, start fishing
-        if (Mouse.current.rightButton.wasPressedThisFrame && playerCollider.IsTouching(myCollider) && canStartFishing && !sceneController.isDayComplete())
+        if (Keyboard.current.leftShiftKey.wasPressedThisFrame && playerCollider.IsTouching(myCollider) && canStartFishing && !sceneController.isDayComplete())
         {
             UpdateFishingStats();
             StartFishing();
@@ -84,7 +84,7 @@ public class Fishing : MonoBehaviour
         if(fishingStartTime != -1f)
         {
             // If right click is released cancel the current fishing
-            if (Mouse.current.rightButton.wasReleasedThisFrame || !playerCollider.IsTouching(myCollider))
+            if (Keyboard.current.leftShiftKey.wasReleasedThisFrame || !playerCollider.IsTouching(myCollider))
             {
                 CancelCurrentFishing();
             }
