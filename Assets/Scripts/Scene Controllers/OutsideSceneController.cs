@@ -49,8 +49,8 @@ public class OutsideSceneController : MonoBehaviour
         cameraScript = GameObject.Find("Camera").GetComponent<CameraScript>();
         cameraScript.UpdateCameraZoom(7);
 
-        minTimeBetweenSpawns = 4f - (dayCounter * .1f) < 2f ? 2f : 4f - (dayCounter * .1f);
-        maxTimeBetweenSpawns = 7.5f - (dayCounter * .1f) < 4f ? 4f : 7.5f - (dayCounter * .1f);
+        minTimeBetweenSpawns = 4f - (dayCounter * .15f) < 2f ? 2f : 4f - (dayCounter * .15f);
+        maxTimeBetweenSpawns = 7.25f - (dayCounter * .15f) < 4f ? 4f : 7.25f - (dayCounter * .15f);
         ResetSpawnTimer();
 
         CheckForBossFight();
@@ -128,19 +128,19 @@ public class OutsideSceneController : MonoBehaviour
         switch (numBossesCompleted)
         {
             //FIRST BOSS
-            //Cannot show up on or before day 6
-            //Ramping percentage chance of spawning on days 7-11 (15%, 30%, 45%, 60%, 75%)
-            //Guarenteed to have spawned by day 12
+            //Cannot show up on or before day 5
+            //Ramping percentage chance of spawning on days 6-10 (15%, 30%, 45%, 60%, 75%)
+            //Guarenteed to have spawned by day 11
             case 0:
-                if (dayCounter > 6 && dayCounter <= 11)
+                if (dayCounter > 5 && dayCounter <= 10)
                 {
-                    float randomNumber = Random.Range(0, 100 / (dayCounter - 6));
+                    float randomNumber = Random.Range(0, 100 / (dayCounter - 5));
                     if (randomNumber <= 15)
                     {
                         isBossFightDay = true;
                     }
                 }
-                else if (dayCounter >= 12)
+                else if (dayCounter >= 11)
                 {
                     isBossFightDay = true;
                 }
