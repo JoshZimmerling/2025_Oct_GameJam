@@ -95,6 +95,7 @@ public class Constants
         new SpellItem("Tornado Spell", "Summon a tornado that continuously deals damage every 0.5 seconds. While it persists, you can recast the spell to move the tornado's location.\n\nDMG: 2\nRANGE: LONG\nCOOLDOWN: 5s\nPIERCING: YES", new Dictionary<FishType, int> { { FishType.BRONZE_FISH, 15 }, { FishType.GOLD_FISH, 3 }, { FishType.SAPPHIRE_FISH, 1 } }, ItemType.PRIMARY_ACTIVE_SPELL, "", "TornadoSpell"),
         //SECONDARY ACTIVE SPELL
         new SpellItem("Meteor Spell", "Call down a large meteor that does damage in an area around the cast location.\n\nDMG: 10\nRANGE: LONG\nCOOLDOWN: 15s\nPIERCING: YES", new Dictionary<FishType, int> { { FishType.STONE_FISH, 15 } }, ItemType.SECONDARY_ACTIVE_SPELL, "", "MeteorSpell"),
+        new SpellItem("Spell of the Shallows", "Summon a whirlpool at the target location that does damage to all enemies inside of it every second, as well as briefly slowing them.\n\nDMG: 4/s\nRANGE: VERY LONG\nCOOLDOWN: 10s\nPIERCING: YES", new Dictionary<FishType, int> { { FishType.WOOD_FISH, 5 }, { FishType.BRONZE_FISH, 5 }, { FishType.SAPPHIRE_FISH, 1 } }, ItemType.SECONDARY_ACTIVE_SPELL, "", "SpellOfTheShallows"),
         //PASSIVE SPELL
         new SpellItem("Spell of Swiftness", "Occasionally grants a small burst of movement speed.\n\nSPEED: +20%\nDURATION: 5s\nCOOLDOWN: 20s", new Dictionary<FishType, int> { { FishType.BRONZE_FISH, 5 } }, ItemType.PASSIVE_SPELL, "", "SpeedSpell"),
     };
