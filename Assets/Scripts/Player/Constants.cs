@@ -98,6 +98,7 @@ public class Constants
         new SpellItem("Spell of the Shallows", "Summon a whirlpool at the target location that does damage to all enemies inside of it every second, as well as briefly slowing them.\n\nDMG: 4/s\nRANGE: VERY LONG\nCOOLDOWN: 10s\nPIERCING: YES", new Dictionary<FishType, int> { { FishType.WOOD_FISH, 5 }, { FishType.BRONZE_FISH, 5 }, { FishType.SAPPHIRE_FISH, 1 } }, ItemType.SECONDARY_ACTIVE_SPELL, "", "SpellOfTheShallows"),
         //PASSIVE SPELL
         new SpellItem("Spell of Swiftness", "Occasionally grants a small burst of movement speed.\n\nSPEED: +20%\nDURATION: 5s\nCOOLDOWN: 20s", new Dictionary<FishType, int> { { FishType.BRONZE_FISH, 5 } }, ItemType.PASSIVE_SPELL, "", "SpeedSpell"),
+        new SpellItem("Sike Ring Spell", "Spawn in a ring of spikes a set distance away from you that deal damage and slow the first enemy to touch them.\n\nDAMAGE: 4\nLIFESPAN: 8s\nCOOLDOWN: 25s", new Dictionary<FishType, int> { { FishType.WOOD_FISH, 8 }, { FishType.STONE_FISH, 5 }, { FishType.IRON_FISH, 2 }, { FishType.SAPPHIRE_FISH, 1 } }, ItemType.PASSIVE_SPELL, "", "SpikeRingSpell"),
     };
 
     public static List<CraftingCategory> AllCraftingCategories = new List<CraftingCategory> {

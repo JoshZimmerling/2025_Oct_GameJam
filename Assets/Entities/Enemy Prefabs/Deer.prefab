@@ -472,7 +472,7 @@ MonoBehaviour:
   projectileLifetime: 2.5
   leadProjectile: 1
   attackCooldown: 4
-  attackRange: 6.5
+  attackRange: 6
   franticIndicator: {fileID: 763511292835277538}
   repositionCooldown: 2.5
 --- !u!1 &5858634687644721473

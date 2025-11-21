@@ -39,6 +39,9 @@ public class Spell : MonoBehaviour
             case BuffSpellEffect:
                 spellEffect = Instantiate(effect, player.transform.position, Quaternion.identity);
                 break;
+            case ObjectSpawnSpellEffect:
+                spellEffect = Instantiate(effect, player.transform.position, Quaternion.identity);
+                break;
         }
         spellEffect.Setup(wand);
         spellEffectObject = spellEffect.gameObject;

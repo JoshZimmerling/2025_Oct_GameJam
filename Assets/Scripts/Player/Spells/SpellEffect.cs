@@ -4,26 +4,35 @@ using UnityEngine;
 public class SpellEffect : MonoBehaviour
 {
     public float damage;
-    [SerializeField] float slowPercentage;
-    [SerializeField] float slowDuration;
-    [SerializeField] bool isPassthrough;
-    [SerializeField] float knockback;
+    public float slowPercentage;
+    public float slowDuration;
+    public bool isPassthrough;
+    public float knockback;
 
     private bool canHit = true;
 
     protected void HitEnemy(Enemy enemy)
     {
-        if (damage > 0 && canHit)
+        if (canHit)
         {
             canHit = isPassthrough ? true : false;
-            enemy.Damage(damage);
-            enemy.HitKnockback(knockback, transform.position);
-        }
-        if (slowPercentage > 0 && slowDuration > 0 && canHit)
-        {
-            canHit = isPassthrough ? true : false;
-            enemy.Slow(slowPercentage, slowDuration);
-            enemy.HitKnockback(knockback, transform.position);
+            if (damage > 0)
+            {
+                enemy.Damage(damage);
+            }
+            if (slowPercentage > 0 && slowDuration > 0)
+            {
+                enemy.Slow(slowPercentage, slowDuration);
+            }
+            if (knockback > 0)
+            {
+                enemy.HitKnockback(knockback, transform.position);
+            }
+
+            if (!isPassthrough)
+            {
+                Destroy(gameObject);
+            }
         }
 
         if (!isPassthrough)
