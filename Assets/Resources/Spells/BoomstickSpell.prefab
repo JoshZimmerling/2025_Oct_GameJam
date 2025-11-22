@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &780928545206278586
+--- !u!1 &300190747491658023
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,43 +8,43 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2210729355803896931}
-  - component: {fileID: 7063088739605303930}
+  - component: {fileID: 1869112798402784945}
+  - component: {fileID: 4538972243590622620}
   m_Layer: 0
-  m_Name: TornadoSpell
+  m_Name: BoomstickSpell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2210729355803896931
+--- !u!4 &1869112798402784945
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 780928545206278586}
+  m_GameObject: {fileID: 300190747491658023}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.97556, y: -1.08924, z: 0}
+  m_LocalPosition: {x: 1.17067, y: 0.5751, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7063088739605303930
+--- !u!114 &4538972243590622620
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 780928545206278586}
+  m_GameObject: {fileID: 300190747491658023}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e066e685b99e83840a6472ae7026d712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Spell
-  effect: {fileID: 263500737777285546, guid: c1a5a686a78aacd49ac615fead287383, type: 3}
-  spellDuration: 6
-  cooldown: 6
-  cooldownTimer: 11.7071295
+  effect: {fileID: 8758089912175144352, guid: 4bb20307cf694d34a8177b700aec1435, type: 3}
+  spellDuration: 2
+  cooldown: 2.25
+  cooldownTimer: 0

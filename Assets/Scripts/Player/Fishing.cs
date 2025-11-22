@@ -251,6 +251,9 @@ public class Fishing : MonoBehaviour
                 CurrentFishingOdds.Add(FishType.DIAMOND_FISH, 10);
                 CurrentFishingOdds.Add(FishType.RUBY_FISH, 5);
                 break;
+            case FishingDepth.D_40_METERS:
+                CurrentFishingOdds.Add(FishType.STRING_FISH, 100);
+                break;
         }
 
         if(equippedBait != null)

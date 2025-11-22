@@ -5042,6 +5042,7 @@ MonoBehaviour:
   bossList:
   - {fileID: 8715254775045100164, guid: 7c4f3b9a11211874fa178ce6e05f8b8a, type: 3}
   - {fileID: 4698920620473624795, guid: 9ccfe9c230488b7418497f94f87ac094, type: 3}
+  - {fileID: 6865080750556150369, guid: 6cedb3195f0830443abf2d11367a318d, type: 3}
   nightOverlay: {fileID: 1517494938}
 --- !u!4 &341488722
 Transform:
