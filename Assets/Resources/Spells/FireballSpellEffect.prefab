@@ -54,6 +54,7 @@ MonoBehaviour:
   doesPullTowardsPlayer: 0
   isPassthrough: 0
   knockback: 3
+  impactSound: {fileID: 8300000, guid: cd230013765108b4996cc3df12f44a5b, type: 3}
   speed: 7
   direction: {x: 0, y: 0}
   doesSpellRotate: 0
