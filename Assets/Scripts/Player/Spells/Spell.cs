@@ -26,7 +26,7 @@ public class Spell : MonoBehaviour
         switch (effect) {
             case ProjectileSpellEffect:
                 spellEffect = Instantiate(effect, transform.position, transform.rotation);
-                ((ProjectileSpellEffect)spellEffect).SetDirection(direction.normalized);
+                ((ProjectileSpellEffect)spellEffect).SetDirection(direction.normalized, angle);
                 deleteSpellTime = spellDuration * wand.rangeModifier;
                 break;
             case LaserSpellEffect:

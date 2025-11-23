@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3338230580048068470}
   - component: {fileID: -1723543810296659583}
   m_Layer: 0
-  m_Name: FireballSpellEffect
+  m_Name: DetectionSpellEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -47,20 +47,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88c995cdab671ff478f0e9d8ace0c542, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ProjectileSpellEffect
-  damage: 5
+  damage: 1
   slowPercentage: 0
   slowDuration: 0
   stunDuration: 0
   doesPullTowardsPlayer: 0
   isPassthrough: 0
-  knockback: 3
-  speed: 7
+  knockback: 0
+  speed: 6
   direction: {x: 0, y: 0}
   doesSpellRotate: 0
   rotationSpeed: 0
   doesBoomerang: 0
   timeToBoomerang: 0
-  autoAim: 0
+  autoAim: 1
 --- !u!212 &6660981454951547331
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -108,7 +108,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: ea7bfd967b5af34499f304adf806ac12, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f9cdf3438822885448ed458df5ba7393, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -165,19 +165,26 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.17629933, y: 0.259457}
-      - {x: -0.018568158, y: 0.26680136}
-      - {x: -0.12827563, y: 0.20025754}
-      - {x: -0.34865034, y: 0.15917575}
-      - {x: -0.48010886, y: 0.016628742}
-      - {x: -0.37547565, y: -0.12426019}
-      - {x: -0.22627687, y: -0.18795478}
-      - {x: -0.0071353912, y: -0.2534418}
-      - {x: 0.18429029, y: -0.25945687}
-      - {x: 0.3134247, y: -0.22630501}
-      - {x: 0.4123919, y: -0.09608793}
-      - {x: 0.41239166, y: 0.09608793}
-      - {x: 0.32478344, y: 0.23625052}
+    - - {x: 0.15932083, y: 0.097595096}
+      - {x: 0.15800834, y: 0.12870955}
+      - {x: 0.006420493, y: 0.124420166}
+      - {x: -0.0022886992, y: 0.15577996}
+      - {x: -0.3159833, y: 0.15811634}
+      - {x: -0.31208915, y: -0.15934896}
+      - {x: -0.001028657, y: -0.15965712}
+      - {x: 0.0011838675, y: -0.12490225}
+      - {x: 0.1572671, y: -0.12489152}
+      - {x: 0.15910614, y: -0.096425295}
+      - {x: 0.25320172, y: -0.09610748}
+      - {x: 0.25304854, y: -0.067833185}
+      - {x: 0.31332707, y: -0.06590176}
+      - {x: 0.3179524, y: -0.03727746}
+      - {x: 0.3750391, y: -0.038361073}
+      - {x: 0.37617075, y: 0.029305696}
+      - {x: 0.3165772, y: 0.033569336}
+      - {x: 0.31208634, y: 0.064574}
+      - {x: 0.25176322, y: 0.06596041}
+      - {x: 0.24894619, y: 0.09476292}
   m_UseDelaunayMesh: 0
 --- !u!50 &-1723543810296659583
 Rigidbody2D:

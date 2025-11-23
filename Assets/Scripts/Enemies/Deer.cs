@@ -38,7 +38,7 @@ public class Deer : MonoBehaviour
     {
         cooldownTimer = Mathf.Max(0, cooldownTimer - Time.deltaTime);
 
-        if (_enemy.GetCanMove())
+        if (_enemy.GetCanMove() && !_enemy.GetStunned())
         {
             if (frantic)
             {
@@ -88,7 +88,10 @@ public class Deer : MonoBehaviour
         Player player = other.transform.GetComponentInParent<Player>();
         if (player != null)
         {
-            StopCoroutine(franticCoroutine);
+            if(franticCoroutine != null)
+            {
+                StopCoroutine(franticCoroutine);
+            }
             franticCoroutine = StartCoroutine(StartFranticRun());
         }
     }

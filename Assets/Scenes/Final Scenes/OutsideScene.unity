@@ -8924,6 +8924,7 @@ MonoBehaviour:
   - {fileID: 3374524358304489832, guid: 455edcd1c8aa6b74d9cde58fee36efe0, type: 3}
   - {fileID: 2056726428457499143, guid: 78e0f881cb2f65b4e97a98892ddc071a, type: 3}
   enemySpawnChances: 1e0000001400000032000000
+  enemySpawnList: {fileID: 1992897260}
 --- !u!60 &451595742
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -23903,6 +23904,37 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &1992897260
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1992897261}
+  m_Layer: 0
+  m_Name: EnemiesList
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1992897261
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1992897260}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2085097359
 GameObject:
   m_ObjectHideFlags: 0
@@ -24409,6 +24441,7 @@ MonoBehaviour:
   - {fileID: 3774652731042798261, guid: 6f94ef077849de643973f32b641717d1, type: 3}
   - {fileID: 8038432961036280911, guid: 63eda44ca462c574f903648fe7c2aa4a, type: 3}
   enemySpawnChances: 1e000000140000001e00000014000000
+  enemySpawnList: {fileID: 1992897260}
 --- !u!60 &2119810482
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -24588,6 +24621,7 @@ SceneRoots:
   - {fileID: 1785443785}
   - {fileID: 2119810483}
   - {fileID: 451595743}
+  - {fileID: 1992897261}
   - {fileID: 1915536897}
   - {fileID: 625160981}
   - {fileID: 1583535183}

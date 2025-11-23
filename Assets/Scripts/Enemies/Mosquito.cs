@@ -24,7 +24,7 @@ public class Mosquito : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_enemy.GetCanMove())
+        if (_enemy.GetCanMove() && !_enemy.GetStunned())
         {
             //Out of range, move towards player
             if (!inAttackAnimation && _enemy.DistanceToPlayer() > attackRange)
@@ -47,7 +47,7 @@ public class Mosquito : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         Player player = other.transform.GetComponentInParent<Player>();
-        if (player != null)
+        if (player != null && !_enemy.GetStunned())
         {
             player.ChangeHealth(-1 * attackDamage);
             if (isPoisonous)

@@ -27,7 +27,9 @@ public class Boss_Mosquito : MonoBehaviour
             {
                 float randomXShift = Random.Range(3.0f, 5.0f) * ((Random.Range(0, 2) == 0) ? 1f : -1f);
                 float randomYShift = Random.Range(3.0f, 5.0f) * ((Random.Range(0, 2) == 0) ? 1f : -1f);
-                mosquitoList.Add(Instantiate(normalMosquito, new Vector3(transform.position.x + randomXShift, transform.position.y + randomYShift, transform.position.z), transform.rotation));
+                GameObject spawnedMosquito = Instantiate(normalMosquito, GameObject.Find("EnemiesList").transform);
+                spawnedMosquito.transform.position = new Vector3(transform.position.x + randomXShift, transform.position.y + randomYShift, transform.position.z);
+                mosquitoList.Add(spawnedMosquito);
             }
         }
     }

@@ -6,6 +6,8 @@ public class SpellEffect : MonoBehaviour
     public float damage;
     public float slowPercentage;
     public float slowDuration;
+    public float stunDuration;
+    public bool doesPullTowardsPlayer;
     public bool isPassthrough;
     public float knockback;
 
@@ -24,9 +26,17 @@ public class SpellEffect : MonoBehaviour
             {
                 enemy.Slow(slowPercentage, slowDuration);
             }
+            if (stunDuration > 0)
+            {
+                enemy.SetStunned(stunDuration);
+            }
             if (knockback > 0)
             {
                 enemy.HitKnockback(knockback, transform.position);
+            }
+            if (doesPullTowardsPlayer)
+            {
+                enemy.Pull(6);
             }
 
             if (!isPassthrough)

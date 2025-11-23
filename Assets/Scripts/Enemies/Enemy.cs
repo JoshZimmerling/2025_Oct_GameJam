@@ -8,12 +8,16 @@ public class Enemy : MonoBehaviour
     private Color originalColor = Color.white;
     private Color damageColor = Color.red;
     private Color slowedColor = new Color(150f/255f, 200f/255f, 250f/255f);
+    private Color stunnedColor = new Color(225f/255f, 175f/255f, 255f/255f);
 
     public float startingHealth = 10;
     private float currentHealth;
     public float moveSpeed = 2f;
     private bool canMove = true;
     private bool slowed = false;
+    private bool stunned = false;
+    private bool beingPulled = false;
+    private float pullSpeed;
     private Coroutine slowCoroutine;
 
     private Rigidbody2D rb;
@@ -37,6 +41,21 @@ public class Enemy : MonoBehaviour
 
         //Allows the enemies to ignore the outdoor boundaries (this is handled in unitys settings now but keeping it around as reminder) ||| Edit -> Project Settings -> Physics 2D -> Layer Collision Matrix
         Physics.IgnoreLayerCollision(LayerMask.NameToLayer("Enemy"), LayerMask.NameToLayer("OutdoorBoundary"), true);
+    }
+
+    private void Update()
+    {
+        if (beingPulled)
+        {
+            if (DistanceToPlayer() > 0.25f)
+            {
+                MoveTowardsPlayer(pullSpeed);
+            }
+            else 
+            {
+                beingPulled = false;
+            }
+        }
     }
 
     public void Damage(float damage)
@@ -81,6 +100,22 @@ public class Enemy : MonoBehaviour
         canMove = move;
     }
 
+    public bool GetStunned()
+    {
+        return stunned;
+    }
+
+    public void SetStunned(float duration)
+    {
+        StartCoroutine(Stunned(duration));
+    }
+
+    public void Pull(float speed)
+    {
+        pullSpeed = speed;
+        beingPulled = true;
+    }
+
     public Player GetPlayer()
     {
         return player;
@@ -88,10 +123,7 @@ public class Enemy : MonoBehaviour
 
     public void MoveTowardsPlayer(float speed)
     {
-        if(speed != 0)
-        {
-            Move(((Vector2)player.transform.position - (Vector2)transform.position).normalized, speed);
-        }
+        Move(((Vector2)player.transform.position - (Vector2)transform.position).normalized, speed);
     }
 
     public void Move(Vector2 dir, float speed)
@@ -107,7 +139,10 @@ public class Enemy : MonoBehaviour
             transform.Find("Healthbar").localRotation = new Quaternion(0, 180, 0, 0);
         }
 
-        rb.MovePosition(rb.position + dir * speed * Time.fixedDeltaTime);
+        if (speed != 0)
+        {
+            rb.MovePosition(rb.position + dir * speed * Time.fixedDeltaTime);
+        }
     }
 
     public float DistanceToPlayer()
@@ -125,6 +160,7 @@ public class Enemy : MonoBehaviour
         yield return new WaitForSeconds(0.15f);
 
         spriteRenderer.color = slowed ? slowedColor : originalColor;
+        spriteRenderer.color = stunned ? stunnedColor : originalColor;
     }
 
     IEnumerator SlowMovespeed(float slowPercentage, float slowLength)
@@ -137,7 +173,7 @@ public class Enemy : MonoBehaviour
 
         slowed = false;
         moveSpeed /= (100f - slowPercentage) / 100f;
-        spriteRenderer.color = originalColor;
+        spriteRenderer.color = stunned ? stunnedColor : originalColor;
     }
 
     IEnumerator Knockback(float knockbackAmount, Vector2 source)
@@ -152,6 +188,15 @@ public class Enemy : MonoBehaviour
         canMove = true;
         rb.bodyType = RigidbodyType2D.Kinematic;
         rb.linearVelocity = Vector2.zero;
+    }
+
+    IEnumerator Stunned(float duration)
+    {
+        stunned = true;
+        spriteRenderer.color = stunnedColor;
+        yield return new WaitForSeconds(duration);
+        stunned = false;
+        spriteRenderer.color = slowed ? slowedColor : originalColor;
     }
 
     private void ScaleHealthBar()

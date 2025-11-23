@@ -145,6 +145,42 @@ public class OutsideSceneController : MonoBehaviour
                     isBossFightDay = true;
                 }
                 break;
+            //SECOND BOSS
+            //Cannot show up on or before day 12
+            //Ramping percentage chance of spawning on days 13-17 (15%, 30%, 45%, 60%, 75%)
+            //Guarenteed to have spawned by day 18
+            case 1:
+                if (dayCounter > 12 && dayCounter <= 17)
+                {
+                    float randomNumber = Random.Range(0, 100 / (dayCounter - 12));
+                    if (randomNumber <= 15)
+                    {
+                        isBossFightDay = true;
+                    }
+                }
+                else if (dayCounter >= 18)
+                {
+                    isBossFightDay = true;
+                }
+                break;
+            //THIRD BOSS
+            //Cannot show up on or before day 19
+            //Ramping percentage chance of spawning on days 20-24 (15%, 30%, 45%, 60%, 75%)
+            //Guarenteed to have spawned by day 25
+            case 2:
+                if (dayCounter > 19 && dayCounter <= 24)
+                {
+                    float randomNumber = Random.Range(0, 100 / (dayCounter - 12));
+                    if (randomNumber <= 15)
+                    {
+                        isBossFightDay = true;
+                    }
+                }
+                else if (dayCounter >= 25)
+                {
+                    isBossFightDay = true;
+                }
+                break;
         }
         if (isBossFightDay)
         {
@@ -156,18 +192,20 @@ public class OutsideSceneController : MonoBehaviour
     IEnumerator StartBossFight()
     {
         yield return new WaitForSeconds(5);
+        GameObject boss = null;
         switch (numBossesCompleted)
         {
             case 0:
-                Instantiate(bossList[0], GameObject.Find("BossSpawnPosition").transform.position, Quaternion.identity);
+                boss = Instantiate(bossList[0], GameObject.Find("EnemiesList").transform);
                 break;
             case 1:
-                Instantiate(bossList[1], GameObject.Find("BossSpawnPosition").transform.position, Quaternion.identity);
+                boss = Instantiate(bossList[1], GameObject.Find("EnemiesList").transform);
                 break;
             case 2:
-                Instantiate(bossList[2], GameObject.Find("BossSpawnPosition").transform.position, Quaternion.identity);
+                boss = Instantiate(bossList[2], GameObject.Find("EnemiesList").transform);
                 break;
         }
+        boss.transform.position = GameObject.Find("BossSpawnPosition").transform.position;
     }
 
     public bool IsBossDay()

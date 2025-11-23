@@ -19,6 +19,7 @@ public class PlayerInventory : MonoBehaviour
     public void SetupStartingInventory()
     {
         countOfFish = Enum.GetValues(typeof(FishType)).Cast<FishType>().ToDictionary(fish => fish, fish => 0);
+        //countOfFish = Enum.GetValues(typeof(FishType)).Cast<FishType>().ToDictionary(fish => fish, fish => 50);
         typesOfFishSeen = new List<FishType>();
         craftedItems = new List<CraftableItem>();
         equippedItems = new List<CraftableItem>
@@ -27,7 +28,7 @@ public class PlayerInventory : MonoBehaviour
             new FishingRodShaft("Starting Shaft", "Your every day shaft; nothing special..\n\nFish Type: ALL\nChance to Multiply: 0%\nMutiplier Amount: N/A", new Dictionary<FishType, int>(), ItemType.FISHING_ROD_SHAFT, "shaft_starting", new List<FishType>(), 0, 1),
             new FishingRodLine("10m Fishing Line", "Your every day fishing line; nothing special..\n\nFishing Depth: 10m", new Dictionary<FishType, int> (), ItemType.FISHING_ROD_LINE, "line_10m", FishingDepth.D_10_METERS),
             new FishingRodBait("Starting Fishing Bait", "Your every day fishing bait; nothing special..\n\nFish Type: NONE\nFind Chance Increase: 0x", new Dictionary<FishType, int>(), ItemType.FISHING_ROD_BAIT, "bait_starter", new List<FishType>(), 1f),
-            new WandItem("Starting Wand", "Your every day wand; nothing special..\n\nDMG MOD: 1x\nSIZE MOD: 1x\nRANGE MOD: 1x\nCD MOD: 1x", new Dictionary<FishType, int>(), ItemType.WAND, "", 1f, 1f, 1f, 1f),
+            new WandItem("Starting Wand", "Your every day wand; nothing special..\n\nDMG MOD: 1x\nSIZE MOD: 1x\nRANGE MOD: 1x\nCD MOD: 1x", new Dictionary<FishType, int>(), ItemType.WAND, "wand_base", 1f, 1f, 1f, 1f),
             new SpellItem("Fireball Spell", "Shoot a ball of fire towards your target, dealing large damage from a distance.\n\nDMG: 5\nRANGE: LONG\nCOOLDOWN: 1.5s\nPIERCING: NO", new Dictionary<FishType, int>(), ItemType.PRIMARY_ACTIVE_SPELL, "spell_primary_fireball", "FireballSpell"),
             new SpellItem("Snowball Spell", "Roll a large snowball towards your cursor, slowing and knocking back any enemies hit.\n\nDMG: 0\nRANGE: LONG\nCOOLDOWN: 10s\nPIERCING: YES", new Dictionary<FishType, int>(), ItemType.SECONDARY_ACTIVE_SPELL, "spell_secondary_snowball", "SnowballSpell"),
             new SpellItem("Healing Spell", "Recovers a bit of health every so often.\n\nHEALING: 5\nCOOLDOWN: 30s", new Dictionary<FishType, int>(), ItemType.PASSIVE_SPELL, "spell_passive_heal", "HealSpell"),

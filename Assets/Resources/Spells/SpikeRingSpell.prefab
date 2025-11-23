@@ -48,4 +48,4 @@ MonoBehaviour:
   UI_Image: {fileID: 21300000, guid: ca83616adf9c7fa498f1cb1217fb0d86, type: 3}
   spellDuration: 8
   cooldown: 25
-  cooldownTimer: 12.549197
+  cooldownTimer: 0

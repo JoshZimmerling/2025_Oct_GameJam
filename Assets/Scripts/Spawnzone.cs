@@ -7,6 +7,7 @@ public class Spawnzone : MonoBehaviour
 
     [SerializeField] List<GameObject> spawnableEnemies;
     [SerializeField] List<int> enemySpawnChances;
+    [SerializeField] GameObject enemySpawnList;
 
     private void Start()
     {
@@ -29,6 +30,7 @@ public class Spawnzone : MonoBehaviour
             randomNumber -= enemySpawnChances[i];
         }
 
-        Instantiate(enemyToSpawn, spawnLoc, Quaternion.identity);
+        GameObject enemy = Instantiate(enemyToSpawn, enemySpawnList.transform);
+        enemy.transform.position = spawnLoc;
     }
 }
