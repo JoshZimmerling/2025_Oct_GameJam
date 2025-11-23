@@ -35,8 +35,6 @@ public class Constants
         PRIMARY_ACTIVE_SPELL,
         SECONDARY_ACTIVE_SPELL,
         PASSIVE_SPELL,
-        CHARM,
-        BOOTS
     }
 
     public static List<CraftableItem> AllCraftableItems = new List<CraftableItem> { 
@@ -114,8 +112,6 @@ public class Constants
         new CraftingCategory("Primary Spell", "Your main damage source; primary spells often do good amounts of damage on a pretty low cooldown.", ItemType.PRIMARY_ACTIVE_SPELL, "spell_primary_base"),
         new CraftingCategory("Secondary Spell", "Secondary spells can have many effects, whether an additional damage source or a utility spell.", ItemType.SECONDARY_ACTIVE_SPELL, "spell_secondary_base"),
         new CraftingCategory("Passive Spell", "A spell that will automatically cast in the background, causing various effects to the player.", ItemType.PASSIVE_SPELL, "spell_passive_base"),
-        new CraftingCategory("Charm", "desc", ItemType.CHARM, null),
-        new CraftingCategory("Boots", "desc", ItemType.BOOTS, null)
     };
 
     public class CraftingCategory
