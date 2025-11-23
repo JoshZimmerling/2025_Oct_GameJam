@@ -44,8 +44,11 @@ public class PlayerUIHandler : MonoBehaviour
 
     public void UpdateSpellIcons()
     {
-        spellImages[0].sprite = wand.GetPrimaryActiveSpell().effect.GetComponentInChildren<SpriteRenderer>().sprite;
-        spellImages[1].sprite = wand.GetSecondaryActiveSpell().effect.GetComponentInChildren<SpriteRenderer>().sprite;
-        spellImages[2].sprite = wand.GetPassiveSpell().effect.GetComponentInChildren<SpriteRenderer>().sprite;
+        //spellImages[0].sprite = wand.GetPrimaryActiveSpell().effect.GetComponentInChildren<SpriteRenderer>().sprite;
+        //spellImages[1].sprite = wand.GetSecondaryActiveSpell().effect.GetComponentInChildren<SpriteRenderer>().sprite;
+        //spellImages[2].sprite = wand.GetPassiveSpell().effect.GetComponentInChildren<SpriteRenderer>().sprite;
+        spellImages[0].sprite = wand.GetPrimaryActiveSpell().UI_Image;
+        spellImages[1].sprite = wand.GetSecondaryActiveSpell().UI_Image;
+        spellImages[2].sprite = wand.GetPassiveSpell().UI_Image;
     }
 }

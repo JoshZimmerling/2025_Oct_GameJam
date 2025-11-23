@@ -3,6 +3,7 @@ using UnityEngine;
 public class Spell : MonoBehaviour
 {
     [SerializeField] public SpellEffect effect;
+    [SerializeField] public Sprite UI_Image;
 
     [SerializeField] float spellDuration = 0.3f;
     private float deleteSpellTime;

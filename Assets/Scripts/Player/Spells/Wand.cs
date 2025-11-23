@@ -52,7 +52,16 @@ public class Wand : MonoBehaviour
         primaryActiveSpell.cooldownTimer = Mathf.Max(0, primaryActiveSpell.cooldownTimer - Time.deltaTime);
         secondaryActiveSpell.cooldownTimer = Mathf.Max(0, secondaryActiveSpell.cooldownTimer - Time.deltaTime);
         passiveSpell.cooldownTimer = Mathf.Max(0, passiveSpell.cooldownTimer - Time.deltaTime);
-        if(passiveSpell.cooldownTimer <= 0 && canCastSpells)
+
+        if (primaryActiveSpell.cooldownTimer <= 0 && canCastSpells && primaryActiveSpellAction.ReadValue<float>() > 0)
+        {
+            OnAttack(new InputAction.CallbackContext(), primaryActiveSpell);
+        }
+        if (secondaryActiveSpell.cooldownTimer <= 0 && canCastSpells && secondaryActiveSpellAction.ReadValue<float>() > 0)
+        {
+            OnAttack(new InputAction.CallbackContext(), secondaryActiveSpell);
+        }
+        if (passiveSpell.cooldownTimer <= 0 && canCastSpells)
         {
             passiveSpell.CastSpell(gameObject.transform, new Vector2(), this);
             passiveSpell.cooldownTimer = passiveSpell.cooldown * cooldownModifier;

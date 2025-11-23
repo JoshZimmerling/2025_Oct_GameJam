@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Spell
   effect: {fileID: 4319273946688890274, guid: fffcd8090fa37744f9f42ba8ff98ee70, type: 3}
+  UI_Image: {fileID: 21300000, guid: 903fbdd3fe35c8d4ea8e5c267cd41687, type: 3}
   spellDuration: 0.2
   cooldown: 0.5
   cooldownTimer: 0

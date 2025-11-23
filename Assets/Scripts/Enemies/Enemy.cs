@@ -88,7 +88,10 @@ public class Enemy : MonoBehaviour
 
     public void MoveTowardsPlayer(float speed)
     {
-        Move(((Vector2)player.transform.position - (Vector2)transform.position).normalized, speed);
+        if(speed != 0)
+        {
+            Move(((Vector2)player.transform.position - (Vector2)transform.position).normalized, speed);
+        }
     }
 
     public void Move(Vector2 dir, float speed)
