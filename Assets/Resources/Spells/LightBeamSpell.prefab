@@ -47,7 +47,7 @@ MonoBehaviour:
   effect: {fileID: 4319273946688890274, guid: e55c5d72e925ef1418c628d14bd01b91, type: 3}
   UI_Image: {fileID: 21300000, guid: f146170ee68a7be4f959c2e14ce320b0, type: 3}
   spellDuration: 0.2
-  spawnSound: {fileID: 8300000, guid: f583b82621d195441b49e450cf78d353, type: 3}
+  spawnSound: {fileID: 8300000, guid: a6d6311abe400484db3860b134db89af, type: 3}
   spawnSoundVolume: 1
   cooldown: 0.33
   cooldownTimer: 0

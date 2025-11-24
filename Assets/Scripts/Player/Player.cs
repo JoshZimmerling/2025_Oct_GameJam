@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     public int currentHealth;
     private bool isPoisoned = false;
     Coroutine poisonCoroutine;
+    public AudioClip damageSound;
 
     [SerializeField] GameObject healthbar;
 
@@ -39,6 +40,10 @@ public class Player : MonoBehaviour
     public void ChangeHealth(int amount)
     {
         currentHealth += amount;
+        if (amount < 0)
+        {
+            AudioSource.PlayClipAtPoint(damageSound, transform.position);
+        }
         if(currentHealth > maxHealth)
         {
             currentHealth = maxHealth;
