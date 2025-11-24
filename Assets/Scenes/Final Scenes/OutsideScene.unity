@@ -9574,9 +9574,17 @@ PrefabInstance:
       value: 1.37
       objectReference: {fileID: 0}
     - target: {fileID: 4261714411381696623, guid: 5d4917f430229de4590aaf2169c10807, type: 3}
+      propertyPath: QTESuccessSound
+      value: 
+      objectReference: {fileID: 8300000, guid: ad67879f85923c042b9ca57cd1835823, type: 3}
+    - target: {fileID: 4261714411381696623, guid: 5d4917f430229de4590aaf2169c10807, type: 3}
       propertyPath: sceneController
       value: 
       objectReference: {fileID: 341488721}
+    - target: {fileID: 4261714411381696623, guid: 5d4917f430229de4590aaf2169c10807, type: 3}
+      propertyPath: fishingSuccessSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 4bc300e2af0e82e4c830de7f3bda601e, type: 3}
     - target: {fileID: 8729164602089456618, guid: 5d4917f430229de4590aaf2169c10807, type: 3}
       propertyPath: m_IsTrigger
       value: 1

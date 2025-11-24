@@ -27,6 +27,9 @@ public class Fishing : MonoBehaviour
     private static float fishingStartTime = -1f;
     private float currentFishingTime = 0f;
 
+    public AudioClip QTESuccessSound;
+    public AudioClip fishingSuccessSound;
+
     PolygonCollider2D playerCollider;
     PolygonCollider2D myCollider;
 
@@ -107,6 +110,7 @@ public class Fishing : MonoBehaviour
                     fishingQTEIndicator.SetActive(false);
                     if (CheckForGreenBox() == true)
                     {
+                        AudioSource.PlayClipAtPoint(QTESuccessSound, transform.position);
                         ResetFishing();
                         UpdateFishingChargesProgress();
                     }
@@ -217,6 +221,7 @@ public class Fishing : MonoBehaviour
 
     private IEnumerator FishingChargesCompleted()
     {
+        AudioSource.PlayClipAtPoint(fishingSuccessSound, transform.position);
         CancelCurrentFishing();
         canStartFishing = false;
         GiveFishingReward();

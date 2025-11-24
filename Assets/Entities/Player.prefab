@@ -162,6 +162,7 @@ MonoBehaviour:
   textbox: {fileID: 2693634292836456941}
   maxHealth: 100
   currentHealth: 0
+  damageSound: {fileID: 8300000, guid: bde969938d2593f449a703fbd3696c2e, type: 3}
   healthbar: {fileID: 102581752009107183}
 --- !u!114 &5242960174048780008
 MonoBehaviour:
