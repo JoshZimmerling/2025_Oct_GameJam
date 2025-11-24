@@ -13,6 +13,7 @@ public class Enemy : MonoBehaviour
     public float startingHealth = 10;
     private float currentHealth;
     public float moveSpeed = 2f;
+    public AudioClip deathSound;
     private bool canMove = true;
     private bool slowed = false;
     private bool stunned = false;
@@ -70,6 +71,11 @@ public class Enemy : MonoBehaviour
             if (gameObject.GetComponent<Boss>() != null)
             {
                 gameObject.GetComponent<Boss>().OnDeath();
+            }
+
+            if (deathSound != null)
+            {
+                AudioSource.PlayClipAtPoint(deathSound, transform.position);
             }
             Destroy(gameObject);
         }

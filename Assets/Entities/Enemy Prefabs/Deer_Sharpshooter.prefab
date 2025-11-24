@@ -543,6 +543,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   startingHealth: 9
   moveSpeed: 2.5
+  deathSound: {fileID: 8300000, guid: a3e473f31507fef4eb41a9debb0fbdf9, type: 3}
   healthbar: {fileID: 9123498104380157248}
 --- !u!114 &8519674249348892234
 MonoBehaviour:
@@ -563,6 +564,7 @@ MonoBehaviour:
   leadProjectile: 0
   attackCooldown: 5
   attackRange: 7
+  projectileSound: {fileID: 8300000, guid: ada36f1556d63e646a86a8353aee8467, type: 3}
   franticIndicator: {fileID: 2191908045694550109}
   repositionCooldown: 3.25
 --- !u!1 &9123498104380157248

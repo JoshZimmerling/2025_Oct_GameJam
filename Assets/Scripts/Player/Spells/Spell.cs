@@ -6,6 +6,9 @@ public class Spell : MonoBehaviour
     [SerializeField] public Sprite UI_Image;
 
     [SerializeField] float spellDuration = 0.3f;
+    [SerializeField] AudioClip spawnSound;
+    [SerializeField] private float spawnSoundVolume = 1f;
+    
     private float deleteSpellTime;
     public float cooldown = 1f;
     public float cooldownTimer = 0;
@@ -16,6 +19,7 @@ public class Spell : MonoBehaviour
     {
         GameObject spellEffectObject = null;
         SpellEffect spellEffect = null;
+        
         Vector2 direction = target - (Vector2) transform.position;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0f, 0f, angle);
@@ -46,7 +50,10 @@ public class Spell : MonoBehaviour
         }
         spellEffect.Setup(wand);
         spellEffectObject = spellEffect.gameObject;
-        
+        if (spawnSound != null)
+        {
+            AudioSource.PlayClipAtPoint(spawnSound, transform.position, spawnSoundVolume);
+        }
         Destroy(spellEffectObject, deleteSpellTime);
     }
 }

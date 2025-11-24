@@ -12,6 +12,7 @@ public class Deer : MonoBehaviour
     [SerializeField] float attackCooldown;
     private float cooldownTimer = 0;
     [SerializeField] float attackRange;
+    [SerializeField] AudioClip projectileSound;
 
     private Enemy _enemy;
 
@@ -110,6 +111,7 @@ public class Deer : MonoBehaviour
         }
 
         cooldownTimer = attackCooldown;
+        AudioSource.PlayClipAtPoint(projectileSound, transform.position);
         GameObject bullet = Instantiate(projectile, transform.position, transform.rotation);
         bullet.GetComponent<EnemyProjectile>().SetStats(projectileDamage, projectileSpeed);
         bullet.GetComponent<EnemyProjectile>().Aim(_enemy.GetPlayer(), leadProjectile);

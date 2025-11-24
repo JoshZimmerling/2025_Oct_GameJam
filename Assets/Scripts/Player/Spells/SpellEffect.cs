@@ -10,11 +10,16 @@ public class SpellEffect : MonoBehaviour
     public bool doesPullTowardsPlayer;
     public bool isPassthrough;
     public float knockback;
+    public AudioClip impactSound;
 
     private bool canHit = true;
 
     protected void HitEnemy(Enemy enemy)
     {
+        if (impactSound != null)
+        {
+            AudioSource.PlayClipAtPoint(impactSound, transform.position);
+        }
         if (canHit)
         {
             canHit = isPassthrough ? true : false;

@@ -49,13 +49,17 @@ MonoBehaviour:
   damage: 2
   slowPercentage: 0
   slowDuration: 0
+  stunDuration: 0
+  doesPullTowardsPlayer: 0
   isPassthrough: 1
   knockback: 2
+  impactSound: {fileID: 0}
   maxRange: 8
   doesDamageReproc: 1
   damageReprocRate: 0.6
   canBeMoved: 1
   moveSpeed: 3.5
+  effectSound: {fileID: 8300000, guid: f7c6c40d742a358469e93f301f31a8b0, type: 3}
 --- !u!212 &1222964781530627446
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -54,6 +54,7 @@ MonoBehaviour:
   doesPullTowardsPlayer: 0
   isPassthrough: 0
   knockback: 0
+  impactSound: {fileID: 0}
   speed: 6
   direction: {x: 0, y: 0}
   doesSpellRotate: 0
