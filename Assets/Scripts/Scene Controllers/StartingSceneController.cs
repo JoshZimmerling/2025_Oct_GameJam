@@ -13,6 +13,11 @@ public class StartingSceneController : MonoBehaviour
     {
         player = GameObject.Find("Player");
         playerCollider = player.transform.Find("Hitbox Collider").gameObject.GetComponent<PolygonCollider2D>();
+
+        player.transform.rotation = new Quaternion(0, 180, 0, 0);
+        player.transform.Find("Textbox").localRotation = new Quaternion(0, 180, 0, 0);
+        player.transform.Find("Healthbar").localRotation = new Quaternion(0, 180, 0, 0);
+        player.GetComponent<Player>().DisplayText("Yea yea yea....", 5);
     }
 
     // Update is called once per frame
