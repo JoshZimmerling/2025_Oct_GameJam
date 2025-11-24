@@ -544,6 +544,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   startingHealth: 200
   moveSpeed: 3
+  deathSound: {fileID: 8300000, guid: a9fdd4bab732535418cab20f6dff956c, type: 3}
   healthbar: {fileID: 3093768366933633843}
 --- !u!114 &2598864996709098464
 MonoBehaviour:

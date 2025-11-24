@@ -50,8 +50,10 @@ public class Spell : MonoBehaviour
         }
         spellEffect.Setup(wand);
         spellEffectObject = spellEffect.gameObject;
-        AudioSource.PlayClipAtPoint(spawnSound, transform.position, spawnSoundVolume);
-        
+        if (spawnSound != null)
+        {
+            AudioSource.PlayClipAtPoint(spawnSound, transform.position, spawnSoundVolume);
+        }
         Destroy(spellEffectObject, deleteSpellTime);
     }
 }

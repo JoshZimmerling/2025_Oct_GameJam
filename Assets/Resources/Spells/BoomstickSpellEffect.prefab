@@ -50,14 +50,18 @@ MonoBehaviour:
   damage: 15
   slowPercentage: 0
   slowDuration: 0
+  stunDuration: 0
+  doesPullTowardsPlayer: 0
   isPassthrough: 0
   knockback: 5
+  impactSound: {fileID: 0}
   speed: 14
   direction: {x: 0, y: 0}
   doesSpellRotate: 0
   rotationSpeed: 0
   doesBoomerang: 0
   timeToBoomerang: 0
+  autoAim: 0
 --- !u!212 &6660981454951547331
 SpriteRenderer:
   m_ObjectHideFlags: 0
