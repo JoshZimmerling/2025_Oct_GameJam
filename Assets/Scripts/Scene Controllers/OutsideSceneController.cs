@@ -49,8 +49,8 @@ public class OutsideSceneController : MonoBehaviour
         cameraScript = GameObject.Find("Camera").GetComponent<CameraScript>();
         cameraScript.UpdateCameraZoom(7);
 
-        minTimeBetweenSpawns = 4f - (dayCounter * .15f) < 2f ? 2f : 4f - (dayCounter * .15f);
-        maxTimeBetweenSpawns = 7.25f - (dayCounter * .15f) < 4f ? 4f : 7.25f - (dayCounter * .15f);
+        minTimeBetweenSpawns = 4.5f - (dayCounter * .15f) < 2f ? 2f : 4.5f - (dayCounter * .15f);
+        maxTimeBetweenSpawns = 7.5f - (dayCounter * .15f) < 4f ? 4f : 7.5f - (dayCounter * .15f);
         ResetSpawnTimer();
 
         CheckForBossFight();

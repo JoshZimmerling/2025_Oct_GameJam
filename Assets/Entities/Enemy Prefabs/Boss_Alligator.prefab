@@ -405,6 +405,7 @@ GameObject:
   - component: {fileID: 4658522100196564796}
   - component: {fileID: 7090617030716954304}
   - component: {fileID: 6432443815810234810}
+  - component: {fileID: 2178593721563500012}
   - component: {fileID: 3657452672390627165}
   - component: {fileID: 2598864996709098464}
   m_Layer: 7
@@ -530,6 +531,19 @@ PolygonCollider2D:
       - {x: -0.7366389, y: 0.33175147}
       - {x: -1.1613256, y: 0.15361905}
   m_UseDelaunayMesh: 0
+--- !u!114 &2178593721563500012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6865080750556150369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3223615f66112f54495e568b1c77de00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Boss
+  stringFish: {fileID: 5253180466919636739, guid: ff1962c9c4fff854aa3a3c9be3066d35, type: 3}
 --- !u!114 &3657452672390627165
 MonoBehaviour:
   m_ObjectHideFlags: 0

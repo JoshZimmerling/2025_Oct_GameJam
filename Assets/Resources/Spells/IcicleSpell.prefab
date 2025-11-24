@@ -49,5 +49,5 @@ MonoBehaviour:
   spellDuration: 3
   spawnSound: {fileID: 8300000, guid: b3b3348eb2df68549bdb409a4dd3c26a, type: 3}
   spawnSoundVolume: 1
-  cooldown: 10
+  cooldown: 7.5
   cooldownTimer: 0
