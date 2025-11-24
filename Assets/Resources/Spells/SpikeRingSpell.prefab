@@ -50,4 +50,4 @@ MonoBehaviour:
   spawnSound: {fileID: 8300000, guid: 3354b4fed09eb1941807b427917ed989, type: 3}
   spawnSoundVolume: 1
   cooldown: 25
-  cooldownTimer: 17.140488
+  cooldownTimer: 0
